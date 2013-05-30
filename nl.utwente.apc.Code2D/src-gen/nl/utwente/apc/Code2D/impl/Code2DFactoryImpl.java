@@ -5,7 +5,6 @@ package nl.utwente.apc.Code2D.impl;
 import nl.utwente.apc.Code2D.*;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -65,10 +64,7 @@ public class Code2DFactoryImpl extends EFactoryImpl implements Code2DFactory
   {
     switch (eClass.getClassifierID())
     {
-      case Code2DPackage.DATA_TYPE: return createDataType();
-      case Code2DPackage.ENTITY: return createEntity();
-      case Code2DPackage.ENTITY_MODEL: return createEntityModel();
-      case Code2DPackage.FEATURE: return createFeature();
+      case Code2DPackage.GAME: return createGame();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -79,99 +75,10 @@ public class Code2DFactoryImpl extends EFactoryImpl implements Code2DFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Object createFromString(EDataType eDataType, String initialValue)
+  public Game createGame()
   {
-    switch (eDataType.getClassifierID())
-    {
-      case Code2DPackage.FEATURE_KIND:
-        return createFeatureKindFromString(eDataType, initialValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String convertToString(EDataType eDataType, Object instanceValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case Code2DPackage.FEATURE_KIND:
-        return convertFeatureKindToString(eDataType, instanceValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public DataType createDataType()
-  {
-    DataTypeImpl dataType = new DataTypeImpl();
-    return dataType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Entity createEntity()
-  {
-    EntityImpl entity = new EntityImpl();
-    return entity;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EntityModel createEntityModel()
-  {
-    EntityModelImpl entityModel = new EntityModelImpl();
-    return entityModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Feature createFeature()
-  {
-    FeatureImpl feature = new FeatureImpl();
-    return feature;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FeatureKind createFeatureKindFromString(EDataType eDataType, String initialValue)
-  {
-    FeatureKind result = FeatureKind.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertFeatureKindToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
+    GameImpl game = new GameImpl();
+    return game;
   }
 
   /**

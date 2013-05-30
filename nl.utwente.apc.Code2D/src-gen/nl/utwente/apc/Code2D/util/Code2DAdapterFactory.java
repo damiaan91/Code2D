@@ -75,34 +75,9 @@ public class Code2DAdapterFactory extends AdapterFactoryImpl
     new Code2DSwitch<Adapter>()
     {
       @Override
-      public Adapter caseNamedElement(NamedElement object)
+      public Adapter caseGame(Game object)
       {
-        return createNamedElementAdapter();
-      }
-      @Override
-      public Adapter caseType(Type object)
-      {
-        return createTypeAdapter();
-      }
-      @Override
-      public Adapter caseDataType(DataType object)
-      {
-        return createDataTypeAdapter();
-      }
-      @Override
-      public Adapter caseEntity(Entity object)
-      {
-        return createEntityAdapter();
-      }
-      @Override
-      public Adapter caseEntityModel(EntityModel object)
-      {
-        return createEntityModelAdapter();
-      }
-      @Override
-      public Adapter caseFeature(Feature object)
-      {
-        return createFeatureAdapter();
+        return createGameAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -127,91 +102,16 @@ public class Code2DAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.NamedElement <em>Named Element</em>}'.
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Game <em>Game</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see nl.utwente.apc.Code2D.NamedElement
+   * @see nl.utwente.apc.Code2D.Game
    * @generated
    */
-  public Adapter createNamedElementAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Type <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see nl.utwente.apc.Code2D.Type
-   * @generated
-   */
-  public Adapter createTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.DataType <em>Data Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see nl.utwente.apc.Code2D.DataType
-   * @generated
-   */
-  public Adapter createDataTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Entity <em>Entity</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see nl.utwente.apc.Code2D.Entity
-   * @generated
-   */
-  public Adapter createEntityAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.EntityModel <em>Entity Model</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see nl.utwente.apc.Code2D.EntityModel
-   * @generated
-   */
-  public Adapter createEntityModelAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Feature <em>Feature</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see nl.utwente.apc.Code2D.Feature
-   * @generated
-   */
-  public Adapter createFeatureAdapter()
+  public Adapter createGameAdapter()
   {
     return null;
   }

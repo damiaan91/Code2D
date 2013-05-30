@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_I5S10MkZEeKiHcAYma1hhA" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_OFeU4MkbEeKiHcAYma1hhA" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_OFgKEMkbEeKiHcAYma1hhA" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_OFgxIMkbEeKiHcAYma1hhA" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_ZgTZcMkbEeKiHcAYma1hhA" type="2001">
+        <element xmi:type="ecore:EAttribute" href="text.ecore#//Game/Name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ZgTZcckbEeKiHcAYma1hhA"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_OFgxIckbEeKiHcAYma1hhA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_OFgxIskbEeKiHcAYma1hhA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_OFgxI8kbEeKiHcAYma1hhA"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_OFgxJMkbEeKiHcAYma1hhA" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_OFgxJckbEeKiHcAYma1hhA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_OFgxJskbEeKiHcAYma1hhA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_OFhYMMkbEeKiHcAYma1hhA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_OFeU4ckbEeKiHcAYma1hhA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="text.ecore#//Game"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OFe78MkbEeKiHcAYma1hhA" x="270" y="135"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_rL_ioMkcEeKiHcAYma1hhA" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_rMBX0MkcEeKiHcAYma1hhA" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_rMBX0ckcEeKiHcAYma1hhA" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_rMBX0skcEeKiHcAYma1hhA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_rMBX08kcEeKiHcAYma1hhA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_rMBX1MkcEeKiHcAYma1hhA"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_rMB-4MkcEeKiHcAYma1hhA" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_rMB-4ckcEeKiHcAYma1hhA"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_rMB-4skcEeKiHcAYma1hhA"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_rMB-48kcEeKiHcAYma1hhA"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_rL_iockcEeKiHcAYma1hhA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="text.ecore#//World"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rL_ioskcEeKiHcAYma1hhA" x="195" y="285"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_I5S10ckZEeKiHcAYma1hhA"/>
+  <element xmi:type="ecore:EPackage" href="text.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_yRHyQMkcEeKiHcAYma1hhA" type="3002" source="_OFeU4MkbEeKiHcAYma1hhA" target="_rL_ioMkcEeKiHcAYma1hhA">
+    <children xmi:type="notation:Node" xmi:id="_yRJncMkcEeKiHcAYma1hhA" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yRJncckcEeKiHcAYma1hhA" x="-37" y="10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_yRJncskcEeKiHcAYma1hhA" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yRJnc8kcEeKiHcAYma1hhA" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_yRHyQckcEeKiHcAYma1hhA" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_yRHyQskcEeKiHcAYma1hhA" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="text.ecore#//Game/GameWorld"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yRHyQ8kcEeKiHcAYma1hhA" points="[-7, 8, 82, -91]$[-88, 97, 1, -2]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yRPuEMkcEeKiHcAYma1hhA" id="(0.4315068493150685,0.873015873015873)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yRPuEckcEeKiHcAYma1hhA" id="(0.4803921568627451,0.061224489795918366)"/>
+  </edges>
+</notation:Diagram>

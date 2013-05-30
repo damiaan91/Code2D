@@ -58,14 +58,14 @@ public interface Code2DPackage extends EPackage
   Code2DPackage eINSTANCE = nl.utwente.apc.Code2D.impl.Code2DPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.NamedElementImpl <em>Named Element</em>}' class.
+   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.GameImpl <em>Game</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see nl.utwente.apc.Code2D.impl.NamedElementImpl
-   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getNamedElement()
+   * @see nl.utwente.apc.Code2D.impl.GameImpl
+   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getGame()
    * @generated
    */
-  int NAMED_ELEMENT = 0;
+  int GAME = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -74,339 +74,38 @@ public interface Code2DPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NAMED_ELEMENT__NAME = 0;
+  int GAME__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Named Element</em>' class.
+   * The number of structural features of the '<em>Game</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NAMED_ELEMENT_FEATURE_COUNT = 1;
+  int GAME_FEATURE_COUNT = 1;
+
 
   /**
-   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.TypeImpl <em>Type</em>}' class.
+   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.Game <em>Game</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see nl.utwente.apc.Code2D.impl.TypeImpl
-   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getType()
+   * @return the meta object for class '<em>Game</em>'.
+   * @see nl.utwente.apc.Code2D.Game
    * @generated
    */
-  int TYPE = 1;
+  EClass getGame();
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__NAME = NAMED_ELEMENT__NAME;
-
-  /**
-   * The number of structural features of the '<em>Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.DataTypeImpl <em>Data Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see nl.utwente.apc.Code2D.impl.DataTypeImpl
-   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getDataType()
-   * @generated
-   */
-  int DATA_TYPE = 2;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATA_TYPE__NAME = TYPE__NAME;
-
-  /**
-   * The number of structural features of the '<em>Data Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DATA_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.EntityImpl <em>Entity</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see nl.utwente.apc.Code2D.impl.EntityImpl
-   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getEntity()
-   * @generated
-   */
-  int ENTITY = 3;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY__NAME = TYPE__NAME;
-
-  /**
-   * The feature id for the '<em><b>Abstract</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY__ABSTRACT = TYPE_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Features</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY__FEATURES = TYPE_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Entity</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.EntityModelImpl <em>Entity Model</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see nl.utwente.apc.Code2D.impl.EntityModelImpl
-   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getEntityModel()
-   * @generated
-   */
-  int ENTITY_MODEL = 4;
-
-  /**
-   * The feature id for the '<em><b>Types</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_MODEL__TYPES = 0;
-
-  /**
-   * The number of structural features of the '<em>Entity Model</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_MODEL_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.FeatureImpl <em>Feature</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see nl.utwente.apc.Code2D.impl.FeatureImpl
-   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getFeature()
-   * @generated
-   */
-  int FEATURE = 5;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE__NAME = NAMED_ELEMENT__NAME;
-
-  /**
-   * The feature id for the '<em><b>Kind</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE__KIND = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Feature</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FEATURE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link nl.utwente.apc.Code2D.FeatureKind <em>Feature Kind</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see nl.utwente.apc.Code2D.FeatureKind
-   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getFeatureKind()
-   * @generated
-   */
-  int FEATURE_KIND = 6;
-
-
-  /**
-   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.NamedElement <em>Named Element</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Named Element</em>'.
-   * @see nl.utwente.apc.Code2D.NamedElement
-   * @generated
-   */
-  EClass getNamedElement();
-
-  /**
-   * Returns the meta object for the attribute '{@link nl.utwente.apc.Code2D.NamedElement#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link nl.utwente.apc.Code2D.Game#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see nl.utwente.apc.Code2D.NamedElement#getName()
-   * @see #getNamedElement()
+   * @see nl.utwente.apc.Code2D.Game#getName()
+   * @see #getGame()
    * @generated
    */
-  EAttribute getNamedElement_Name();
-
-  /**
-   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.Type <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Type</em>'.
-   * @see nl.utwente.apc.Code2D.Type
-   * @generated
-   */
-  EClass getType();
-
-  /**
-   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.DataType <em>Data Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Data Type</em>'.
-   * @see nl.utwente.apc.Code2D.DataType
-   * @generated
-   */
-  EClass getDataType();
-
-  /**
-   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.Entity <em>Entity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Entity</em>'.
-   * @see nl.utwente.apc.Code2D.Entity
-   * @generated
-   */
-  EClass getEntity();
-
-  /**
-   * Returns the meta object for the attribute '{@link nl.utwente.apc.Code2D.Entity#isAbstract <em>Abstract</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Abstract</em>'.
-   * @see nl.utwente.apc.Code2D.Entity#isAbstract()
-   * @see #getEntity()
-   * @generated
-   */
-  EAttribute getEntity_Abstract();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link nl.utwente.apc.Code2D.Entity#getFeatures <em>Features</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Features</em>'.
-   * @see nl.utwente.apc.Code2D.Entity#getFeatures()
-   * @see #getEntity()
-   * @generated
-   */
-  EReference getEntity_Features();
-
-  /**
-   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.EntityModel <em>Entity Model</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Entity Model</em>'.
-   * @see nl.utwente.apc.Code2D.EntityModel
-   * @generated
-   */
-  EClass getEntityModel();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link nl.utwente.apc.Code2D.EntityModel#getTypes <em>Types</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Types</em>'.
-   * @see nl.utwente.apc.Code2D.EntityModel#getTypes()
-   * @see #getEntityModel()
-   * @generated
-   */
-  EReference getEntityModel_Types();
-
-  /**
-   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.Feature <em>Feature</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Feature</em>'.
-   * @see nl.utwente.apc.Code2D.Feature
-   * @generated
-   */
-  EClass getFeature();
-
-  /**
-   * Returns the meta object for the attribute '{@link nl.utwente.apc.Code2D.Feature#getKind <em>Kind</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Kind</em>'.
-   * @see nl.utwente.apc.Code2D.Feature#getKind()
-   * @see #getFeature()
-   * @generated
-   */
-  EAttribute getFeature_Kind();
-
-  /**
-   * Returns the meta object for the reference '{@link nl.utwente.apc.Code2D.Feature#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Type</em>'.
-   * @see nl.utwente.apc.Code2D.Feature#getType()
-   * @see #getFeature()
-   * @generated
-   */
-  EReference getFeature_Type();
-
-  /**
-   * Returns the meta object for enum '{@link nl.utwente.apc.Code2D.FeatureKind <em>Feature Kind</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Feature Kind</em>'.
-   * @see nl.utwente.apc.Code2D.FeatureKind
-   * @generated
-   */
-  EEnum getFeatureKind();
+  EAttribute getGame_Name();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -432,14 +131,14 @@ public interface Code2DPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.NamedElementImpl <em>Named Element</em>}' class.
+     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.GameImpl <em>Game</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see nl.utwente.apc.Code2D.impl.NamedElementImpl
-     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getNamedElement()
+     * @see nl.utwente.apc.Code2D.impl.GameImpl
+     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getGame()
      * @generated
      */
-    EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
+    EClass GAME = eINSTANCE.getGame();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -447,107 +146,7 @@ public interface Code2DPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
-
-    /**
-     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.TypeImpl <em>Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see nl.utwente.apc.Code2D.impl.TypeImpl
-     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getType()
-     * @generated
-     */
-    EClass TYPE = eINSTANCE.getType();
-
-    /**
-     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.DataTypeImpl <em>Data Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see nl.utwente.apc.Code2D.impl.DataTypeImpl
-     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getDataType()
-     * @generated
-     */
-    EClass DATA_TYPE = eINSTANCE.getDataType();
-
-    /**
-     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.EntityImpl <em>Entity</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see nl.utwente.apc.Code2D.impl.EntityImpl
-     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getEntity()
-     * @generated
-     */
-    EClass ENTITY = eINSTANCE.getEntity();
-
-    /**
-     * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ENTITY__ABSTRACT = eINSTANCE.getEntity_Abstract();
-
-    /**
-     * The meta object literal for the '<em><b>Features</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ENTITY__FEATURES = eINSTANCE.getEntity_Features();
-
-    /**
-     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.EntityModelImpl <em>Entity Model</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see nl.utwente.apc.Code2D.impl.EntityModelImpl
-     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getEntityModel()
-     * @generated
-     */
-    EClass ENTITY_MODEL = eINSTANCE.getEntityModel();
-
-    /**
-     * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ENTITY_MODEL__TYPES = eINSTANCE.getEntityModel_Types();
-
-    /**
-     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.FeatureImpl <em>Feature</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see nl.utwente.apc.Code2D.impl.FeatureImpl
-     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getFeature()
-     * @generated
-     */
-    EClass FEATURE = eINSTANCE.getFeature();
-
-    /**
-     * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FEATURE__KIND = eINSTANCE.getFeature_Kind();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FEATURE__TYPE = eINSTANCE.getFeature_Type();
-
-    /**
-     * The meta object literal for the '{@link nl.utwente.apc.Code2D.FeatureKind <em>Feature Kind</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see nl.utwente.apc.Code2D.FeatureKind
-     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getFeatureKind()
-     * @generated
-     */
-    EEnum FEATURE_KIND = eINSTANCE.getFeatureKind();
+    EAttribute GAME__NAME = eINSTANCE.getGame_Name();
 
   }
 
