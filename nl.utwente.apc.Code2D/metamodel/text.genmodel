@@ -6,8 +6,30 @@
   <foreignModel>text.ecore</foreignModel>
   <genPackages prefix="Code2D" basePackage="nl.utwente.apc" disposableProviderFactory="true"
       ecorePackage="text.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="text.ecore#//NPCBehaviour">
+      <genEnumLiterals ecoreEnumLiteral="text.ecore#//NPCBehaviour/Friendly"/>
+      <genEnumLiterals ecoreEnumLiteral="text.ecore#//NPCBehaviour/Neutral"/>
+      <genEnumLiterals ecoreEnumLiteral="text.ecore#//NPCBehaviour/Hostile"/>
+    </genEnums>
     <genClasses ecoreClass="text.ecore#//Game">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Game/Name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Game/GameWorld"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Game/GameObjects"/>
     </genClasses>
+    <genClasses ecoreClass="text.ecore#//World">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//World/Name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="text.ecore#//GameObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//GameObject/Name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//GameObject/Texture"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="text.ecore#//MoveableObject"/>
+    <genClasses image="false" ecoreClass="text.ecore#//ControllableObject"/>
+    <genClasses ecoreClass="text.ecore#//Player"/>
+    <genClasses ecoreClass="text.ecore#//NPC">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//NPC/Behaviour"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//NPC/Extends"/>
+    </genClasses>
+    <genClasses ecoreClass="text.ecore#//Item"/>
   </genPackages>
 </genmodel:GenModel>

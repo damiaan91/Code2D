@@ -64,10 +64,80 @@ public class AbstractCode2DInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
+		if (object instanceof nl.utwente.apc.Code2D.World) {
+			result = interprete_nl_utwente_apc_Code2D_World((nl.utwente.apc.Code2D.World) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.Player) {
+			result = interprete_nl_utwente_apc_Code2D_Player((nl.utwente.apc.Code2D.Player) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.ControllableObject) {
+			result = interprete_nl_utwente_apc_Code2D_ControllableObject((nl.utwente.apc.Code2D.ControllableObject) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.NPC) {
+			result = interprete_nl_utwente_apc_Code2D_NPC((nl.utwente.apc.Code2D.NPC) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.MoveableObject) {
+			result = interprete_nl_utwente_apc_Code2D_MoveableObject((nl.utwente.apc.Code2D.MoveableObject) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.Item) {
+			result = interprete_nl_utwente_apc_Code2D_Item((nl.utwente.apc.Code2D.Item) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.GameObject) {
+			result = interprete_nl_utwente_apc_Code2D_GameObject((nl.utwente.apc.Code2D.GameObject) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
 		return result;
 	}
 	
 	public ResultType interprete_nl_utwente_apc_Code2D_Game(nl.utwente.apc.Code2D.Game game, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_World(nl.utwente.apc.Code2D.World world, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_GameObject(nl.utwente.apc.Code2D.GameObject gameObject, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_MoveableObject(nl.utwente.apc.Code2D.MoveableObject moveableObject, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_ControllableObject(nl.utwente.apc.Code2D.ControllableObject controllableObject, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_Player(nl.utwente.apc.Code2D.Player player, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_NPC(nl.utwente.apc.Code2D.NPC nPC, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_Item(nl.utwente.apc.Code2D.Item item, ContextType context) {
 		return null;
 	}
 	

@@ -196,6 +196,22 @@ public class Code2DPrinter2 implements nl.utwente.apc.Code2D.resource.Code2D.ICo
 			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_0, foundFormattingElements);
 			return;
 		}
+		if (element instanceof nl.utwente.apc.Code2D.World) {
+			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1, foundFormattingElements);
+			return;
+		}
+		if (element instanceof nl.utwente.apc.Code2D.Player) {
+			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2, foundFormattingElements);
+			return;
+		}
+		if (element instanceof nl.utwente.apc.Code2D.NPC) {
+			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3, foundFormattingElements);
+			return;
+		}
+		if (element instanceof nl.utwente.apc.Code2D.Item) {
+			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4, foundFormattingElements);
+			return;
+		}
 		
 		addWarningToResource("The printer can not handle " + element.eClass().getName() + " elements", element);
 	}

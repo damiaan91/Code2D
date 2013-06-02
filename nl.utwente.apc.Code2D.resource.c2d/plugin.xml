@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax">
+		<metaInformationProvider class="nl.utwente.apc.Code2D.resource.c2d.mopp.C2dMetaInformation" id="nl.utwente.apc.Code2D.resource.c2d.mopp.C2dMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension id="nl.utwente.apc.Code2D.resource.c2d.problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="org.eclipse.core.resources.problemmarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<super type="org.eclipse.emf.ecore.diagnostic">
+		</super>
+	</extension>
+	
+	<extension id="nl.utwente.apc.Code2D.resource.c2d.problem.syntax_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="nl.utwente.apc.Code2D.resource.c2d.problem">
+		</super>
+	</extension>
+	
+	<extension id="nl.utwente.apc.Code2D.resource.c2d.problem.print_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="nl.utwente.apc.Code2D.resource.c2d.problem">
+		</super>
+	</extension>
+	
+	<extension id="nl.utwente.apc.Code2D.resource.c2d.problem.unresolved_reference" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="nl.utwente.apc.Code2D.resource.c2d.problem">
+		</super>
+	</extension>
+	
+	<extension id="nl.utwente.apc.Code2D.resource.c2d.problem.analysis_problem" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="nl.utwente.apc.Code2D.resource.c2d.problem">
+		</super>
+	</extension>
+	
+	<extension id="nl.utwente.apc.Code2D.resource.c2d.problem.builder_error" name="EMFText Problem" point="org.eclipse.core.resources.markers">
+		<persistent value="true">
+		</persistent>
+		<super type="nl.utwente.apc.Code2D.resource.c2d.problem">
+		</super>
+	</extension>
+	
+	<extension id="nl.utwente.apc.Code2D.resource.c2d.nature" name="c2d nature" point="org.eclipse.core.resources.natures">
+		<runtime>
+			<run class="nl.utwente.apc.Code2D.resource.c2d.mopp.C2dNature">
+			</run>
+		</runtime>
+		<builder id="nl.utwente.apc.Code2D.resource.c2d.builder">
+		</builder>
+	</extension>
+	
+	<extension point="org.eclipse.core.resources.builders" id="nl.utwente.apc.Code2D.resource.c2d.builder" name="c2d Builder">
+		<builder hasNature="true">
+			<run class="nl.utwente.apc.Code2D.resource.c2d.mopp.C2dBuilderAdapter">
+			</run>
+		</builder>
+	</extension>
+	
+	<extension-point id="nl.utwente.apc.Code2D.resource.c2d.default_load_options" name="Default Load Options" schema="schema/default_load_options.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.emf.ecore.extension_parser">
+		<parser class="nl.utwente.apc.Code2D.resource.c2d.mopp.C2dResourceFactoryDelegator" type="c2d">
+		</parser>
+	</extension>
+	
+	<extension-point id="nl.utwente.apc.Code2D.resource.c2d.additional_extension_parser" name="Additional Extension Parser" schema="schema/additional_extension_parser.exsd">
+	</extension-point>
+	
+	<extension point="org.eclipse.debug.core.breakpoints">
+		<breakpoint class="nl.utwente.apc.Code2D.resource.c2d.debug.C2dLineBreakpoint" id="nl.utwente.apc.Code2D.resource.c2d.debug.breakpoint" markerType="nl.utwente.apc.Code2D.resource.c2d.debug.lineBreakpoint.marker" name="c2d Breakpoint">
+		</breakpoint>
+	</extension>
+	
+	<extension id="nl.utwente.apc.Code2D.resource.c2d.debug.lineBreakpoint.marker" point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.debug.core.lineBreakpointMarker">
+		</super>
+		<super type="org.eclipse.core.resources.textmarker">
+		</super>
+		<persistent value="true">
+		</persistent>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
+		<launchConfigurationType id="nl.utwente.apc.Code2D.resource.c2d.ui.launchConfigurationType" delegate="nl.utwente.apc.Code2D.resource.c2d.launch.C2dLaunchConfigurationDelegate" modes="run,debug" name="c2d Application" sourceLocatorId="nl.utwente.apc.Code2D.resource.c2d.ui.sourceLocator" sourcePathComputerId="nl.utwente.apc.Code2D.resource.c2d.ui.sourcePathComputer" delegateName="c2d Launch Tooling" delegateDescription="This will run or debug .c2d files.">
+		</launchConfigurationType>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourcePathComputers">
+		<sourcePathComputer class="nl.utwente.apc.Code2D.resource.c2d.debug.C2dSourcePathComputerDelegate" id="nl.utwente.apc.Code2D.resource.c2d.ui.sourcePathComputer">
+		</sourcePathComputer>
+	</extension>
+	
+	<extension point="org.eclipse.debug.core.sourceLocators">
+		<sourceLocator id="nl.utwente.apc.Code2D.resource.c2d.ui.sourceLocator" class="nl.utwente.apc.Code2D.resource.c2d.debug.C2dSourceLocator" name="c2d Source Locator">
+		</sourceLocator>
+	</extension>
+	
+</plugin>

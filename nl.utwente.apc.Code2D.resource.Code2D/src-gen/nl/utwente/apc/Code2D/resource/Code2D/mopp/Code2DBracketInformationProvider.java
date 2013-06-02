@@ -36,7 +36,7 @@ public class Code2DBracketInformationProvider {
 	
 	public java.util.Collection<nl.utwente.apc.Code2D.resource.Code2D.ICode2DBracketPair> getBracketPairs() {
 		java.util.Collection<nl.utwente.apc.Code2D.resource.Code2D.ICode2DBracketPair> result = new java.util.ArrayList<nl.utwente.apc.Code2D.resource.Code2D.ICode2DBracketPair>();
-		result.add(new BracketPair("\"", "\"", false));
+		result.add(new BracketPair("{", "}", true));
 		return result;
 	}
 	

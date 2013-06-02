@@ -13,21 +13,38 @@ public class Code2DReferenceResolverSwitch implements nl.utwente.apc.Code2D.reso
 	 */
 	private java.util.Map<Object, Object> options;
 	
+	protected nl.utwente.apc.Code2D.resource.Code2D.analysis.NPCExtendsReferenceResolver nPCExtendsReferenceResolver = new nl.utwente.apc.Code2D.resource.Code2D.analysis.NPCExtendsReferenceResolver();
+	
+	public nl.utwente.apc.Code2D.resource.Code2D.ICode2DReferenceResolver<nl.utwente.apc.Code2D.NPC, nl.utwente.apc.Code2D.NPC> getNPCExtendsReferenceResolver() {
+		return getResolverChain(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getNPC_Extends(), nPCExtendsReferenceResolver);
+	}
 	
 	public void setOptions(java.util.Map<?, ?> options) {
 		if (options != null) {
 			this.options = new java.util.LinkedHashMap<Object, Object>();
 			this.options.putAll(options);
 		}
+		nPCExtendsReferenceResolver.setOptions(options);
 	}
 	
 	public void resolveFuzzy(String identifier, org.eclipse.emf.ecore.EObject container, org.eclipse.emf.ecore.EReference reference, int position, nl.utwente.apc.Code2D.resource.Code2D.ICode2DReferenceResolveResult<org.eclipse.emf.ecore.EObject> result) {
 		if (container == null) {
 			return;
 		}
+		if (nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getNPC().isInstance(container)) {
+			Code2DFuzzyResolveResult<nl.utwente.apc.Code2D.NPC> frr = new Code2DFuzzyResolveResult<nl.utwente.apc.Code2D.NPC>(result);
+			String referenceName = reference.getName();
+			org.eclipse.emf.ecore.EStructuralFeature feature = container.eClass().getEStructuralFeature(referenceName);
+			if (feature != null && feature instanceof org.eclipse.emf.ecore.EReference && referenceName != null && referenceName.equals("Extends")) {
+				nPCExtendsReferenceResolver.resolve(identifier, (nl.utwente.apc.Code2D.NPC) container, (org.eclipse.emf.ecore.EReference) feature, position, true, frr);
+			}
+		}
 	}
 	
 	public nl.utwente.apc.Code2D.resource.Code2D.ICode2DReferenceResolver<? extends org.eclipse.emf.ecore.EObject, ? extends org.eclipse.emf.ecore.EObject> getResolver(org.eclipse.emf.ecore.EStructuralFeature reference) {
+		if (reference == nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getNPC_Extends()) {
+			return getResolverChain(reference, nPCExtendsReferenceResolver);
+		}
 		return null;
 	}
 	

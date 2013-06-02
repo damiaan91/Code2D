@@ -1,0 +1,24 @@
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * 
+ */
+package nl.utwente.apc.Code2D.resource.c2d;
+
+/**
+ * A delegating reference resolver is an extension of a normal reference resolver
+ * that can be configured with another resolver that it may delegate method calls
+ * to. This interface can be implemented by additional resolvers to customize
+ * resolving using the load option ADDITIONAL_REFERENCE_RESOLVERS.
+ * 
+ * @see nl.utwente.apc.Code2D.resource.c2d.IC2dOptions
+ */
+public interface IC2dDelegatingReferenceResolver<ContainerType extends org.eclipse.emf.ecore.EObject, ReferenceType extends org.eclipse.emf.ecore.EObject> extends nl.utwente.apc.Code2D.resource.c2d.IC2dReferenceResolver<ContainerType, ReferenceType> {
+	
+	/**
+	 * Sets the delegate for this resolver.
+	 */
+	public void setDelegate(nl.utwente.apc.Code2D.resource.c2d.IC2dReferenceResolver<ContainerType, ReferenceType> delegate);
+	
+}

@@ -80,6 +80,41 @@ public class Code2DAdapterFactory extends AdapterFactoryImpl
         return createGameAdapter();
       }
       @Override
+      public Adapter caseWorld(World object)
+      {
+        return createWorldAdapter();
+      }
+      @Override
+      public Adapter caseGameObject(GameObject object)
+      {
+        return createGameObjectAdapter();
+      }
+      @Override
+      public Adapter caseMoveableObject(MoveableObject object)
+      {
+        return createMoveableObjectAdapter();
+      }
+      @Override
+      public Adapter caseControllableObject(ControllableObject object)
+      {
+        return createControllableObjectAdapter();
+      }
+      @Override
+      public Adapter casePlayer(Player object)
+      {
+        return createPlayerAdapter();
+      }
+      @Override
+      public Adapter caseNPC(NPC object)
+      {
+        return createNPCAdapter();
+      }
+      @Override
+      public Adapter caseItem(Item object)
+      {
+        return createItemAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -112,6 +147,111 @@ public class Code2DAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.World <em>World</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.World
+   * @generated
+   */
+  public Adapter createWorldAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.GameObject <em>Game Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.GameObject
+   * @generated
+   */
+  public Adapter createGameObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.MoveableObject <em>Moveable Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.MoveableObject
+   * @generated
+   */
+  public Adapter createMoveableObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.ControllableObject <em>Controllable Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.ControllableObject
+   * @generated
+   */
+  public Adapter createControllableObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Player <em>Player</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.Player
+   * @generated
+   */
+  public Adapter createPlayerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.NPC <em>NPC</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.NPC
+   * @generated
+   */
+  public Adapter createNPCAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Item <em>Item</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.Item
+   * @generated
+   */
+  public Adapter createItemAdapter()
   {
     return null;
   }

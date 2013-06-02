@@ -79,6 +79,64 @@ public class Code2DSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case Code2DPackage.WORLD:
+      {
+        World world = (World)theEObject;
+        T result = caseWorld(world);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.GAME_OBJECT:
+      {
+        GameObject gameObject = (GameObject)theEObject;
+        T result = caseGameObject(gameObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.MOVEABLE_OBJECT:
+      {
+        MoveableObject moveableObject = (MoveableObject)theEObject;
+        T result = caseMoveableObject(moveableObject);
+        if (result == null) result = caseGameObject(moveableObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.CONTROLLABLE_OBJECT:
+      {
+        ControllableObject controllableObject = (ControllableObject)theEObject;
+        T result = caseControllableObject(controllableObject);
+        if (result == null) result = caseMoveableObject(controllableObject);
+        if (result == null) result = caseGameObject(controllableObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.PLAYER:
+      {
+        Player player = (Player)theEObject;
+        T result = casePlayer(player);
+        if (result == null) result = caseControllableObject(player);
+        if (result == null) result = caseMoveableObject(player);
+        if (result == null) result = caseGameObject(player);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.NPC:
+      {
+        NPC npc = (NPC)theEObject;
+        T result = caseNPC(npc);
+        if (result == null) result = caseMoveableObject(npc);
+        if (result == null) result = caseGameObject(npc);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.ITEM:
+      {
+        Item item = (Item)theEObject;
+        T result = caseItem(item);
+        if (result == null) result = caseGameObject(item);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -95,6 +153,118 @@ public class Code2DSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseGame(Game object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>World</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>World</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWorld(World object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Game Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Game Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGameObject(GameObject object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Moveable Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Moveable Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMoveableObject(MoveableObject object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Controllable Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Controllable Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseControllableObject(ControllableObject object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Player</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Player</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlayer(Player object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>NPC</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>NPC</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNPC(NPC object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Item</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseItem(Item object)
   {
     return null;
   }

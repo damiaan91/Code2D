@@ -32,6 +32,42 @@ public interface Code2DFactory extends EFactory
   Game createGame();
 
   /**
+   * Returns a new object of class '<em>World</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>World</em>'.
+   * @generated
+   */
+  World createWorld();
+
+  /**
+   * Returns a new object of class '<em>Player</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Player</em>'.
+   * @generated
+   */
+  Player createPlayer();
+
+  /**
+   * Returns a new object of class '<em>NPC</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>NPC</em>'.
+   * @generated
+   */
+  NPC createNPC();
+
+  /**
+   * Returns a new object of class '<em>Item</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Item</em>'.
+   * @generated
+   */
+  Item createItem();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

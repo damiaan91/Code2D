@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map>
-	<bundle bundleID="903" class="nl.utwente.apc.Code2D.resource.Code2D.ui.Code2DUIPlugin" localization="OSGI-INF/l10n/bundle" name="EMFText UI Plugin: Code2D" project="nl.utwente.apc.Code2D.resource.Code2D.ui" provider="Software Technology Group - TU Dresden Germany"/>
-	<bundle bundleID="902" class="nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DPlugin" localization="OSGI-INF/l10n/bundle" name="EMFText Parser Plugin: Code2D" project="nl.utwente.apc.Code2D.resource.Code2D" provider="Software Technology Group - TU Dresden Germany"/>
-	<bundle bundleID="904" localization="OSGI-INF/l10n/bundle" name="ANTLR 3.3.0 Runtime Classes" project="org.emftext.commons.antlr3_4_0" provider="Software Technology Group - TU Dresden Germany"/>
+	<bundle bundleID="911" class="nl.utwente.apc.Code2D.resource.Code2D.ui.Code2DUIPlugin" localization="OSGI-INF/l10n/bundle" name="EMFText UI Plugin: Code2D" project="nl.utwente.apc.Code2D.resource.Code2D.ui" provider="Software Technology Group - TU Dresden Germany"/>
+	<bundle bundleID="910" class="nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DPlugin" localization="OSGI-INF/l10n/bundle" name="EMFText Parser Plugin: Code2D" project="nl.utwente.apc.Code2D.resource.Code2D" provider="Software Technology Group - TU Dresden Germany"/>
+	<bundle bundleID="912" localization="OSGI-INF/l10n/bundle" name="ANTLR 3.3.0 Runtime Classes" project="org.emftext.commons.antlr3_4_0" provider="Software Technology Group - TU Dresden Germany"/>
 	<bundle bundleID="898" localization="plugin" name="%pluginName" project="nl.utwente.apc.Code2D" provider="%providerName">
 		<library name="."/>
 	</bundle>

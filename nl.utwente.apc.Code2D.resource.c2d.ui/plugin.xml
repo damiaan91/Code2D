@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+	<extension point="org.emftext.access.syntax.ui">
+		<metaInformationProvider class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dUIMetaInformation" id="nl.utwente.apc.Code2D.resource.c2d.ui.C2dUIMetaInformation">
+		</metaInformationProvider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors">
+		<editor class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dEditor" contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor" extensions="c2d" icon="icons/editor_icon.gif" id="nl.utwente.apc.Code2D.resource.c2d.ui.C2dEditor" name="EMFText c2d Editor">
+			<contentTypeBinding contentTypeId="nl.utwente.apc.Code2D.resource.c2d">
+			</contentTypeBinding>
+		</editor>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dPreferenceInitializer">
+		</initializer>
+	</extension>
+	
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="C2d Text Editor" id="nl.utwente.apc.Code2D.resource.c2d.ui.C2dPreferencePage" class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dPreferencePage" category="org.eclipse.ui.preferencePages.GeneralTextEditor">
+		</page>
+		<page name="Syntax Coloring" id="nl.utwente.apc.Code2D.resource.c2d.ui.C2dSyntaxColoringPreferencePage" class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dSyntaxColoringPreferencePage" category="nl.utwente.apc.Code2D.resource.c2d.ui.C2dPreferencePage">
+		</page>
+		<page name="Brackets" id="nl.utwente.apc.Code2D.resource.c2d.ui.C2dBracketPreferencePage" class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dBracketPreferencePage" category="nl.utwente.apc.Code2D.resource.c2d.ui.C2dPreferencePage">
+		</page>
+	</extension>
+	
+	<extension point="org.eclipse.ui.newWizards">
+		<category id="org.emftext.runtime.ui.EMFTextFileCategory" name="EMFText File">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextFileCategory" icon="/icons/default_new_icon.gif" class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dNewFileWizard" id="nl.utwente.apc.Code2D.resource.c2d.ui.C2dNewFileWizard" name="EMFText .c2d file">
+		</wizard>
+		<category id="org.emftext.runtime.ui.EMFTextProjectCategory" name="EMFText Project">
+		</category>
+		<wizard category="org.emftext.runtime.ui.EMFTextProjectCategory" icon="/icons/default_new_icon.gif" class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dNewProjectWizard" id="nl.utwente.apc.Code2D.resource.c2d.ui.C2dNewProjectWizard" name="EMFText c2d project" project="true">
+		</wizard>
+	</extension>
+	
+	<extension point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dMarkerResolutionGenerator" markerType="nl.utwente.apc.Code2D.resource.c2d.problem">
+		</markerResolutionGenerator>
+	</extension>
+	
+	<extension point="org.eclipse.core.filebuffers.annotationModelCreation">
+		<factory class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dAnnotationModelFactory" extensions="c2d">
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type id="nl.utwente.apc.Code2D.resource.c2d" name=".c2d File" base-type="org.eclipse.core.runtime.text" file-extensions="c2d">
+		</content-type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider class="org.eclipse.ui.editors.text.TextFileDocumentProvider" extensions="c2d" id="nl.utwente.apc.Code2D.resource.c2d.ui.provider">
+		</provider>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="nl.utwente.apc.Code2D.resource.c2d.ui.occurences">
+		</type>
+		<type name="nl.utwente.apc.Code2D.resource.c2d.ui.occurences.declaration" super="nl.utwente.apc.Code2D.resource.c2d.ui.occurences">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="nl.utwente.apc.Code2D.resource.c2d.ui.occurences" label="Occurrences (in .c2d files)" icon="/icons/occurrence_icon.gif" textPreferenceKey="c2d.occurrenceIndication" textPreferenceValue="false" highlightPreferenceKey="c2d.occurrenceHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="c2d.occurrenceIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="c2d.occurrenceIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="c2d.occurrenceIndicationColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="c2d.showOccurrenceInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="c2d.isOccurrenceGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="c2d.isOccurrenceGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="c2d.occurrenceTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+		<specification annotationType="nl.utwente.apc.Code2D.resource.c2d.ui.occurences.declaration" label="Declarations (in .c2d files)" textPreferenceKey="c2d.declarationIndication" textPreferenceValue="false" highlightPreferenceKey="c2d.declarationHighlighting" highlightPreferenceValue="true" overviewRulerPreferenceKey="c2d.declarationIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="c2d.declarationIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="c2d.declarationIndicationColor" colorPreferenceValue="240,216,168" presentationLayer="4" textStylePreferenceKey="c2d.declarationTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+		<launchConfigurationTypeImage icon="/icons/launch_type_icon.gif" configTypeID="nl.utwente.apc.Code2D.resource.c2d.ui.launchConfigurationType" id="nl.utwente.apc.c2d.launchImage">
+		</launchConfigurationTypeImage>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+		<launchConfigurationTabGroup type="nl.utwente.apc.Code2D.resource.c2d.ui.launchConfigurationType" class="nl.utwente.apc.Code2D.resource.c2d.ui.launch.C2dLaunchConfigurationTabGroup" id="nl.utwente.apc.c2d.launchConfigurationTabGroup" helpContextId="nl.utwente.apc.c2d.launchConfigHelpContext">
+			<launchMode mode="debug" perspective="org.eclipse.debug.ui.DebugPerspective" description="Debug c2d model.">
+			</launchMode>
+			<launchMode mode="run" description="Run c2d model.">
+			</launchMode>
+		</launchConfigurationTabGroup>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut label="c2d Application" icon="/icons/launch_shortcut_icon.gif" helpContextId="nl.utwente.apc.c2d.launch" modes="run,debug" class="nl.utwente.apc.Code2D.resource.c2d.ui.launch.C2dLaunchShortcut" description="Launch a c2d model" id="nl.utwente.apc.c2d.launchShortcut">
+			<description description="Run c2d model" mode="run">
+			</description>
+			<description description="Debug c2d model" mode="debug">
+			</description>
+			<contextualLaunch>
+				<enablement>
+					<with variable="selection">
+						<count value="1">
+						</count>
+						<iterate>
+							<test property="nl.utwente.apc.c2d.isLaunchable">
+							</test>
+						</iterate>
+					</with>
+				</enablement>
+			</contextualLaunch>
+			<configurationType id="nl.utwente.apc.Code2D.resource.c2d.ui.launchConfigurationType">
+			</configurationType>
+		</shortcut>
+	</extension>
+	
+	<extension point="org.eclipse.core.expressions.propertyTesters">
+		<propertyTester id="nl.utwente.apc.c2d.PropertyTester" type="java.lang.Object" namespace="nl.utwente.apc.c2d" properties="isLaunchable" class="nl.utwente.apc.Code2D.resource.c2d.ui.C2dPropertyTester">
+		</propertyTester>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.annotationTypes">
+		<type name="nl.utwente.apc.Code2D.resource.c2d.ui.debug.lineBreakpoint" markerType="nl.utwente.apc.Code2D.resource.c2d.debug.lineBreakpoint.marker" super="org.eclipse.debug.core.breakpoint">
+		</type>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+		<specification annotationType="nl.utwente.apc.Code2D.resource.c2d.ui.debug.lineBreakpoint" label="Breakpoints (in .c2d files)" icon="/icons/breakpoint_icon.gif" textPreferenceKey="nl.utwente.apc.Code2D.resource.c2d.ui.lineBreakpoint" textPreferenceValue="false" highlightPreferenceKey="nl.utwente.apc.Code2D.resource.c2d.ui.lineBreakpointHighlighting" highlightPreferenceValue="true" contributesToHeader="false" overviewRulerPreferenceKey="nl.utwente.apc.Code2D.resource.c2d.ui.lineBreakpointIndicationInOverviewRuler" overviewRulerPreferenceValue="true" verticalRulerPreferenceKey="nl.utwente.apc.Code2D.resource.c2d.ui.lineBreakpointIndicationInVerticalRuler" verticalRulerPreferenceValue="false" colorPreferenceKey="nl.utwente.apc.Code2D.resource.c2d.ui.lineBreakpointColor" colorPreferenceValue="212,212,212" presentationLayer="4" showInNextPrevDropdownToolbarActionKey="nl.utwente.apc.Code2D.resource.c2d.ui.showLineBreakpointInNextPrevDropdownToolbarAction" showInNextPrevDropdownToolbarAction="true" isGoToNextNavigationTargetKey="nl.utwente.apc.Code2D.resource.c2d.ui.isLineBreakpointGoToNextNavigationTarget" isGoToNextNavigationTarget="false" isGoToPreviousNavigationTargetKey="nl.utwente.apc.Code2D.resource.c2d.ui.isLineBreakpointGoToPreviousNavigationTarget" isGoToPreviousNavigationTarget="false" textStylePreferenceKey="nl.utwente.apc.Code2D.resource.c2d.ui.lineBreakpointTextStyle" textStylePreferenceValue="NONE">
+		</specification>
+	</extension>
+	
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory adaptableType="nl.utwente.apc.Code2D.resource.c2d.ui.C2dEditor" class="nl.utwente.apc.Code2D.resource.c2d.ui.debug.C2dAdapterFactory">
+			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget">
+			</adapter>
+		</factory>
+		<factory adaptableType="nl.utwente.apc.Code2D.resource.c2d.debug.C2dDebugVariable" class="nl.utwente.apc.Code2D.resource.c2d.ui.debug.C2dAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementLabelProvider">
+			</adapter>
+		</factory>
+		<factory adaptableType="nl.utwente.apc.Code2D.resource.c2d.debug.C2dDebugVariable" class="nl.utwente.apc.Code2D.resource.c2d.ui.debug.C2dAdapterFactory">
+			<adapter type="org.eclipse.debug.internal.ui.viewers.model.provisional.IElementContentProvider">
+			</adapter>
+		</factory>
+	</extension>
+	
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution id="nl.utwente.apc.Code2D.resource.c2d.ui.RulerPopupActions" targetID="nl.utwente.apc.Code2D.resource.c2d.EditorRuler">
+			<action id="nl.utwente.apc.Code2D.resource.c2d.ui.toggleBreakpointAction" icon="icons/breakpoint_icon.gif" label="Toggle Breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" menubarPath="debug">
+			</action>
+		</viewerContribution>
+	</extension>
+	
+	<extension point="org.eclipse.ui.editorActions">
+		<editorContribution targetID="nl.utwente.apc.Code2D.resource.c2d.ui.C2dEditor" id="nl.utwente.apc.Code2D.resource.c2d.ui.BreakpointRulerActions">
+			<action id="nl.utwente.apc.Code2D.resource.c2d.ui.debug.RulerToggleBreakpointAction" label="Add breakpoint" class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate" actionID="RulerDoubleClick">
+			</action>
+		</editorContribution>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.debugModelPresentations">
+		<debugModelPresentation id="nl.utwente.apc.Code2D.resource.c2d.debugModel" class="nl.utwente.apc.Code2D.resource.c2d.ui.debug.C2dDebugModelPresentation">
+		</debugModelPresentation>
+	</extension>
+	
+</plugin>
