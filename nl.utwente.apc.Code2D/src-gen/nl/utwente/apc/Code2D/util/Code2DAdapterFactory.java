@@ -80,11 +80,6 @@ public class Code2DAdapterFactory extends AdapterFactoryImpl
         return createGameAdapter();
       }
       @Override
-      public Adapter caseWorld(World object)
-      {
-        return createWorldAdapter();
-      }
-      @Override
       public Adapter caseGameObject(GameObject object)
       {
         return createGameObjectAdapter();
@@ -113,6 +108,26 @@ public class Code2DAdapterFactory extends AdapterFactoryImpl
       public Adapter caseItem(Item object)
       {
         return createItemAdapter();
+      }
+      @Override
+      public Adapter caseWorld(World object)
+      {
+        return createWorldAdapter();
+      }
+      @Override
+      public Adapter caseTerrain(Terrain object)
+      {
+        return createTerrainAdapter();
+      }
+      @Override
+      public Adapter caseTrap(Trap object)
+      {
+        return createTrapAdapter();
+      }
+      @Override
+      public Adapter caseScenery(Scenery object)
+      {
+        return createSceneryAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -162,6 +177,51 @@ public class Code2DAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWorldAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Terrain <em>Terrain</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.Terrain
+   * @generated
+   */
+  public Adapter createTerrainAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Trap <em>Trap</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.Trap
+   * @generated
+   */
+  public Adapter createTrapAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link nl.utwente.apc.Code2D.Scenery <em>Scenery</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see nl.utwente.apc.Code2D.Scenery
+   * @generated
+   */
+  public Adapter createSceneryAdapter()
   {
     return null;
   }

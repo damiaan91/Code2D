@@ -13,11 +13,8 @@
     </genEnums>
     <genClasses ecoreClass="text.ecore#//Game">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Game/Name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Game/GameWorld"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Game/GameObjects"/>
-    </genClasses>
-    <genClasses ecoreClass="text.ecore#//World">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//World/Name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Game/GameWorld"/>
     </genClasses>
     <genClasses image="false" ecoreClass="text.ecore#//GameObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//GameObject/Name"/>
@@ -31,5 +28,16 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//NPC/Extends"/>
     </genClasses>
     <genClasses ecoreClass="text.ecore#//Item"/>
+    <genClasses ecoreClass="text.ecore#//World">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//World/Name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//World/Terrain"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//World/WorldBlocks"/>
+    </genClasses>
+    <genClasses ecoreClass="text.ecore#//Terrain">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Terrain/CanStand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Terrain/CanHaveItem"/>
+    </genClasses>
+    <genClasses ecoreClass="text.ecore#//Trap"/>
+    <genClasses ecoreClass="text.ecore#//Scenery"/>
   </genPackages>
 </genmodel:GenModel>

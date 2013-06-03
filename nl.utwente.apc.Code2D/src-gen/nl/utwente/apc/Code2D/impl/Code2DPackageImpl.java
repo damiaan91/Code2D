@@ -12,6 +12,9 @@ import nl.utwente.apc.Code2D.Item;
 import nl.utwente.apc.Code2D.MoveableObject;
 import nl.utwente.apc.Code2D.NPCBehaviour;
 import nl.utwente.apc.Code2D.Player;
+import nl.utwente.apc.Code2D.Scenery;
+import nl.utwente.apc.Code2D.Terrain;
+import nl.utwente.apc.Code2D.Trap;
 import nl.utwente.apc.Code2D.World;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -42,6 +45,27 @@ public class Code2DPackageImpl extends EPackageImpl implements Code2DPackage
    * @generated
    */
   private EClass worldEClass = null;
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass terrainEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass trapEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass sceneryEClass = null;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -175,7 +199,7 @@ public class Code2DPackageImpl extends EPackageImpl implements Code2DPackage
    */
   public EReference getGame_GameWorld()
   {
-    return (EReference)gameEClass.getEStructuralFeatures().get(1);
+    return (EReference)gameEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -185,7 +209,7 @@ public class Code2DPackageImpl extends EPackageImpl implements Code2DPackage
    */
   public EReference getGame_GameObjects()
   {
-    return (EReference)gameEClass.getEStructuralFeatures().get(2);
+    return (EReference)gameEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -206,6 +230,76 @@ public class Code2DPackageImpl extends EPackageImpl implements Code2DPackage
   public EAttribute getWorld_Name()
   {
     return (EAttribute)worldEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWorld_Terrain()
+  {
+    return (EAttribute)worldEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWorld_WorldBlocks()
+  {
+    return (EReference)worldEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTerrain()
+  {
+    return terrainEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTerrain_CanStand()
+  {
+    return (EAttribute)terrainEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTerrain_CanHaveItem()
+  {
+    return (EAttribute)terrainEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTrap()
+  {
+    return trapEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getScenery()
+  {
+    return sceneryEClass;
   }
 
   /**
@@ -350,11 +444,8 @@ public class Code2DPackageImpl extends EPackageImpl implements Code2DPackage
     // Create classes and their features
     gameEClass = createEClass(GAME);
     createEAttribute(gameEClass, GAME__NAME);
-    createEReference(gameEClass, GAME__GAME_WORLD);
     createEReference(gameEClass, GAME__GAME_OBJECTS);
-
-    worldEClass = createEClass(WORLD);
-    createEAttribute(worldEClass, WORLD__NAME);
+    createEReference(gameEClass, GAME__GAME_WORLD);
 
     gameObjectEClass = createEClass(GAME_OBJECT);
     createEAttribute(gameObjectEClass, GAME_OBJECT__NAME);
@@ -371,6 +462,19 @@ public class Code2DPackageImpl extends EPackageImpl implements Code2DPackage
     createEReference(npcEClass, NPC__EXTENDS);
 
     itemEClass = createEClass(ITEM);
+
+    worldEClass = createEClass(WORLD);
+    createEAttribute(worldEClass, WORLD__NAME);
+    createEAttribute(worldEClass, WORLD__TERRAIN);
+    createEReference(worldEClass, WORLD__WORLD_BLOCKS);
+
+    terrainEClass = createEClass(TERRAIN);
+    createEAttribute(terrainEClass, TERRAIN__CAN_STAND);
+    createEAttribute(terrainEClass, TERRAIN__CAN_HAVE_ITEM);
+
+    trapEClass = createEClass(TRAP);
+
+    sceneryEClass = createEClass(SCENERY);
 
     // Create enums
     npcBehaviourEEnum = createEEnum(NPC_BEHAVIOUR);
@@ -410,15 +514,14 @@ public class Code2DPackageImpl extends EPackageImpl implements Code2DPackage
     playerEClass.getESuperTypes().add(this.getControllableObject());
     npcEClass.getESuperTypes().add(this.getMoveableObject());
     itemEClass.getESuperTypes().add(this.getGameObject());
+    trapEClass.getESuperTypes().add(this.getGameObject());
+    sceneryEClass.getESuperTypes().add(this.getGameObject());
 
     // Initialize classes and features; add operations and parameters
     initEClass(gameEClass, Game.class, "Game", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGame_Name(), ecorePackage.getEString(), "Name", null, 1, 1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGame_GameWorld(), this.getWorld(), null, "GameWorld", null, 1, 1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGame_GameObjects(), this.getGameObject(), null, "GameObjects", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(worldEClass, World.class, "World", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWorld_Name(), ecorePackage.getEString(), "Name", null, 1, 1, World.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGame_GameWorld(), this.getWorld(), null, "GameWorld", null, 1, 1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(gameObjectEClass, GameObject.class, "GameObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGameObject_Name(), ecorePackage.getEString(), "Name", null, 1, 1, GameObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -435,6 +538,19 @@ public class Code2DPackageImpl extends EPackageImpl implements Code2DPackage
     initEReference(getNPC_Extends(), this.getNPC(), null, "Extends", null, 0, 1, nl.utwente.apc.Code2D.NPC.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(worldEClass, World.class, "World", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWorld_Name(), ecorePackage.getEString(), "Name", null, 1, 1, World.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWorld_Terrain(), ecorePackage.getEString(), "Terrain", null, 0, 1, World.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWorld_WorldBlocks(), this.getTerrain(), null, "WorldBlocks", null, 1, -1, World.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(terrainEClass, Terrain.class, "Terrain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTerrain_CanStand(), ecorePackage.getEBoolean(), "CanStand", null, 0, 1, Terrain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTerrain_CanHaveItem(), ecorePackage.getEBoolean(), "CanHaveItem", null, 0, 1, Terrain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(trapEClass, Trap.class, "Trap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(sceneryEClass, Scenery.class, "Scenery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
     initEEnum(npcBehaviourEEnum, NPCBehaviour.class, "NPCBehaviour");

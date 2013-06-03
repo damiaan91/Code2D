@@ -29,8 +29,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link nl.utwente.apc.Code2D.impl.GameImpl#getName <em>Name</em>}</li>
- *   <li>{@link nl.utwente.apc.Code2D.impl.GameImpl#getGameWorld <em>Game World</em>}</li>
  *   <li>{@link nl.utwente.apc.Code2D.impl.GameImpl#getGameObjects <em>Game Objects</em>}</li>
+ *   <li>{@link nl.utwente.apc.Code2D.impl.GameImpl#getGameWorld <em>Game World</em>}</li>
  * </ul>
  * </p>
  *
@@ -59,16 +59,6 @@ public class GameImpl extends EObjectImpl implements Game
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getGameWorld() <em>Game World</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGameWorld()
-   * @generated
-   * @ordered
-   */
-  protected World gameWorld;
-
-  /**
    * The cached value of the '{@link #getGameObjects() <em>Game Objects</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -77,6 +67,16 @@ public class GameImpl extends EObjectImpl implements Game
    * @ordered
    */
   protected EList<GameObject> gameObjects;
+
+  /**
+   * The cached value of the '{@link #getGameWorld() <em>Game World</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGameWorld()
+   * @generated
+   * @ordered
+   */
+  protected World gameWorld;
 
   /**
    * <!-- begin-user-doc -->
@@ -194,10 +194,10 @@ public class GameImpl extends EObjectImpl implements Game
   {
     switch (featureID)
     {
-      case Code2DPackage.GAME__GAME_WORLD:
-        return basicSetGameWorld(null, msgs);
       case Code2DPackage.GAME__GAME_OBJECTS:
         return ((InternalEList<?>)getGameObjects()).basicRemove(otherEnd, msgs);
+      case Code2DPackage.GAME__GAME_WORLD:
+        return basicSetGameWorld(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -214,10 +214,10 @@ public class GameImpl extends EObjectImpl implements Game
     {
       case Code2DPackage.GAME__NAME:
         return getName();
-      case Code2DPackage.GAME__GAME_WORLD:
-        return getGameWorld();
       case Code2DPackage.GAME__GAME_OBJECTS:
         return getGameObjects();
+      case Code2DPackage.GAME__GAME_WORLD:
+        return getGameWorld();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -236,12 +236,12 @@ public class GameImpl extends EObjectImpl implements Game
       case Code2DPackage.GAME__NAME:
         setName((String)newValue);
         return;
-      case Code2DPackage.GAME__GAME_WORLD:
-        setGameWorld((World)newValue);
-        return;
       case Code2DPackage.GAME__GAME_OBJECTS:
         getGameObjects().clear();
         getGameObjects().addAll((Collection<? extends GameObject>)newValue);
+        return;
+      case Code2DPackage.GAME__GAME_WORLD:
+        setGameWorld((World)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -260,11 +260,11 @@ public class GameImpl extends EObjectImpl implements Game
       case Code2DPackage.GAME__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case Code2DPackage.GAME__GAME_WORLD:
-        setGameWorld((World)null);
-        return;
       case Code2DPackage.GAME__GAME_OBJECTS:
         getGameObjects().clear();
+        return;
+      case Code2DPackage.GAME__GAME_WORLD:
+        setGameWorld((World)null);
         return;
     }
     super.eUnset(featureID);
@@ -282,10 +282,10 @@ public class GameImpl extends EObjectImpl implements Game
     {
       case Code2DPackage.GAME__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case Code2DPackage.GAME__GAME_WORLD:
-        return gameWorld != null;
       case Code2DPackage.GAME__GAME_OBJECTS:
         return gameObjects != null && !gameObjects.isEmpty();
+      case Code2DPackage.GAME__GAME_WORLD:
+        return gameWorld != null;
     }
     return super.eIsSet(featureID);
   }

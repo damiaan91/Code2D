@@ -66,10 +66,13 @@ public class Code2DFactoryImpl extends EFactoryImpl implements Code2DFactory
     switch (eClass.getClassifierID())
     {
       case Code2DPackage.GAME: return createGame();
-      case Code2DPackage.WORLD: return createWorld();
       case Code2DPackage.PLAYER: return createPlayer();
       case Code2DPackage.NPC: return createNPC();
       case Code2DPackage.ITEM: return createItem();
+      case Code2DPackage.WORLD: return createWorld();
+      case Code2DPackage.TERRAIN: return createTerrain();
+      case Code2DPackage.TRAP: return createTrap();
+      case Code2DPackage.SCENERY: return createScenery();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -129,6 +132,39 @@ public class Code2DFactoryImpl extends EFactoryImpl implements Code2DFactory
   {
     WorldImpl world = new WorldImpl();
     return world;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Terrain createTerrain()
+  {
+    TerrainImpl terrain = new TerrainImpl();
+    return terrain;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Trap createTrap()
+  {
+    TrapImpl trap = new TrapImpl();
+    return trap;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Scenery createScenery()
+  {
+    SceneryImpl scenery = new SceneryImpl();
+    return scenery;
   }
 
   /**

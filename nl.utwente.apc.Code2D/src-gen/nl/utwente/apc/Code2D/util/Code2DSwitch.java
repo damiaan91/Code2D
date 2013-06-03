@@ -79,13 +79,6 @@ public class Code2DSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case Code2DPackage.WORLD:
-      {
-        World world = (World)theEObject;
-        T result = caseWorld(world);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case Code2DPackage.GAME_OBJECT:
       {
         GameObject gameObject = (GameObject)theEObject;
@@ -137,6 +130,36 @@ public class Code2DSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case Code2DPackage.WORLD:
+      {
+        World world = (World)theEObject;
+        T result = caseWorld(world);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.TERRAIN:
+      {
+        Terrain terrain = (Terrain)theEObject;
+        T result = caseTerrain(terrain);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.TRAP:
+      {
+        Trap trap = (Trap)theEObject;
+        T result = caseTrap(trap);
+        if (result == null) result = caseGameObject(trap);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case Code2DPackage.SCENERY:
+      {
+        Scenery scenery = (Scenery)theEObject;
+        T result = caseScenery(scenery);
+        if (result == null) result = caseGameObject(scenery);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -169,6 +192,54 @@ public class Code2DSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseWorld(World object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Terrain</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Terrain</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTerrain(Terrain object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Trap</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Trap</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTrap(Trap object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Scenery</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Scenery</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseScenery(Scenery object)
   {
     return null;
   }

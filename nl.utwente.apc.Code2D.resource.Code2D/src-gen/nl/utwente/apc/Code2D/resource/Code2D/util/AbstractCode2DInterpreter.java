@@ -64,12 +64,6 @@ public class AbstractCode2DInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
-		if (object instanceof nl.utwente.apc.Code2D.World) {
-			result = interprete_nl_utwente_apc_Code2D_World((nl.utwente.apc.Code2D.World) object, context);
-		}
-		if (result != null) {
-			return result;
-		}
 		if (object instanceof nl.utwente.apc.Code2D.Player) {
 			result = interprete_nl_utwente_apc_Code2D_Player((nl.utwente.apc.Code2D.Player) object, context);
 		}
@@ -106,14 +100,34 @@ public class AbstractCode2DInterpreter<ResultType, ContextType> {
 		if (result != null) {
 			return result;
 		}
+		if (object instanceof nl.utwente.apc.Code2D.World) {
+			result = interprete_nl_utwente_apc_Code2D_World((nl.utwente.apc.Code2D.World) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.Terrain) {
+			result = interprete_nl_utwente_apc_Code2D_Terrain((nl.utwente.apc.Code2D.Terrain) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.Trap) {
+			result = interprete_nl_utwente_apc_Code2D_Trap((nl.utwente.apc.Code2D.Trap) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
+		if (object instanceof nl.utwente.apc.Code2D.Scenery) {
+			result = interprete_nl_utwente_apc_Code2D_Scenery((nl.utwente.apc.Code2D.Scenery) object, context);
+		}
+		if (result != null) {
+			return result;
+		}
 		return result;
 	}
 	
 	public ResultType interprete_nl_utwente_apc_Code2D_Game(nl.utwente.apc.Code2D.Game game, ContextType context) {
-		return null;
-	}
-	
-	public ResultType interprete_nl_utwente_apc_Code2D_World(nl.utwente.apc.Code2D.World world, ContextType context) {
 		return null;
 	}
 	
@@ -138,6 +152,22 @@ public class AbstractCode2DInterpreter<ResultType, ContextType> {
 	}
 	
 	public ResultType interprete_nl_utwente_apc_Code2D_Item(nl.utwente.apc.Code2D.Item item, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_World(nl.utwente.apc.Code2D.World world, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_Terrain(nl.utwente.apc.Code2D.Terrain terrain, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_Trap(nl.utwente.apc.Code2D.Trap trap, ContextType context) {
+		return null;
+	}
+	
+	public ResultType interprete_nl_utwente_apc_Code2D_Scenery(nl.utwente.apc.Code2D.Scenery scenery, ContextType context) {
 		return null;
 	}
 	

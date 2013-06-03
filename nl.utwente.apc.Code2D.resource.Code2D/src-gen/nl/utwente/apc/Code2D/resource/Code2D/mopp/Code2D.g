@@ -237,9 +237,6 @@ options {
 			if (type.getInstanceClass() == nl.utwente.apc.Code2D.Game.class) {
 				return parse_nl_utwente_apc_Code2D_Game();
 			}
-			if (type.getInstanceClass() == nl.utwente.apc.Code2D.World.class) {
-				return parse_nl_utwente_apc_Code2D_World();
-			}
 			if (type.getInstanceClass() == nl.utwente.apc.Code2D.Player.class) {
 				return parse_nl_utwente_apc_Code2D_Player();
 			}
@@ -248,6 +245,18 @@ options {
 			}
 			if (type.getInstanceClass() == nl.utwente.apc.Code2D.Item.class) {
 				return parse_nl_utwente_apc_Code2D_Item();
+			}
+			if (type.getInstanceClass() == nl.utwente.apc.Code2D.World.class) {
+				return parse_nl_utwente_apc_Code2D_World();
+			}
+			if (type.getInstanceClass() == nl.utwente.apc.Code2D.Terrain.class) {
+				return parse_nl_utwente_apc_Code2D_Terrain();
+			}
+			if (type.getInstanceClass() == nl.utwente.apc.Code2D.Trap.class) {
+				return parse_nl_utwente_apc_Code2D_Trap();
+			}
+			if (type.getInstanceClass() == nl.utwente.apc.Code2D.Scenery.class) {
+				return parse_nl_utwente_apc_Code2D_Scenery();
 			}
 		}
 		throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DUnexpectedContentTypeException(typeObject);
@@ -343,7 +352,7 @@ options {
 				break;
 			}
 		}
-		int followSetID = 47;
+		int followSetID = 78;
 		int i;
 		for (i = tokenIndexOfLastCompleteElement; i < tokenStream.size(); i++) {
 			org.antlr.runtime3_4_0.CommonToken nextToken = (org.antlr.runtime3_4_0.CommonToken) tokenStream.get(i);
@@ -593,13 +602,14 @@ parse_nl_utwente_apc_Code2D_Game returns [nl.utwente.apc.Code2D.Game element = n
 		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[4]);
 		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[5]);
 		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[6]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[7]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[7]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[8]);
 	}
 	
 	(
 		(
 			(
-				a3_0 = parse_nl_utwente_apc_Code2D_World				{
+				a3_0 = parse_nl_utwente_apc_Code2D_GameObject				{
 					if (terminateParsing) {
 						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
 					}
@@ -610,7 +620,7 @@ parse_nl_utwente_apc_Code2D_Game returns [nl.utwente.apc.Code2D.Game element = n
 					if (a3_0 != null) {
 						if (a3_0 != null) {
 							Object value = a3_0;
-							element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.GAME__GAME_WORLD), value);
+							addObjectToList(element, nl.utwente.apc.Code2D.Code2DPackage.GAME__GAME_OBJECTS, value);
 							completedElement(value, true);
 						}
 						collectHiddenTokens(element);
@@ -621,180 +631,37 @@ parse_nl_utwente_apc_Code2D_Game returns [nl.utwente.apc.Code2D.Game element = n
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[8]);
 				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[9]);
 				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[10]);
 				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[11]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[12]);
-			}
-			
-			
-			|			(
-				a4_0 = parse_nl_utwente_apc_Code2D_GameObject				{
-					if (terminateParsing) {
-						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
-					}
-					if (element == null) {
-						element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createGame();
-						startIncompleteElement(element);
-					}
-					if (a4_0 != null) {
-						if (a4_0 != null) {
-							Object value = a4_0;
-							addObjectToList(element, nl.utwente.apc.Code2D.Code2DPackage.GAME__GAME_OBJECTS, value);
-							completedElement(value, true);
-						}
-						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_0_0_0_3_0_1_0, a4_0, true);
-						copyLocalizationInfos(a4_0, element);
-					}
-				}
-			)
-			{
-				// expected elements (follow set)
+				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[12]);
 				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[13]);
-				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[14]);
-				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[15]);
-				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[16]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[17]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[14]);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[15]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[16]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[17]);
 		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[18]);
 		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[19]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[20]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[21]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[22]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[20]);
 	}
 	
-	a5 = '}' {
+	a4 = '}' {
 		if (element == null) {
 			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createGame();
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
 		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_0_0_0_4, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
-	}
-	{
-		// expected elements (follow set)
-	}
-	
-;
-
-parse_nl_utwente_apc_Code2D_World returns [nl.utwente.apc.Code2D.World element = null]
-@init{
-}
-:
-	a0 = 'World' {
-		if (element == null) {
-			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_0, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[23]);
-	}
-	
-	(
-		a1 = TEXT		
-		{
-			if (terminateParsing) {
-				throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
-			}
-			if (element == null) {
-				element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
-				startIncompleteElement(element);
-			}
-			if (a1 != null) {
-				nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
-				tokenResolver.setOptions(getOptions());
-				nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolveResult result = getFreshTokenResolveResult();
-				tokenResolver.resolve(a1.getText(), element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.WORLD__NAME), result);
-				Object resolvedObject = result.getResolvedToken();
-				if (resolvedObject == null) {
-					addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a1).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a1).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a1).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a1).getStopIndex());
-				}
-				java.lang.String resolved = (java.lang.String) resolvedObject;
-				if (resolved != null) {
-					Object value = resolved;
-					element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.WORLD__NAME), value);
-					completedElement(value, false);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_1, resolved, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a1, element);
-			}
-		}
-	)
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[24]);
-	}
-	
-	a2 = '{' {
-		if (element == null) {
-			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_2, null, true);
-		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
-	}
-	{
-		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[25]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[26]);
-	}
-	
-	(
-		(
-			a3 = 'Other things;' {
-				if (element == null) {
-					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
-					startIncompleteElement(element);
-				}
-				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_3_0_0_0, null, true);
-				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
-			}
-			{
-				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[27]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[28]);
-			}
-			
-		)
-		
-	)*	{
-		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[29]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[30]);
-	}
-	
-	a4 = '}' {
-		if (element == null) {
-			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
-			startIncompleteElement(element);
-		}
-		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_4, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a4, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[31]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[32]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[33]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[34]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[35]);
 	}
 	
 ;
@@ -809,12 +676,12 @@ parse_nl_utwente_apc_Code2D_Player returns [nl.utwente.apc.Code2D.Player element
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_0, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[36]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[21]);
 	}
 	
 	(
@@ -843,14 +710,14 @@ parse_nl_utwente_apc_Code2D_Player returns [nl.utwente.apc.Code2D.Player element
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_1, resolved, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_1, resolved, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a1, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[37]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[22]);
 	}
 	
 	a2 = '{' {
@@ -859,13 +726,13 @@ parse_nl_utwente_apc_Code2D_Player returns [nl.utwente.apc.Code2D.Player element
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_2, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_2, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[38]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[39]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[23]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[24]);
 	}
 	
 	(
@@ -876,12 +743,12 @@ parse_nl_utwente_apc_Code2D_Player returns [nl.utwente.apc.Code2D.Player element
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_3_0_0_0, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_3_0_0_0, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[40]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[25]);
 			}
 			
 			a4 = ':' {
@@ -890,16 +757,16 @@ parse_nl_utwente_apc_Code2D_Player returns [nl.utwente.apc.Code2D.Player element
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_3_0_0_1, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_3_0_0_1, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a4, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[41]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[26]);
 			}
 			
 			(
-				a5 = QUOTED_4748_59				
+				a5 = TEXT				
 				{
 					if (terminateParsing) {
 						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
@@ -909,7 +776,7 @@ parse_nl_utwente_apc_Code2D_Player returns [nl.utwente.apc.Code2D.Player element
 						startIncompleteElement(element);
 					}
 					if (a5 != null) {
-						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("QUOTED_4748_59");
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("TEXT");
 						tokenResolver.setOptions(getOptions());
 						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolveResult result = getFreshTokenResolveResult();
 						tokenResolver.resolve(a5.getText(), element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.PLAYER__TEXTURE), result);
@@ -924,23 +791,23 @@ parse_nl_utwente_apc_Code2D_Player returns [nl.utwente.apc.Code2D.Player element
 							completedElement(value, false);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_3_0_0_2, resolved, true);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_3_0_0_2, resolved, true);
 						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a5, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[42]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[43]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[27]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[28]);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[44]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[45]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[29]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[30]);
 	}
 	
 	a6 = '}' {
@@ -949,16 +816,17 @@ parse_nl_utwente_apc_Code2D_Player returns [nl.utwente.apc.Code2D.Player element
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1_0_0_4, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[46]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[47]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[48]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[49]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[50]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[31]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[32]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[33]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[34]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[35]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[36]);
 	}
 	
 ;
@@ -973,12 +841,12 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_0, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[51]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[37]);
 	}
 	
 	(
@@ -1007,15 +875,15 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_1, resolved, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_1, resolved, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a1, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[52]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[53]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[38]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[39]);
 	}
 	
 	(
@@ -1026,12 +894,12 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_2_0_0_0, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_2_0_0_0, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[54]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[40]);
 			}
 			
 			(
@@ -1063,7 +931,7 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 							completedElement(value, false);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_2_0_0_1, proxy, true);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_2_0_0_1, proxy, true);
 						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a3, element);
 						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a3, proxy);
 					}
@@ -1071,16 +939,16 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[55]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[56]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[41]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[42]);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[57]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[58]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[43]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[44]);
 	}
 	
 	a4 = '{' {
@@ -1089,14 +957,14 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_3, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_3, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a4, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[59]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[60]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[61]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[45]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[46]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[47]);
 	}
 	
 	(
@@ -1107,12 +975,12 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_0_0, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_0_0, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[62]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[48]);
 			}
 			
 			a6 = ':' {
@@ -1121,12 +989,12 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_0_1, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_0_1, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[63]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[49]);
 			}
 			
 			(
@@ -1155,14 +1023,14 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 							completedElement(value, false);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_0_2, resolved, true);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_0_2, resolved, true);
 						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[64]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[50]);
 			}
 			
 			a8 = ';' {
@@ -1171,14 +1039,14 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_0_3, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_0_3, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[65]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[66]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[67]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[51]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[52]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[53]);
 			}
 			
 			
@@ -1188,12 +1056,12 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_1_0, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_1_0, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a9, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[68]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[54]);
 			}
 			
 			a10 = ':' {
@@ -1202,12 +1070,12 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_1_1, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_1_1, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a10, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[69]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[55]);
 			}
 			
 			(
@@ -1218,7 +1086,7 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 							startIncompleteElement(element);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_1_2, null, true);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_1_2, null, true);
 						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a11, element);
 						// set value of enumeration attribute
 						Object value = nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getNPCBehaviour().getEEnumLiteral(nl.utwente.apc.Code2D.NPCBehaviour.FRIENDLY_VALUE).getInstance();
@@ -1231,7 +1099,7 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 							startIncompleteElement(element);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_1_2, null, true);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_1_2, null, true);
 						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a12, element);
 						// set value of enumeration attribute
 						Object value = nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getNPCBehaviour().getEEnumLiteral(nl.utwente.apc.Code2D.NPCBehaviour.NEUTRAL_VALUE).getInstance();
@@ -1244,7 +1112,7 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 							startIncompleteElement(element);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_1_2, null, true);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_1_2, null, true);
 						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a13, element);
 						// set value of enumeration attribute
 						Object value = nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getNPCBehaviour().getEEnumLiteral(nl.utwente.apc.Code2D.NPCBehaviour.HOSTILE_VALUE).getInstance();
@@ -1255,7 +1123,7 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[70]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[56]);
 			}
 			
 			a16 = ';' {
@@ -1264,23 +1132,23 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4_0_1_3, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_4_0_1_3, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a16, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[71]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[72]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[73]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[57]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[58]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[59]);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[74]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[75]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[76]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[60]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[61]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[62]);
 	}
 	
 	a17 = '}' {
@@ -1289,16 +1157,17 @@ parse_nl_utwente_apc_Code2D_NPC returns [nl.utwente.apc.Code2D.NPC element = nul
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_5, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2_0_0_5, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a17, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[77]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[78]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[79]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[80]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[81]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[63]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[64]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[65]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[66]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[67]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[68]);
 	}
 	
 ;
@@ -1313,12 +1182,12 @@ parse_nl_utwente_apc_Code2D_Item returns [nl.utwente.apc.Code2D.Item element = n
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_0, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_0, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[82]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[69]);
 	}
 	
 	(
@@ -1347,14 +1216,14 @@ parse_nl_utwente_apc_Code2D_Item returns [nl.utwente.apc.Code2D.Item element = n
 					completedElement(value, false);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_1, resolved, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_1, resolved, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a1, element);
 			}
 		}
 	)
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[83]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[70]);
 	}
 	
 	a2 = '{' {
@@ -1363,13 +1232,13 @@ parse_nl_utwente_apc_Code2D_Item returns [nl.utwente.apc.Code2D.Item element = n
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_2, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[84]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[85]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[71]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[72]);
 	}
 	
 	(
@@ -1380,12 +1249,12 @@ parse_nl_utwente_apc_Code2D_Item returns [nl.utwente.apc.Code2D.Item element = n
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_3_0_0_0, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_3_0_0_0, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[86]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[73]);
 			}
 			
 			a4 = ':' {
@@ -1394,12 +1263,12 @@ parse_nl_utwente_apc_Code2D_Item returns [nl.utwente.apc.Code2D.Item element = n
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_3_0_0_1, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_3_0_0_1, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a4, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[87]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[74]);
 			}
 			
 			(
@@ -1428,14 +1297,14 @@ parse_nl_utwente_apc_Code2D_Item returns [nl.utwente.apc.Code2D.Item element = n
 							completedElement(value, false);
 						}
 						collectHiddenTokens(element);
-						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_3_0_0_2, resolved, true);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_3_0_0_2, resolved, true);
 						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a5, element);
 					}
 				}
 			)
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[88]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[75]);
 			}
 			
 			a6 = ';' {
@@ -1444,21 +1313,21 @@ parse_nl_utwente_apc_Code2D_Item returns [nl.utwente.apc.Code2D.Item element = n
 					startIncompleteElement(element);
 				}
 				collectHiddenTokens(element);
-				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_3_0_0_3, null, true);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_3_0_0_3, null, true);
 				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
 			}
 			{
 				// expected elements (follow set)
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[89]);
-				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[90]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[76]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[77]);
 			}
 			
 		)
 		
 	)*	{
 		// expected elements (follow set)
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[91]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[92]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[78]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[79]);
 	}
 	
 	a7 = '}' {
@@ -1467,16 +1336,816 @@ parse_nl_utwente_apc_Code2D_Item returns [nl.utwente.apc.Code2D.Item element = n
 			startIncompleteElement(element);
 		}
 		collectHiddenTokens(element);
-		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_4, null, true);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3_0_0_4, null, true);
 		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
 	}
 	{
 		// expected elements (follow set)
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[93]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[94]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[95]);
-		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[96]);
-		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[97]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[80]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[81]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[82]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[83]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[84]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[85]);
+	}
+	
+;
+
+parse_nl_utwente_apc_Code2D_World returns [nl.utwente.apc.Code2D.World element = null]
+@init{
+}
+:
+	a0 = 'World' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_0, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[86]);
+	}
+	
+	a1 = '{' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_1, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[87]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[88]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[89]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[90]);
+	}
+	
+	(
+		(
+			a2 = 'Name' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_0_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[91]);
+			}
+			
+			a3 = ':' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_0_1, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[92]);
+			}
+			
+			(
+				a4 = QUOTED_34_34				
+				{
+					if (terminateParsing) {
+						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
+					}
+					if (element == null) {
+						element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+						startIncompleteElement(element);
+					}
+					if (a4 != null) {
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
+						tokenResolver.setOptions(getOptions());
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolveResult result = getFreshTokenResolveResult();
+						tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.WORLD__NAME), result);
+						Object resolvedObject = result.getResolvedToken();
+						if (resolvedObject == null) {
+							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
+						}
+						java.lang.String resolved = (java.lang.String) resolvedObject;
+						if (resolved != null) {
+							Object value = resolved;
+							element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.WORLD__NAME), value);
+							completedElement(value, false);
+						}
+						collectHiddenTokens(element);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_0_2, resolved, true);
+						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
+					}
+				}
+			)
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[93]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[94]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[95]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[96]);
+			}
+			
+			
+			|			a5 = 'Terrain' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_1_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[97]);
+			}
+			
+			a6 = ':' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_1_1, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[98]);
+			}
+			
+			(
+				a7 = QUOTED_34_34				
+				{
+					if (terminateParsing) {
+						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
+					}
+					if (element == null) {
+						element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+						startIncompleteElement(element);
+					}
+					if (a7 != null) {
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
+						tokenResolver.setOptions(getOptions());
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolveResult result = getFreshTokenResolveResult();
+						tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.WORLD__TERRAIN), result);
+						Object resolvedObject = result.getResolvedToken();
+						if (resolvedObject == null) {
+							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
+						}
+						java.lang.String resolved = (java.lang.String) resolvedObject;
+						if (resolved != null) {
+							Object value = resolved;
+							element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.WORLD__TERRAIN), value);
+							completedElement(value, false);
+						}
+						collectHiddenTokens(element);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_1_2, resolved, true);
+						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
+					}
+				}
+			)
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[99]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[100]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[101]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[102]);
+			}
+			
+			
+			|			a8 = 'WorldBlocks' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_2_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[103]);
+			}
+			
+			a9 = ':' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_2_1, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a9, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getWorld(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[104]);
+				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getWorld(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[105]);
+				addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getWorld(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[106]);
+			}
+			
+			(
+				a10_0 = parse_nl_utwente_apc_Code2D_Terrain				{
+					if (terminateParsing) {
+						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
+					}
+					if (element == null) {
+						element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+						startIncompleteElement(element);
+					}
+					if (a10_0 != null) {
+						if (a10_0 != null) {
+							Object value = a10_0;
+							addObjectToList(element, nl.utwente.apc.Code2D.Code2DPackage.WORLD__WORLD_BLOCKS, value);
+							completedElement(value, true);
+						}
+						collectHiddenTokens(element);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_2_0_2_2, a10_0, true);
+						copyLocalizationInfos(a10_0, element);
+					}
+				}
+			)
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[107]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[108]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[109]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[110]);
+			}
+			
+		)
+		
+	)*	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[111]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[112]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[113]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[114]);
+	}
+	
+	a11 = '}' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createWorld();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4_0_0_3, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a11, element);
+	}
+	{
+		// expected elements (follow set)
+	}
+	
+;
+
+parse_nl_utwente_apc_Code2D_Terrain returns [nl.utwente.apc.Code2D.Terrain element = null]
+@init{
+}
+:
+	(
+		(
+			a0 = 'CanStand' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTerrain();
+					startIncompleteElement(element);
+					// initialize boolean attribute
+					{
+						Object value = false;
+						element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_STAND), value);
+					}
+					// initialize boolean attribute
+					{
+						Object value = false;
+						element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_HAVE_ITEM), value);
+					}
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_5_0_0_0, true, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
+				// set value of boolean attribute
+				Object value = true;
+				element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_STAND), value);
+				completedElement(value, false);
+			}
+		)?	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[115]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[116]);
+	}
+	
+	(
+		(
+			a3 = 'CanHaveItem' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTerrain();
+					startIncompleteElement(element);
+					// initialize boolean attribute
+					{
+						Object value = false;
+						element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_STAND), value);
+					}
+					// initialize boolean attribute
+					{
+						Object value = false;
+						element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_HAVE_ITEM), value);
+					}
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_5_0_0_1, true, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
+				// set value of boolean attribute
+				Object value = true;
+				element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_HAVE_ITEM), value);
+				completedElement(value, false);
+			}
+		)?	)
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[117]);
+	}
+	
+	a6 = 'Terrain' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTerrain();
+			startIncompleteElement(element);
+			// initialize boolean attribute
+			{
+				Object value = false;
+				element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_STAND), value);
+			}
+			// initialize boolean attribute
+			{
+				Object value = false;
+				element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_HAVE_ITEM), value);
+			}
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_5_0_0_2, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[118]);
+	}
+	
+	a7 = '{' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTerrain();
+			startIncompleteElement(element);
+			// initialize boolean attribute
+			{
+				Object value = false;
+				element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_STAND), value);
+			}
+			// initialize boolean attribute
+			{
+				Object value = false;
+				element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_HAVE_ITEM), value);
+			}
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_5_0_0_3, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a7, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[119]);
+	}
+	
+	a8 = '}' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTerrain();
+			startIncompleteElement(element);
+			// initialize boolean attribute
+			{
+				Object value = false;
+				element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_STAND), value);
+			}
+			// initialize boolean attribute
+			{
+				Object value = false;
+				element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TERRAIN__CAN_HAVE_ITEM), value);
+			}
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_5_0_0_4, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[120]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[121]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[122]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[123]);
+	}
+	
+;
+
+parse_nl_utwente_apc_Code2D_Trap returns [nl.utwente.apc.Code2D.Trap element = null]
+@init{
+}
+:
+	a0 = 'Trap' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_0, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[124]);
+	}
+	
+	a1 = '{' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_1, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[125]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[126]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[127]);
+	}
+	
+	(
+		(
+			a2 = 'Name' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_2_0_0_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[128]);
+			}
+			
+			a3 = ':' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_2_0_0_1, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[129]);
+			}
+			
+			(
+				a4 = QUOTED_34_34				
+				{
+					if (terminateParsing) {
+						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
+					}
+					if (element == null) {
+						element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+						startIncompleteElement(element);
+					}
+					if (a4 != null) {
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
+						tokenResolver.setOptions(getOptions());
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolveResult result = getFreshTokenResolveResult();
+						tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TRAP__NAME), result);
+						Object resolvedObject = result.getResolvedToken();
+						if (resolvedObject == null) {
+							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
+						}
+						java.lang.String resolved = (java.lang.String) resolvedObject;
+						if (resolved != null) {
+							Object value = resolved;
+							element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TRAP__NAME), value);
+							completedElement(value, false);
+						}
+						collectHiddenTokens(element);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_2_0_0_2, resolved, true);
+						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
+					}
+				}
+			)
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[130]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[131]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[132]);
+			}
+			
+			
+			|			a5 = 'Texture' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_2_0_1_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[133]);
+			}
+			
+			a6 = ':' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_2_0_1_1, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[134]);
+			}
+			
+			(
+				a7 = QUOTED_34_34				
+				{
+					if (terminateParsing) {
+						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
+					}
+					if (element == null) {
+						element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+						startIncompleteElement(element);
+					}
+					if (a7 != null) {
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
+						tokenResolver.setOptions(getOptions());
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolveResult result = getFreshTokenResolveResult();
+						tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TRAP__TEXTURE), result);
+						Object resolvedObject = result.getResolvedToken();
+						if (resolvedObject == null) {
+							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
+						}
+						java.lang.String resolved = (java.lang.String) resolvedObject;
+						if (resolved != null) {
+							Object value = resolved;
+							element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.TRAP__TEXTURE), value);
+							completedElement(value, false);
+						}
+						collectHiddenTokens(element);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_2_0_1_2, resolved, true);
+						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
+					}
+				}
+			)
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[135]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[136]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[137]);
+			}
+			
+		)
+		
+	)*	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[138]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[139]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[140]);
+	}
+	
+	a8 = '}' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createTrap();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6_0_0_3, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[141]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[142]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[143]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[144]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[145]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[146]);
+	}
+	
+;
+
+parse_nl_utwente_apc_Code2D_Scenery returns [nl.utwente.apc.Code2D.Scenery element = null]
+@init{
+}
+:
+	a0 = 'Scenery' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_0, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a0, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[147]);
+	}
+	
+	a1 = '{' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_1, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a1, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[148]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[149]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[150]);
+	}
+	
+	(
+		(
+			a2 = 'Name' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_2_0_0_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a2, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[151]);
+			}
+			
+			a3 = ':' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_2_0_0_1, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a3, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[152]);
+			}
+			
+			(
+				a4 = QUOTED_34_34				
+				{
+					if (terminateParsing) {
+						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
+					}
+					if (element == null) {
+						element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+						startIncompleteElement(element);
+					}
+					if (a4 != null) {
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
+						tokenResolver.setOptions(getOptions());
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolveResult result = getFreshTokenResolveResult();
+						tokenResolver.resolve(a4.getText(), element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.SCENERY__NAME), result);
+						Object resolvedObject = result.getResolvedToken();
+						if (resolvedObject == null) {
+							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a4).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a4).getStopIndex());
+						}
+						java.lang.String resolved = (java.lang.String) resolvedObject;
+						if (resolved != null) {
+							Object value = resolved;
+							element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.SCENERY__NAME), value);
+							completedElement(value, false);
+						}
+						collectHiddenTokens(element);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_2_0_0_2, resolved, true);
+						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a4, element);
+					}
+				}
+			)
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[153]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[154]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[155]);
+			}
+			
+			
+			|			a5 = 'Texture' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_2_0_1_0, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a5, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[156]);
+			}
+			
+			a6 = ':' {
+				if (element == null) {
+					element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+					startIncompleteElement(element);
+				}
+				collectHiddenTokens(element);
+				retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_2_0_1_1, null, true);
+				copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a6, element);
+			}
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[157]);
+			}
+			
+			(
+				a7 = QUOTED_34_34				
+				{
+					if (terminateParsing) {
+						throw new nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DTerminateParsingException();
+					}
+					if (element == null) {
+						element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+						startIncompleteElement(element);
+					}
+					if (a7 != null) {
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver tokenResolver = tokenResolverFactory.createTokenResolver("QUOTED_34_34");
+						tokenResolver.setOptions(getOptions());
+						nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolveResult result = getFreshTokenResolveResult();
+						tokenResolver.resolve(a7.getText(), element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.SCENERY__TEXTURE), result);
+						Object resolvedObject = result.getResolvedToken();
+						if (resolvedObject == null) {
+							addErrorToResource(result.getErrorMessage(), ((org.antlr.runtime3_4_0.CommonToken) a7).getLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getCharPositionInLine(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStartIndex(), ((org.antlr.runtime3_4_0.CommonToken) a7).getStopIndex());
+						}
+						java.lang.String resolved = (java.lang.String) resolvedObject;
+						if (resolved != null) {
+							Object value = resolved;
+							element.eSet(element.eClass().getEStructuralFeature(nl.utwente.apc.Code2D.Code2DPackage.SCENERY__TEXTURE), value);
+							completedElement(value, false);
+						}
+						collectHiddenTokens(element);
+						retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_2_0_1_2, resolved, true);
+						copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken) a7, element);
+					}
+				}
+			)
+			{
+				// expected elements (follow set)
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[158]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[159]);
+				addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[160]);
+			}
+			
+		)
+		
+	)*	{
+		// expected elements (follow set)
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[161]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[162]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[163]);
+	}
+	
+	a8 = '}' {
+		if (element == null) {
+			element = nl.utwente.apc.Code2D.Code2DFactory.eINSTANCE.createScenery();
+			startIncompleteElement(element);
+		}
+		collectHiddenTokens(element);
+		retrieveLayoutInformation(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7_0_0_3, null, true);
+		copyLocalizationInfos((org.antlr.runtime3_4_0.CommonToken)a8, element);
+	}
+	{
+		// expected elements (follow set)
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[164]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[165]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[166]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[167]);
+		addExpectedElement(nl.utwente.apc.Code2D.Code2DPackage.eINSTANCE.getGame(), nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[168]);
+		addExpectedElement(null, nl.utwente.apc.Code2D.resource.Code2D.mopp.Code2DExpectationConstants.EXPECTATIONS[169]);
 	}
 	
 ;
@@ -1486,6 +2155,8 @@ parse_nl_utwente_apc_Code2D_GameObject returns [nl.utwente.apc.Code2D.GameObject
 	c0 = parse_nl_utwente_apc_Code2D_Player{ element = c0; /* this is a subclass or primitive expression choice */ }
 	|	c1 = parse_nl_utwente_apc_Code2D_NPC{ element = c1; /* this is a subclass or primitive expression choice */ }
 	|	c2 = parse_nl_utwente_apc_Code2D_Item{ element = c2; /* this is a subclass or primitive expression choice */ }
+	|	c3 = parse_nl_utwente_apc_Code2D_Trap{ element = c3; /* this is a subclass or primitive expression choice */ }
+	|	c4 = parse_nl_utwente_apc_Code2D_Scenery{ element = c4; /* this is a subclass or primitive expression choice */ }
 	
 ;
 
@@ -1512,7 +2183,7 @@ LINEBREAK:
 	(('\r\n' | '\r' | '\n'))
 	{ _channel = 99; }
 ;
-QUOTED_4748_59:
-	(('/0')(~(';'))*(';'))
+QUOTED_34_34:
+	(('"')(~('"'))*('"'))
 ;
 

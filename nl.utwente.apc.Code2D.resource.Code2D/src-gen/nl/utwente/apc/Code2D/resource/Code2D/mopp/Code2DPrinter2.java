@@ -196,20 +196,32 @@ public class Code2DPrinter2 implements nl.utwente.apc.Code2D.resource.Code2D.ICo
 			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_0, foundFormattingElements);
 			return;
 		}
-		if (element instanceof nl.utwente.apc.Code2D.World) {
+		if (element instanceof nl.utwente.apc.Code2D.Player) {
 			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_1, foundFormattingElements);
 			return;
 		}
-		if (element instanceof nl.utwente.apc.Code2D.Player) {
+		if (element instanceof nl.utwente.apc.Code2D.NPC) {
 			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_2, foundFormattingElements);
 			return;
 		}
-		if (element instanceof nl.utwente.apc.Code2D.NPC) {
+		if (element instanceof nl.utwente.apc.Code2D.Item) {
 			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_3, foundFormattingElements);
 			return;
 		}
-		if (element instanceof nl.utwente.apc.Code2D.Item) {
+		if (element instanceof nl.utwente.apc.Code2D.World) {
 			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_4, foundFormattingElements);
+			return;
+		}
+		if (element instanceof nl.utwente.apc.Code2D.Terrain) {
+			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_5, foundFormattingElements);
+			return;
+		}
+		if (element instanceof nl.utwente.apc.Code2D.Trap) {
+			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_6, foundFormattingElements);
+			return;
+		}
+		if (element instanceof nl.utwente.apc.Code2D.Scenery) {
+			printInternal(element, nl.utwente.apc.Code2D.resource.Code2D.grammar.Code2DGrammarInformationProvider.CODE2D_7, foundFormattingElements);
 			return;
 		}
 		

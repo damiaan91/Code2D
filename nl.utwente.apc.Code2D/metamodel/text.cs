@@ -17,12 +17,19 @@ TOKENSTYLES {
 	"NPC" COLOR #7F0055, BOLD;
 	"Item" COLOR #7F0055, BOLD;
 	"Behaviour" COLOR #7F0055, BOLD;
+	"Terrain" COLOR #7F0055, BOLD;
+	"WorldBlocks" COLOR #7F0055, BOLD;
+	"Trap" COLOR #7F0055, BOLD;
+	"Scenery" COLOR #7F0055, BOLD;
 }
 
 RULES {
-	Game ::= "Game" Name[] "{" (GameWorld | GameObjects)* "}";
-	World ::= "World" Name[] "{" ("Other things;")* "}";
-	Player ::= "Player" Name[] "{" ("Texture" ":" Texture['/0', ';'])* "}";
+	Game ::= "Game" Name[] "{" (GameObjects)* "}";
+	Player ::= "Player" Name[] "{" ("Texture" ":" Texture[])* "}";
 	NPC ::= "NPC" Name[] (":" Extends[])* "{" ("Texture" ":" Texture[] ";" | "Behaviour" ":" Behaviour[Friendly:"Friendly", Neutral:"Neutral", Hostile:"Hostile"] ";")* "}";
 	Item ::= "Item" Name[] "{" ("Texture" ":" Texture[] ";")* "}";
+	World ::= "World" "{" ("Name" ":" Name['"','"'] | "Terrain" ":" Terrain['"','"'] | "WorldBlocks" ":" WorldBlocks)* "}";
+	Terrain ::= CanStand["CanStand" : ""] CanHaveItem["CanHaveItem" : ""] "Terrain" "{" "}";
+	Trap ::= "Trap" "{" ("Name" ":" Name['"','"'] | "Texture" ":" Texture['"','"'])* "}";
+	Scenery ::= "Scenery" "{" ("Name" ":" Name['"','"'] | "Texture" ":" Texture['"','"'])* "}";
 }

@@ -77,22 +77,22 @@ public interface Code2DPackage extends EPackage
   int GAME__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Game World</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GAME__GAME_WORLD = 1;
-
-  /**
    * The feature id for the '<em><b>Game Objects</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GAME__GAME_OBJECTS = 2;
+  int GAME__GAME_OBJECTS = 1;
+
+  /**
+   * The feature id for the '<em><b>Game World</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GAME__GAME_WORLD = 2;
 
   /**
    * The number of structural features of the '<em>Game</em>' class.
@@ -112,25 +112,37 @@ public interface Code2DPackage extends EPackage
    * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getWorld()
    * @generated
    */
-  int WORLD = 1;
+  int WORLD = 7;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.TerrainImpl <em>Terrain</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @see nl.utwente.apc.Code2D.impl.TerrainImpl
+   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getTerrain()
    * @generated
-   * @ordered
    */
-  int WORLD__NAME = 0;
+  int TERRAIN = 8;
 
   /**
-   * The number of structural features of the '<em>World</em>' class.
+   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.TrapImpl <em>Trap</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @see nl.utwente.apc.Code2D.impl.TrapImpl
+   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getTrap()
    * @generated
-   * @ordered
    */
-  int WORLD_FEATURE_COUNT = 1;
+  int TRAP = 9;
+
+  /**
+   * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.SceneryImpl <em>Scenery</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see nl.utwente.apc.Code2D.impl.SceneryImpl
+   * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getScenery()
+   * @generated
+   */
+  int SCENERY = 10;
 
   /**
    * The meta object id for the '{@link nl.utwente.apc.Code2D.impl.GameObjectImpl <em>Game Object</em>}' class.
@@ -140,7 +152,7 @@ public interface Code2DPackage extends EPackage
    * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getGameObject()
    * @generated
    */
-  int GAME_OBJECT = 2;
+  int GAME_OBJECT = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -177,7 +189,7 @@ public interface Code2DPackage extends EPackage
    * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getMoveableObject()
    * @generated
    */
-  int MOVEABLE_OBJECT = 3;
+  int MOVEABLE_OBJECT = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -214,7 +226,7 @@ public interface Code2DPackage extends EPackage
    * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getControllableObject()
    * @generated
    */
-  int CONTROLLABLE_OBJECT = 4;
+  int CONTROLLABLE_OBJECT = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -251,7 +263,7 @@ public interface Code2DPackage extends EPackage
    * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getPlayer()
    * @generated
    */
-  int PLAYER = 5;
+  int PLAYER = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -288,7 +300,7 @@ public interface Code2DPackage extends EPackage
    * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getNPC()
    * @generated
    */
-  int NPC = 6;
+  int NPC = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -343,7 +355,7 @@ public interface Code2DPackage extends EPackage
    * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getItem()
    * @generated
    */
-  int ITEM = 7;
+  int ITEM = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -373,6 +385,123 @@ public interface Code2DPackage extends EPackage
   int ITEM_FEATURE_COUNT = GAME_OBJECT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WORLD__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Terrain</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WORLD__TERRAIN = 1;
+
+  /**
+   * The feature id for the '<em><b>World Blocks</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WORLD__WORLD_BLOCKS = 2;
+
+  /**
+   * The number of structural features of the '<em>World</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WORLD_FEATURE_COUNT = 3;
+
+  /**
+   * The feature id for the '<em><b>Can Stand</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TERRAIN__CAN_STAND = 0;
+
+  /**
+   * The feature id for the '<em><b>Can Have Item</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TERRAIN__CAN_HAVE_ITEM = 1;
+
+  /**
+   * The number of structural features of the '<em>Terrain</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TERRAIN_FEATURE_COUNT = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAP__NAME = GAME_OBJECT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Texture</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAP__TEXTURE = GAME_OBJECT__TEXTURE;
+
+  /**
+   * The number of structural features of the '<em>Trap</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRAP_FEATURE_COUNT = GAME_OBJECT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCENERY__NAME = GAME_OBJECT__NAME;
+
+  /**
+   * The feature id for the '<em><b>Texture</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCENERY__TEXTURE = GAME_OBJECT__TEXTURE;
+
+  /**
+   * The number of structural features of the '<em>Scenery</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCENERY_FEATURE_COUNT = GAME_OBJECT_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link nl.utwente.apc.Code2D.NPCBehaviour <em>NPC Behaviour</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -380,7 +509,7 @@ public interface Code2DPackage extends EPackage
    * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getNPCBehaviour()
    * @generated
    */
-  int NPC_BEHAVIOUR = 8;
+  int NPC_BEHAVIOUR = 11;
 
 
   /**
@@ -446,6 +575,80 @@ public interface Code2DPackage extends EPackage
    * @generated
    */
   EAttribute getWorld_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link nl.utwente.apc.Code2D.World#getTerrain <em>Terrain</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Terrain</em>'.
+   * @see nl.utwente.apc.Code2D.World#getTerrain()
+   * @see #getWorld()
+   * @generated
+   */
+  EAttribute getWorld_Terrain();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link nl.utwente.apc.Code2D.World#getWorldBlocks <em>World Blocks</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>World Blocks</em>'.
+   * @see nl.utwente.apc.Code2D.World#getWorldBlocks()
+   * @see #getWorld()
+   * @generated
+   */
+  EReference getWorld_WorldBlocks();
+
+  /**
+   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.Terrain <em>Terrain</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Terrain</em>'.
+   * @see nl.utwente.apc.Code2D.Terrain
+   * @generated
+   */
+  EClass getTerrain();
+
+  /**
+   * Returns the meta object for the attribute '{@link nl.utwente.apc.Code2D.Terrain#isCanStand <em>Can Stand</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Can Stand</em>'.
+   * @see nl.utwente.apc.Code2D.Terrain#isCanStand()
+   * @see #getTerrain()
+   * @generated
+   */
+  EAttribute getTerrain_CanStand();
+
+  /**
+   * Returns the meta object for the attribute '{@link nl.utwente.apc.Code2D.Terrain#isCanHaveItem <em>Can Have Item</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Can Have Item</em>'.
+   * @see nl.utwente.apc.Code2D.Terrain#isCanHaveItem()
+   * @see #getTerrain()
+   * @generated
+   */
+  EAttribute getTerrain_CanHaveItem();
+
+  /**
+   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.Trap <em>Trap</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Trap</em>'.
+   * @see nl.utwente.apc.Code2D.Trap
+   * @generated
+   */
+  EClass getTrap();
+
+  /**
+   * Returns the meta object for class '{@link nl.utwente.apc.Code2D.Scenery <em>Scenery</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Scenery</em>'.
+   * @see nl.utwente.apc.Code2D.Scenery
+   * @generated
+   */
+  EClass getScenery();
 
   /**
    * Returns the meta object for class '{@link nl.utwente.apc.Code2D.GameObject <em>Game Object</em>}'.
@@ -635,6 +838,68 @@ public interface Code2DPackage extends EPackage
      * @generated
      */
     EAttribute WORLD__NAME = eINSTANCE.getWorld_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Terrain</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WORLD__TERRAIN = eINSTANCE.getWorld_Terrain();
+
+    /**
+     * The meta object literal for the '<em><b>World Blocks</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WORLD__WORLD_BLOCKS = eINSTANCE.getWorld_WorldBlocks();
+
+    /**
+     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.TerrainImpl <em>Terrain</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see nl.utwente.apc.Code2D.impl.TerrainImpl
+     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getTerrain()
+     * @generated
+     */
+    EClass TERRAIN = eINSTANCE.getTerrain();
+
+    /**
+     * The meta object literal for the '<em><b>Can Stand</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TERRAIN__CAN_STAND = eINSTANCE.getTerrain_CanStand();
+
+    /**
+     * The meta object literal for the '<em><b>Can Have Item</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TERRAIN__CAN_HAVE_ITEM = eINSTANCE.getTerrain_CanHaveItem();
+
+    /**
+     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.TrapImpl <em>Trap</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see nl.utwente.apc.Code2D.impl.TrapImpl
+     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getTrap()
+     * @generated
+     */
+    EClass TRAP = eINSTANCE.getTrap();
+
+    /**
+     * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.SceneryImpl <em>Scenery</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see nl.utwente.apc.Code2D.impl.SceneryImpl
+     * @see nl.utwente.apc.Code2D.impl.Code2DPackageImpl#getScenery()
+     * @generated
+     */
+    EClass SCENERY = eINSTANCE.getScenery();
 
     /**
      * The meta object literal for the '{@link nl.utwente.apc.Code2D.impl.GameObjectImpl <em>Game Object</em>}' class.

@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link nl.utwente.apc.Code2D.Game#getName <em>Name</em>}</li>
- *   <li>{@link nl.utwente.apc.Code2D.Game#getGameWorld <em>Game World</em>}</li>
  *   <li>{@link nl.utwente.apc.Code2D.Game#getGameObjects <em>Game Objects</em>}</li>
+ *   <li>{@link nl.utwente.apc.Code2D.Game#getGameWorld <em>Game World</em>}</li>
  * </ul>
  * </p>
  *

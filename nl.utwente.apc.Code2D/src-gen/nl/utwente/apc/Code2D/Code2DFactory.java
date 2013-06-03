@@ -41,6 +41,33 @@ public interface Code2DFactory extends EFactory
   World createWorld();
 
   /**
+   * Returns a new object of class '<em>Terrain</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Terrain</em>'.
+   * @generated
+   */
+  Terrain createTerrain();
+
+  /**
+   * Returns a new object of class '<em>Trap</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Trap</em>'.
+   * @generated
+   */
+  Trap createTrap();
+
+  /**
+   * Returns a new object of class '<em>Scenery</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Scenery</em>'.
+   * @generated
+   */
+  Scenery createScenery();
+
+  /**
    * Returns a new object of class '<em>Player</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

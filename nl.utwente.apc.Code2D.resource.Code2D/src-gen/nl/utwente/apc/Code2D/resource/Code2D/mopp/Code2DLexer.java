@@ -26,11 +26,17 @@ public class Code2DLexer extends Lexer {
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int T__29=29;
+    public static final int T__30=30;
+    public static final int T__31=31;
     public static final int COMMENT=4;
     public static final int FLOAT=5;
     public static final int INTEGER=6;
     public static final int LINEBREAK=7;
-    public static final int QUOTED_4748_59=8;
+    public static final int QUOTED_34_34=8;
     public static final int TEXT=9;
     public static final int WHITESPACE=10;
 
@@ -128,10 +134,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:18:7: ( 'Friendly' )
-            // Code2D.g:18:9: 'Friendly'
+            // Code2D.g:18:7: ( 'CanHaveItem' )
+            // Code2D.g:18:9: 'CanHaveItem'
             {
-            match("Friendly"); 
+            match("CanHaveItem"); 
 
 
 
@@ -151,10 +157,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:19:7: ( 'Game' )
-            // Code2D.g:19:9: 'Game'
+            // Code2D.g:19:7: ( 'CanStand' )
+            // Code2D.g:19:9: 'CanStand'
             {
-            match("Game"); 
+            match("CanStand"); 
 
 
 
@@ -174,10 +180,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:20:7: ( 'Hostile' )
-            // Code2D.g:20:9: 'Hostile'
+            // Code2D.g:20:7: ( 'Friendly' )
+            // Code2D.g:20:9: 'Friendly'
             {
-            match("Hostile"); 
+            match("Friendly"); 
 
 
 
@@ -197,10 +203,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:21:7: ( 'Item' )
-            // Code2D.g:21:9: 'Item'
+            // Code2D.g:21:7: ( 'Game' )
+            // Code2D.g:21:9: 'Game'
             {
-            match("Item"); 
+            match("Game"); 
 
 
 
@@ -220,10 +226,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:22:7: ( 'NPC' )
-            // Code2D.g:22:9: 'NPC'
+            // Code2D.g:22:7: ( 'Hostile' )
+            // Code2D.g:22:9: 'Hostile'
             {
-            match("NPC"); 
+            match("Hostile"); 
 
 
 
@@ -243,10 +249,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:23:7: ( 'Neutral' )
-            // Code2D.g:23:9: 'Neutral'
+            // Code2D.g:23:7: ( 'Item' )
+            // Code2D.g:23:9: 'Item'
             {
-            match("Neutral"); 
+            match("Item"); 
 
 
 
@@ -266,10 +272,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:24:7: ( 'Other things;' )
-            // Code2D.g:24:9: 'Other things;'
+            // Code2D.g:24:7: ( 'NPC' )
+            // Code2D.g:24:9: 'NPC'
             {
-            match("Other things;"); 
+            match("NPC"); 
 
 
 
@@ -289,10 +295,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:25:7: ( 'Player' )
-            // Code2D.g:25:9: 'Player'
+            // Code2D.g:25:7: ( 'Name' )
+            // Code2D.g:25:9: 'Name'
             {
-            match("Player"); 
+            match("Name"); 
 
 
 
@@ -312,10 +318,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:26:7: ( 'Texture' )
-            // Code2D.g:26:9: 'Texture'
+            // Code2D.g:26:7: ( 'Neutral' )
+            // Code2D.g:26:9: 'Neutral'
             {
-            match("Texture"); 
+            match("Neutral"); 
 
 
 
@@ -335,10 +341,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:27:7: ( 'World' )
-            // Code2D.g:27:9: 'World'
+            // Code2D.g:27:7: ( 'Player' )
+            // Code2D.g:27:9: 'Player'
             {
-            match("World"); 
+            match("Player"); 
 
 
 
@@ -358,10 +364,12 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:28:7: ( '{' )
-            // Code2D.g:28:9: '{'
+            // Code2D.g:28:7: ( 'Scenery' )
+            // Code2D.g:28:9: 'Scenery'
             {
-            match('{'); 
+            match("Scenery"); 
+
+
 
             }
 
@@ -379,10 +387,12 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:29:7: ( '}' )
-            // Code2D.g:29:9: '}'
+            // Code2D.g:29:7: ( 'Terrain' )
+            // Code2D.g:29:9: 'Terrain'
             {
-            match('}'); 
+            match("Terrain"); 
+
+
 
             }
 
@@ -395,22 +405,156 @@ public class Code2DLexer extends Lexer {
     }
     // $ANTLR end "T__25"
 
+    // $ANTLR start "T__26"
+    public final void mT__26() throws RecognitionException {
+        try {
+            int _type = T__26;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Code2D.g:30:7: ( 'Texture' )
+            // Code2D.g:30:9: 'Texture'
+            {
+            match("Texture"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__26"
+
+    // $ANTLR start "T__27"
+    public final void mT__27() throws RecognitionException {
+        try {
+            int _type = T__27;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Code2D.g:31:7: ( 'Trap' )
+            // Code2D.g:31:9: 'Trap'
+            {
+            match("Trap"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__27"
+
+    // $ANTLR start "T__28"
+    public final void mT__28() throws RecognitionException {
+        try {
+            int _type = T__28;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Code2D.g:32:7: ( 'World' )
+            // Code2D.g:32:9: 'World'
+            {
+            match("World"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__28"
+
+    // $ANTLR start "T__29"
+    public final void mT__29() throws RecognitionException {
+        try {
+            int _type = T__29;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Code2D.g:33:7: ( 'WorldBlocks' )
+            // Code2D.g:33:9: 'WorldBlocks'
+            {
+            match("WorldBlocks"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__29"
+
+    // $ANTLR start "T__30"
+    public final void mT__30() throws RecognitionException {
+        try {
+            int _type = T__30;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Code2D.g:34:7: ( '{' )
+            // Code2D.g:34:9: '{'
+            {
+            match('{'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__30"
+
+    // $ANTLR start "T__31"
+    public final void mT__31() throws RecognitionException {
+        try {
+            int _type = T__31;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Code2D.g:35:7: ( '}' )
+            // Code2D.g:35:9: '}'
+            {
+            match('}'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__31"
+
     // $ANTLR start "COMMENT"
     public final void mCOMMENT() throws RecognitionException {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:1492:8: ( ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* ) )
-            // Code2D.g:1493:2: ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
+            // Code2D.g:2163:8: ( ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* ) )
+            // Code2D.g:2164:2: ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
             {
-            // Code2D.g:1493:2: ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
-            // Code2D.g:1493:3: '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )*
+            // Code2D.g:2164:2: ( '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )* )
+            // Code2D.g:2164:3: '//' (~ ( '\\n' | '\\r' | '\\uffff' ) )*
             {
             match("//"); 
 
 
 
-            // Code2D.g:1493:7: (~ ( '\\n' | '\\r' | '\\uffff' ) )*
+            // Code2D.g:2164:7: (~ ( '\\n' | '\\r' | '\\uffff' ) )*
             loop1:
             do {
                 int alt1=2;
@@ -465,10 +609,10 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = INTEGER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:1496:8: ( ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) )
-            // Code2D.g:1497:2: ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // Code2D.g:2167:8: ( ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) )
+            // Code2D.g:2168:2: ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             {
-            // Code2D.g:1497:2: ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // Code2D.g:2168:2: ( ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -487,9 +631,9 @@ public class Code2DLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // Code2D.g:1497:3: ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )*
+                    // Code2D.g:2168:3: ( '-' )? ( '1' .. '9' ) ( '0' .. '9' )*
                     {
-                    // Code2D.g:1497:3: ( '-' )?
+                    // Code2D.g:2168:3: ( '-' )?
                     int alt2=2;
                     int LA2_0 = input.LA(1);
 
@@ -498,7 +642,7 @@ public class Code2DLexer extends Lexer {
                     }
                     switch (alt2) {
                         case 1 :
-                            // Code2D.g:1497:4: '-'
+                            // Code2D.g:2168:4: '-'
                             {
                             match('-'); 
 
@@ -518,7 +662,7 @@ public class Code2DLexer extends Lexer {
                     }
 
 
-                    // Code2D.g:1497:19: ( '0' .. '9' )*
+                    // Code2D.g:2168:19: ( '0' .. '9' )*
                     loop3:
                     do {
                         int alt3=2;
@@ -555,7 +699,7 @@ public class Code2DLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Code2D.g:1497:31: '0'
+                    // Code2D.g:2168:31: '0'
                     {
                     match('0'); 
 
@@ -583,13 +727,13 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:1500:6: ( ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ ) )
-            // Code2D.g:1501:2: ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ )
+            // Code2D.g:2171:6: ( ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ ) )
+            // Code2D.g:2172:2: ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ )
             {
-            // Code2D.g:1501:2: ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ )
-            // Code2D.g:1501:3: ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+
+            // Code2D.g:2172:2: ( ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+ )
+            // Code2D.g:2172:3: ( '-' )? ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' ) '.' ( '0' .. '9' )+
             {
-            // Code2D.g:1501:3: ( '-' )?
+            // Code2D.g:2172:3: ( '-' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -598,7 +742,7 @@ public class Code2DLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // Code2D.g:1501:4: '-'
+                    // Code2D.g:2172:4: '-'
                     {
                     match('-'); 
 
@@ -608,7 +752,7 @@ public class Code2DLexer extends Lexer {
             }
 
 
-            // Code2D.g:1501:9: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+            // Code2D.g:2172:9: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -627,7 +771,7 @@ public class Code2DLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // Code2D.g:1501:10: ( '1' .. '9' ) ( '0' .. '9' )*
+                    // Code2D.g:2172:10: ( '1' .. '9' ) ( '0' .. '9' )*
                     {
                     if ( (input.LA(1) >= '1' && input.LA(1) <= '9') ) {
                         input.consume();
@@ -639,7 +783,7 @@ public class Code2DLexer extends Lexer {
                     }
 
 
-                    // Code2D.g:1501:21: ( '0' .. '9' )*
+                    // Code2D.g:2172:21: ( '0' .. '9' )*
                     loop6:
                     do {
                         int alt6=2;
@@ -676,7 +820,7 @@ public class Code2DLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Code2D.g:1501:35: '0'
+                    // Code2D.g:2172:35: '0'
                     {
                     match('0'); 
 
@@ -688,7 +832,7 @@ public class Code2DLexer extends Lexer {
 
             match('.'); 
 
-            // Code2D.g:1501:44: ( '0' .. '9' )+
+            // Code2D.g:2172:44: ( '0' .. '9' )+
             int cnt8=0;
             loop8:
             do {
@@ -748,13 +892,13 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = TEXT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:1504:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ ) )
-            // Code2D.g:1505:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
+            // Code2D.g:2175:5: ( ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ ) )
+            // Code2D.g:2176:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
             {
-            // Code2D.g:1505:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
-            // Code2D.g:1505:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // Code2D.g:2176:2: ( ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+ )
+            // Code2D.g:2176:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
             {
-            // Code2D.g:1505:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
+            // Code2D.g:2176:3: ( 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '_' | '-' )+
             int cnt9=0;
             loop9:
             do {
@@ -812,8 +956,8 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:1507:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
-            // Code2D.g:1508:2: ( ( ' ' | '\\t' | '\\f' ) )
+            // Code2D.g:2178:11: ( ( ( ' ' | '\\t' | '\\f' ) ) )
+            // Code2D.g:2179:2: ( ( ' ' | '\\t' | '\\f' ) )
             {
             if ( input.LA(1)=='\t'||input.LA(1)=='\f'||input.LA(1)==' ' ) {
                 input.consume();
@@ -843,13 +987,13 @@ public class Code2DLexer extends Lexer {
         try {
             int _type = LINEBREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:1511:10: ( ( ( '\\r\\n' | '\\r' | '\\n' ) ) )
-            // Code2D.g:1512:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // Code2D.g:2182:10: ( ( ( '\\r\\n' | '\\r' | '\\n' ) ) )
+            // Code2D.g:2183:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
             {
-            // Code2D.g:1512:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
-            // Code2D.g:1512:3: ( '\\r\\n' | '\\r' | '\\n' )
+            // Code2D.g:2183:2: ( ( '\\r\\n' | '\\r' | '\\n' ) )
+            // Code2D.g:2183:3: ( '\\r\\n' | '\\r' | '\\n' )
             {
-            // Code2D.g:1512:3: ( '\\r\\n' | '\\r' | '\\n' )
+            // Code2D.g:2183:3: ( '\\r\\n' | '\\r' | '\\n' )
             int alt10=3;
             int LA10_0 = input.LA(1);
 
@@ -875,7 +1019,7 @@ public class Code2DLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // Code2D.g:1512:4: '\\r\\n'
+                    // Code2D.g:2183:4: '\\r\\n'
                     {
                     match("\r\n"); 
 
@@ -884,14 +1028,14 @@ public class Code2DLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // Code2D.g:1512:13: '\\r'
+                    // Code2D.g:2183:13: '\\r'
                     {
                     match('\r'); 
 
                     }
                     break;
                 case 3 :
-                    // Code2D.g:1512:20: '\\n'
+                    // Code2D.g:2183:20: '\\n'
                     {
                     match('\n'); 
 
@@ -917,34 +1061,32 @@ public class Code2DLexer extends Lexer {
     }
     // $ANTLR end "LINEBREAK"
 
-    // $ANTLR start "QUOTED_4748_59"
-    public final void mQUOTED_4748_59() throws RecognitionException {
+    // $ANTLR start "QUOTED_34_34"
+    public final void mQUOTED_34_34() throws RecognitionException {
         try {
-            int _type = QUOTED_4748_59;
+            int _type = QUOTED_34_34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Code2D.g:1515:15: ( ( ( '/0' ) (~ ( ';' ) )* ( ';' ) ) )
-            // Code2D.g:1516:2: ( ( '/0' ) (~ ( ';' ) )* ( ';' ) )
+            // Code2D.g:2186:13: ( ( ( '\"' ) (~ ( '\"' ) )* ( '\"' ) ) )
+            // Code2D.g:2187:2: ( ( '\"' ) (~ ( '\"' ) )* ( '\"' ) )
             {
-            // Code2D.g:1516:2: ( ( '/0' ) (~ ( ';' ) )* ( ';' ) )
-            // Code2D.g:1516:3: ( '/0' ) (~ ( ';' ) )* ( ';' )
+            // Code2D.g:2187:2: ( ( '\"' ) (~ ( '\"' ) )* ( '\"' ) )
+            // Code2D.g:2187:3: ( '\"' ) (~ ( '\"' ) )* ( '\"' )
             {
-            // Code2D.g:1516:3: ( '/0' )
-            // Code2D.g:1516:4: '/0'
+            // Code2D.g:2187:3: ( '\"' )
+            // Code2D.g:2187:4: '\"'
             {
-            match("/0"); 
-
-
+            match('\"'); 
 
             }
 
 
-            // Code2D.g:1516:9: (~ ( ';' ) )*
+            // Code2D.g:2187:8: (~ ( '\"' ) )*
             loop11:
             do {
                 int alt11=2;
                 int LA11_0 = input.LA(1);
 
-                if ( ((LA11_0 >= '\u0000' && LA11_0 <= ':')||(LA11_0 >= '<' && LA11_0 <= '\uFFFF')) ) {
+                if ( ((LA11_0 >= '\u0000' && LA11_0 <= '!')||(LA11_0 >= '#' && LA11_0 <= '\uFFFF')) ) {
                     alt11=1;
                 }
 
@@ -953,7 +1095,7 @@ public class Code2DLexer extends Lexer {
             	case 1 :
             	    // Code2D.g:
             	    {
-            	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= ':')||(input.LA(1) >= '<' && input.LA(1) <= '\uFFFF') ) {
+            	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
             	    }
             	    else {
@@ -972,10 +1114,10 @@ public class Code2DLexer extends Lexer {
             } while (true);
 
 
-            // Code2D.g:1516:18: ( ';' )
-            // Code2D.g:1516:19: ';'
+            // Code2D.g:2187:17: ( '\"' )
+            // Code2D.g:2187:18: '\"'
             {
-            match(';'); 
+            match('\"'); 
 
             }
 
@@ -992,11 +1134,11 @@ public class Code2DLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "QUOTED_4748_59"
+    // $ANTLR end "QUOTED_34_34"
 
     public void mTokens() throws RecognitionException {
-        // Code2D.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | COMMENT | INTEGER | FLOAT | TEXT | WHITESPACE | LINEBREAK | QUOTED_4748_59 )
-        int alt12=22;
+        // Code2D.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | COMMENT | INTEGER | FLOAT | TEXT | WHITESPACE | LINEBREAK | QUOTED_34_34 )
+        int alt12=28;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -1120,57 +1262,105 @@ public class Code2DLexer extends Lexer {
                 }
                 break;
             case 16 :
-                // Code2D.g:1:100: COMMENT
+                // Code2D.g:1:100: T__26
+                {
+                mT__26(); 
+
+
+                }
+                break;
+            case 17 :
+                // Code2D.g:1:106: T__27
+                {
+                mT__27(); 
+
+
+                }
+                break;
+            case 18 :
+                // Code2D.g:1:112: T__28
+                {
+                mT__28(); 
+
+
+                }
+                break;
+            case 19 :
+                // Code2D.g:1:118: T__29
+                {
+                mT__29(); 
+
+
+                }
+                break;
+            case 20 :
+                // Code2D.g:1:124: T__30
+                {
+                mT__30(); 
+
+
+                }
+                break;
+            case 21 :
+                // Code2D.g:1:130: T__31
+                {
+                mT__31(); 
+
+
+                }
+                break;
+            case 22 :
+                // Code2D.g:1:136: COMMENT
                 {
                 mCOMMENT(); 
 
 
                 }
                 break;
-            case 17 :
-                // Code2D.g:1:108: INTEGER
+            case 23 :
+                // Code2D.g:1:144: INTEGER
                 {
                 mINTEGER(); 
 
 
                 }
                 break;
-            case 18 :
-                // Code2D.g:1:116: FLOAT
+            case 24 :
+                // Code2D.g:1:152: FLOAT
                 {
                 mFLOAT(); 
 
 
                 }
                 break;
-            case 19 :
-                // Code2D.g:1:122: TEXT
+            case 25 :
+                // Code2D.g:1:158: TEXT
                 {
                 mTEXT(); 
 
 
                 }
                 break;
-            case 20 :
-                // Code2D.g:1:127: WHITESPACE
+            case 26 :
+                // Code2D.g:1:163: WHITESPACE
                 {
                 mWHITESPACE(); 
 
 
                 }
                 break;
-            case 21 :
-                // Code2D.g:1:138: LINEBREAK
+            case 27 :
+                // Code2D.g:1:174: LINEBREAK
                 {
                 mLINEBREAK(); 
 
 
                 }
                 break;
-            case 22 :
-                // Code2D.g:1:148: QUOTED_4748_59
+            case 28 :
+                // Code2D.g:1:184: QUOTED_34_34
                 {
-                mQUOTED_4748_59(); 
+                mQUOTED_34_34(); 
 
 
                 }
@@ -1183,68 +1373,74 @@ public class Code2DLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\3\uffff\12\23\3\uffff\1\23\2\45\3\uffff\13\23\2\uffff\1\23\1\45"+
-        "\2\uffff\5\23\1\67\7\23\1\77\1\23\1\101\1\uffff\7\23\1\uffff\1\23"+
-        "\1\uffff\4\23\1\116\4\23\1\uffff\1\123\1\23\1\uffff\2\23\1\127\1"+
-        "\130\1\uffff\1\131\1\23\1\133\3\uffff\1\134\2\uffff";
+        "\3\uffff\13\24\3\uffff\1\24\2\50\4\uffff\17\24\1\50\2\uffff\6\24"+
+        "\1\100\14\24\1\115\1\24\1\117\1\uffff\1\120\5\24\1\126\5\24\1\uffff"+
+        "\1\24\2\uffff\5\24\1\uffff\1\143\6\24\1\152\4\24\1\uffff\4\24\1"+
+        "\163\1\164\1\uffff\1\165\1\166\1\167\3\24\1\173\1\174\5\uffff\1"+
+        "\24\1\176\1\24\2\uffff\1\24\1\uffff\2\24\1\u0083\1\u0084\2\uffff";
     static final String DFA12_eofS =
-        "\135\uffff";
+        "\u0085\uffff";
     static final String DFA12_minS =
-        "\1\11\2\uffff\1\145\1\162\1\141\1\157\1\164\1\120\1\164\1\154\1"+
-        "\145\1\157\2\uffff\1\57\1\60\2\55\3\uffff\1\150\1\151\1\155\1\163"+
-        "\1\145\1\103\1\165\1\150\1\141\1\170\1\162\2\uffff\1\56\1\55\2\uffff"+
-        "\1\141\2\145\1\164\1\155\1\55\1\164\1\145\1\171\1\164\1\154\1\166"+
-        "\1\156\1\55\1\151\1\55\1\uffff\2\162\1\145\1\165\1\144\1\151\1\144"+
-        "\1\uffff\1\154\1\uffff\1\141\1\40\2\162\1\55\1\157\1\154\1\145\1"+
-        "\154\1\uffff\1\55\1\145\1\uffff\1\165\1\171\2\55\1\uffff\1\55\1"+
-        "\162\1\55\3\uffff\1\55\2\uffff";
+        "\1\11\2\uffff\1\145\1\141\1\162\1\141\1\157\1\164\1\120\1\154\1"+
+        "\143\1\145\1\157\3\uffff\1\60\2\55\4\uffff\1\150\1\156\1\151\1\155"+
+        "\1\163\1\145\1\103\1\155\1\165\1\141\1\145\1\162\1\141\1\162\1\56"+
+        "\1\55\2\uffff\1\141\1\110\2\145\1\164\1\155\1\55\1\145\1\164\1\171"+
+        "\1\156\1\162\1\164\1\160\1\154\1\166\1\141\1\164\1\156\1\55\1\151"+
+        "\1\55\1\uffff\1\55\1\162\2\145\1\141\1\165\1\55\1\144\1\151\1\166"+
+        "\1\141\1\144\1\uffff\1\154\2\uffff\1\141\2\162\1\151\1\162\1\uffff"+
+        "\1\55\1\157\1\145\1\156\1\154\1\145\1\154\1\55\1\171\1\156\1\145"+
+        "\1\154\1\uffff\1\165\1\111\1\144\1\171\2\55\1\uffff\3\55\1\157\1"+
+        "\162\1\164\2\55\5\uffff\1\143\1\55\1\145\2\uffff\1\153\1\uffff\1"+
+        "\155\1\163\2\55\2\uffff";
     static final String DFA12_maxS =
-        "\1\175\2\uffff\1\145\1\162\1\141\1\157\1\164\1\145\1\164\1\154\1"+
-        "\145\1\157\2\uffff\1\60\1\71\2\172\3\uffff\1\150\1\151\1\155\1\163"+
-        "\1\145\1\103\1\165\1\150\1\141\1\170\1\162\2\uffff\1\56\1\172\2"+
-        "\uffff\1\141\2\145\1\164\1\155\1\172\1\164\1\145\1\171\1\164\1\154"+
-        "\1\166\1\156\1\172\1\151\1\172\1\uffff\2\162\1\145\1\165\1\144\1"+
-        "\151\1\144\1\uffff\1\154\1\uffff\1\141\1\40\2\162\1\172\1\157\1"+
-        "\154\1\145\1\154\1\uffff\1\172\1\145\1\uffff\1\165\1\171\2\172\1"+
-        "\uffff\1\172\1\162\1\172\3\uffff\1\172\2\uffff";
+        "\1\175\2\uffff\1\145\1\141\1\162\1\141\1\157\1\164\1\145\1\154\1"+
+        "\143\1\162\1\157\3\uffff\1\71\2\172\4\uffff\1\150\1\156\1\151\1"+
+        "\155\1\163\1\145\1\103\1\155\1\165\1\141\1\145\1\170\1\141\1\162"+
+        "\1\56\1\172\2\uffff\1\141\1\123\2\145\1\164\1\155\1\172\1\145\1"+
+        "\164\1\171\1\156\1\162\1\164\1\160\1\154\1\166\1\141\1\164\1\156"+
+        "\1\172\1\151\1\172\1\uffff\1\172\1\162\2\145\1\141\1\165\1\172\1"+
+        "\144\1\151\1\166\1\141\1\144\1\uffff\1\154\2\uffff\1\141\2\162\1"+
+        "\151\1\162\1\uffff\1\172\1\157\1\145\1\156\1\154\1\145\1\154\1\172"+
+        "\1\171\1\156\1\145\1\154\1\uffff\1\165\1\111\1\144\1\171\2\172\1"+
+        "\uffff\3\172\1\157\1\162\1\164\2\172\5\uffff\1\143\1\172\1\145\2"+
+        "\uffff\1\153\1\uffff\1\155\1\163\2\172\2\uffff";
     static final String DFA12_acceptS =
-        "\1\uffff\1\1\1\2\12\uffff\1\16\1\17\4\uffff\1\23\1\24\1\25\13\uffff"+
-        "\1\20\1\26\2\uffff\1\21\1\22\20\uffff\1\10\7\uffff\1\5\1\uffff\1"+
-        "\7\11\uffff\1\12\2\uffff\1\15\4\uffff\1\13\3\uffff\1\6\1\11\1\14"+
-        "\1\uffff\1\4\1\3";
+        "\1\uffff\1\1\1\2\13\uffff\1\24\1\25\1\26\3\uffff\1\31\1\32\1\33"+
+        "\1\34\20\uffff\1\27\1\30\26\uffff\1\12\14\uffff\1\7\1\uffff\1\11"+
+        "\1\13\5\uffff\1\21\14\uffff\1\22\6\uffff\1\15\10\uffff\1\10\1\14"+
+        "\1\16\1\17\1\20\3\uffff\1\5\1\6\1\uffff\1\3\4\uffff\1\4\1\23";
     static final String DFA12_specialS =
-        "\135\uffff}>";
+        "\u0085\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\1\24\1\25\1\uffff\1\24\1\25\22\uffff\1\24\14\uffff\1\20\1\uffff"+
-            "\1\17\1\22\11\21\1\1\1\2\5\uffff\1\23\1\3\3\23\1\4\1\5\1\6\1"+
-            "\7\4\23\1\10\1\11\1\12\3\23\1\13\2\23\1\14\3\23\4\uffff\1\23"+
-            "\1\uffff\32\23\1\15\1\uffff\1\16",
+            "\1\25\1\26\1\uffff\1\25\1\26\22\uffff\1\25\1\uffff\1\27\12\uffff"+
+            "\1\21\1\uffff\1\20\1\23\11\22\1\1\1\2\5\uffff\1\24\1\3\1\4\2"+
+            "\24\1\5\1\6\1\7\1\10\4\24\1\11\1\24\1\12\2\24\1\13\1\14\2\24"+
+            "\1\15\3\24\4\uffff\1\24\1\uffff\32\24\1\16\1\uffff\1\17",
             "",
             "",
-            "\1\26",
-            "\1\27",
             "\1\30",
             "\1\31",
             "\1\32",
-            "\1\33\24\uffff\1\34",
+            "\1\33",
+            "\1\34",
             "\1\35",
-            "\1\36",
-            "\1\37",
-            "\1\40",
-            "",
-            "",
-            "\1\41\1\42",
-            "\1\43\11\21",
-            "\1\23\1\46\1\uffff\12\44\7\uffff\32\23\4\uffff\1\23\1\uffff"+
-            "\32\23",
-            "\1\23\1\46\1\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff"+
-            "\32\23",
+            "\1\36\20\uffff\1\37\3\uffff\1\40",
+            "\1\41",
+            "\1\42",
+            "\1\43\14\uffff\1\44",
+            "\1\45",
             "",
             "",
             "",
-            "\1\47",
-            "\1\50",
-            "\1\51",
+            "\1\46\11\22",
+            "\1\24\1\51\1\uffff\12\47\7\uffff\32\24\4\uffff\1\24\1\uffff"+
+            "\32\24",
+            "\1\24\1\51\1\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff"+
+            "\32\24",
+            "",
+            "",
+            "",
+            "",
             "\1\52",
             "\1\53",
             "\1\54",
@@ -1253,30 +1449,25 @@ public class Code2DLexer extends Lexer {
             "\1\57",
             "\1\60",
             "\1\61",
-            "",
-            "",
-            "\1\46",
-            "\1\23\1\46\1\uffff\12\44\7\uffff\32\23\4\uffff\1\23\1\uffff"+
-            "\32\23",
-            "",
-            "",
             "\1\62",
             "\1\63",
             "\1\64",
-            "\1\65",
-            "\1\66",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\65\5\uffff\1\66",
+            "\1\67",
             "\1\70",
+            "\1\51",
+            "\1\24\1\51\1\uffff\12\47\7\uffff\32\24\4\uffff\1\24\1\uffff"+
+            "\32\24",
+            "",
+            "",
             "\1\71",
-            "\1\72",
-            "\1\73",
+            "\1\72\12\uffff\1\73",
             "\1\74",
             "\1\75",
             "\1\76",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "\1\100",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "",
+            "\1\77",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\101",
             "\1\102",
             "\1\103",
             "\1\104",
@@ -1284,34 +1475,81 @@ public class Code2DLexer extends Lexer {
             "\1\106",
             "\1\107",
             "\1\110",
-            "",
             "\1\111",
-            "",
             "\1\112",
             "\1\113",
             "\1\114",
-            "\1\115",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "\1\117",
-            "\1\120",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\116",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
             "\1\121",
             "\1\122",
-            "",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\123",
             "\1\124",
-            "",
             "\1\125",
-            "\1\126",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\127",
+            "\1\130",
+            "\1\131",
             "\1\132",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\133",
+            "",
+            "\1\134",
+            "",
+            "",
+            "\1\135",
+            "\1\136",
+            "\1\137",
+            "\1\140",
+            "\1\141",
+            "",
+            "\1\24\2\uffff\12\24\7\uffff\1\24\1\142\30\24\4\uffff\1\24\1"+
+            "\uffff\32\24",
+            "\1\144",
+            "\1\145",
+            "\1\146",
+            "\1\147",
+            "\1\150",
+            "\1\151",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\153",
+            "\1\154",
+            "\1\155",
+            "\1\156",
+            "",
+            "\1\157",
+            "\1\160",
+            "\1\161",
+            "\1\162",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\170",
+            "\1\171",
+            "\1\172",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
             "",
             "",
             "",
-            "\1\23\2\uffff\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "",
+            "",
+            "\1\175",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\177",
+            "",
+            "",
+            "\1\u0080",
+            "",
+            "\1\u0081",
+            "\1\u0082",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
+            "\1\24\2\uffff\12\24\7\uffff\32\24\4\uffff\1\24\1\uffff\32\24",
             "",
             ""
     };
@@ -1346,7 +1584,7 @@ public class Code2DLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | COMMENT | INTEGER | FLOAT | TEXT | WHITESPACE | LINEBREAK | QUOTED_4748_59 );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | COMMENT | INTEGER | FLOAT | TEXT | WHITESPACE | LINEBREAK | QUOTED_34_34 );";
         }
     }
  

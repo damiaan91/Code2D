@@ -24,7 +24,7 @@ public class Code2DTokenResolverFactory implements nl.utwente.apc.Code2D.resourc
 		tokenName2TokenResolver = new java.util.LinkedHashMap<String, nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver>();
 		featureName2CollectInTokenResolver = new java.util.LinkedHashMap<String, nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver>();
 		registerTokenResolver("TEXT", new nl.utwente.apc.Code2D.resource.Code2D.analysis.Code2DTEXTTokenResolver());
-		registerTokenResolver("QUOTED_4748_59", new nl.utwente.apc.Code2D.resource.Code2D.analysis.Code2DQUOTED_4748_59TokenResolver());
+		registerTokenResolver("QUOTED_34_34", new nl.utwente.apc.Code2D.resource.Code2D.analysis.Code2DQUOTED_34_34TokenResolver());
 	}
 	
 	public nl.utwente.apc.Code2D.resource.Code2D.ICode2DTokenResolver createTokenResolver(String tokenName) {
