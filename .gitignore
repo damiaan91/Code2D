@@ -1,6 +1,15 @@
+# Generated Code #
+*/src-gen/*
+*.resource.*
+
+# Eclipse #
+.metadata
+
+# Binary Files#
 *.class
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
