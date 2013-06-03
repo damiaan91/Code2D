@@ -24,7 +24,7 @@ TOKENSTYLES {
 }
 
 RULES {
-	Game ::= "Game" Name[] "{" (GameObjects)* "}";
+	Game ::= "Game" Name[] "{" (GameObjects | GameWorld)* "}";
 	Player ::= "Player" Name[] "{" ("Texture" ":" Texture[])* "}";
 	NPC ::= "NPC" Name[] (":" Extends[])* "{" ("Texture" ":" Texture[] ";" | "Behaviour" ":" Behaviour[Friendly:"Friendly", Neutral:"Neutral", Hostile:"Hostile"] ";")* "}";
 	Item ::= "Item" Name[] "{" ("Texture" ":" Texture[] ";")* "}";
