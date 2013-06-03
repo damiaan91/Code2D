@@ -21,16 +21,21 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="Extends" eType="#//NPC"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="NPCBehaviour">
-    <eLiterals name="Friendly"/>
-    <eLiterals name="Neutral" value="1"/>
-    <eLiterals name="Hostile" value="2"/>
+    <eLiterals name="FRIENDLY"/>
+    <eLiterals name="NEUTRAL" value="1"/>
+    <eLiterals name="HOSTILE" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Item" eSuperTypes="#//GameObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="World">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Terrain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="WorldBlocks" lowerBound="1"
         upperBound="-1" eType="#//Terrain" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="InstancePositions" upperBound="-1"
+        eType="#//InstancePosition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="WorldTriggers" upperBound="-1"
+        eType="#//Trigger" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="WorldEvents" upperBound="-1"
+        eType="#//Event" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Terrain">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="CanStand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -38,4 +43,44 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Trap" eSuperTypes="#//GameObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="Scenery" eSuperTypes="#//GameObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InstancePosition" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="X1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="X2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Y1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Y2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TerrainInstance" eSuperTypes="#//InstancePosition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Terrain" lowerBound="1"
+        eType="#//Terrain"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectInstance" eSuperTypes="#//InstancePosition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Object" lowerBound="1"
+        eType="#//GameObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EventTriggers" lowerBound="1"
+        upperBound="-1" eType="#//Trigger"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trigger">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Conditions" lowerBound="1"
+        upperBound="-1" eType="#//Condition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Left" lowerBound="1" eType="#//Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Right" eType="#//Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Operator" eType="#//ConditionOperators"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ConditionOperators">
+    <eLiterals name="COLLIDES"/>
+    <eLiterals name="AND" value="1"/>
+    <eLiterals name="OR" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Negation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Value" lowerBound="1" eType="#//GameObject"/>
+  </eClassifiers>
 </ecore:EPackage>
