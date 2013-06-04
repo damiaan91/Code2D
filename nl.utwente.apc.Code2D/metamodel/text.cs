@@ -6,8 +6,8 @@ TOKENS {
 	DEFINE COMMENT $'//'(~('\n'|'\r'|'\uffff'))*$;
 	DEFINE INTEGER $('-')?('1'..'9')('0'..'9')*|'0'$;
 	DEFINE FLOAT $('-')?(('1'..'9') ('0'..'9')* | '0') '.' ('0'..'9')+ $;
+	DEFINE UPPER $('A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9'|'.')*$;
 }
-
 
 TOKENSTYLES {
 	"Game" COLOR #7F0055, BOLD;
@@ -39,21 +39,29 @@ TOKENSTYLES {
 	"Left" COLOR #7F0055, BOLD;
 	"Right" COLOR #7F0055, BOLD;
 	"Operator" COLOR #7F0055, BOLD;
+	"CollisionTrigger" COLOR #7F0055, BOLD;
+	"EventActions" COLOR #7F0055, BOLD;
+	"AddToInventoryAction" COLOR #7F0055, BOLD;
+	"EReference0" COLOR #7F0055, BOLD;
+	"BasicAction" COLOR #7F0055, BOLD;
+	"Action" COLOR #7F0055, BOLD;
+	"Object1" COLOR #7F0055, BOLD;
+	"Object2" COLOR #7F0055, BOLD;
 }
 
 RULES {
-	Game ::= "Game" Name[] "{" (GameObjects | GameWorld)* "}";
-	Player ::= "Player" Name[] "{" ("Texture" ":" Texture[])* "}";
-	NPC ::= "NPC" Name[] (":" Extends[])* "{" ("Texture" ":" Texture[] ";" | "Behaviour" ":" Behaviour[FRIENDLY:"Friendly", NEUTRAL:"Neutral", HOSTILE:"Hostile"] ";")* "}";
-	Item ::= "Item" Name[] "{" ("Texture" ":" Texture[] ";")* "}";
-	World ::= "World" "{" ("Name" ":" Name['"','"'] | "WorldBlocks" ":" WorldBlocks | InstancePositions | WorldTriggers | WorldEvents)* "}";
-	Terrain ::= CanStand["CanStand" : ""] CanHaveItem["CanHaveItem" : ""] "Terrain" "{" "}";
-	Trap ::= "Trap" "{" ("Name" ":" Name['"','"'] | "Texture" ":" Texture['"','"'])* "}";
-	Scenery ::= "Scenery" "{" ("Name" ":" Name['"','"'] | "Texture" ":" Texture['"','"'])* "}";
-	ObjectInstance ::= ("AddObject:" Object[] (X1[INTEGER] "x" Y1[INTEGER])* ("<>" X2[INTEGER] "x" Y2[INTEGER])*)* ";";
-	TerrainInstance ::= ("AddTerrain:" Terrain[] (X1[INTEGER] "x" Y1[INTEGER])* ("<>" X2[INTEGER] "x" Y2[INTEGER])*)* ";";
-	Event ::= "Event" Name[] "on" EventTriggers[] ("," EventTriggers[]) "{" "}";
-	Value ::= ((Negation["!" : ""])? Value[]);
-	Trigger ::= "Trigger" Name[] "{" Conditions "}";
-	Condition ::= (Left Operator[COLLIDES:"collides", AND:"&", OR:"|"] Right)*;
+	Game ::= "Game" Name[UPPER] "{" GameWorld GameObjects*  "}";
+	Player ::= "Player" Name[UPPER] "{" ("Texture" ":" Texture[] ";")? "}";
+	NPC ::= "NPC" Name[UPPER] (":" Extends[UPPER])? "{" ("Behaviour" ":" Behaviour[FRIENDLY:"Friendly", NEUTRAL:"Neutral", HOSTILE:"Hostile"] ";")? ("Texture" ":" Texture[] ";")? "}";
+	Item ::= "Item" Name[UPPER] "{" ("Texture" ":" Texture[] ";")? "}";
+	World ::= "World" Name[UPPER] "{" ((WorldInstances ";") | WorldEvents | WorldTriggers )*"}";
+	Terrain ::= "Terrain" Name[UPPER] "{" ("CanStandOn:" CanStand["True" : "False"] ";")? ("CanHaveItems:" CanHaveItem["True" : "False"] ";")? ("Texture" ":" Texture[] ";")? "}";
+	Trap ::= "Trap"  Name[UPPER] "{" ("Texture" ":" Texture[] ";")? "}";
+	Scenery ::= "Scenery"  Name[UPPER] "{" ("Texture" ":" Texture[] ";")* "}";
+	Instance ::= "AddInstance:" Object[UPPER] (X1[INTEGER] "x" Y1[INTEGER]) ("<>" X2[INTEGER] "x" Y2[INTEGER])?;
+	Event ::= "Event" Name[UPPER] "on" CollisionTrigger[UPPER] "{" (EventActions ";")+ "}";
+	AddToInventoryAction ::= "AddToInventoryAction" ":" Item[UPPER];
+	BasicAction ::= Action[ENDGAME:"ENDGAME"];
+	CollisionTrigger ::= "CollisionTrigger" Name[UPPER] "{" "Collide" ":" Object1[UPPER] Object2[UPPER] ";" "}";
 }
+

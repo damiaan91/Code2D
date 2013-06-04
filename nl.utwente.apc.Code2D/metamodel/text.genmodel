@@ -11,10 +11,8 @@
       <genEnumLiterals ecoreEnumLiteral="text.ecore#//NPCBehaviour/NEUTRAL"/>
       <genEnumLiterals ecoreEnumLiteral="text.ecore#//NPCBehaviour/HOSTILE"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="text.ecore#//ConditionOperators">
-      <genEnumLiterals ecoreEnumLiteral="text.ecore#//ConditionOperators/COLLIDES"/>
-      <genEnumLiterals ecoreEnumLiteral="text.ecore#//ConditionOperators/AND"/>
-      <genEnumLiterals ecoreEnumLiteral="text.ecore#//ConditionOperators/OR"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="text.ecore#//Action">
+      <genEnumLiterals ecoreEnumLiteral="text.ecore#//Action/ENDGAME"/>
     </genEnums>
     <genClasses ecoreClass="text.ecore#//Game">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Game/Name"/>
@@ -27,7 +25,9 @@
     </genClasses>
     <genClasses image="false" ecoreClass="text.ecore#//MoveableObject"/>
     <genClasses image="false" ecoreClass="text.ecore#//ControllableObject"/>
-    <genClasses ecoreClass="text.ecore#//Player"/>
+    <genClasses ecoreClass="text.ecore#//Player">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//Player/InventoryItems"/>
+    </genClasses>
     <genClasses ecoreClass="text.ecore#//NPC">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//NPC/Behaviour"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//NPC/Extends"/>
@@ -35,8 +35,7 @@
     <genClasses ecoreClass="text.ecore#//Item"/>
     <genClasses ecoreClass="text.ecore#//World">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//World/Name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//World/WorldBlocks"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//World/InstancePositions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//World/WorldInstances"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//World/WorldTriggers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//World/WorldEvents"/>
     </genClasses>
@@ -46,34 +45,31 @@
     </genClasses>
     <genClasses ecoreClass="text.ecore#//Trap"/>
     <genClasses ecoreClass="text.ecore#//Scenery"/>
-    <genClasses ecoreClass="text.ecore#//InstancePosition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//InstancePosition/X1"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//InstancePosition/X2"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//InstancePosition/Y1"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//InstancePosition/Y2"/>
-    </genClasses>
-    <genClasses ecoreClass="text.ecore#//TerrainInstance">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//TerrainInstance/Terrain"/>
-    </genClasses>
-    <genClasses ecoreClass="text.ecore#//ObjectInstance">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//ObjectInstance/Object"/>
+    <genClasses ecoreClass="text.ecore#//Instance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Instance/X1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Instance/X2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Instance/Y1"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Instance/Y2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//Instance/Object"/>
     </genClasses>
     <genClasses ecoreClass="text.ecore#//Event">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Event/Name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//Event/EventTriggers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//Event/CollisionTrigger"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Event/EventActions"/>
     </genClasses>
     <genClasses ecoreClass="text.ecore#//Trigger">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Trigger/Name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Trigger/Conditions"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="text.ecore#//Condition">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Condition/Left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Condition/Right"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Condition/Operator"/>
+    <genClasses image="false" ecoreClass="text.ecore#//EventAction"/>
+    <genClasses ecoreClass="text.ecore#//AddToInventoryAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//AddToInventoryAction/Item"/>
     </genClasses>
-    <genClasses ecoreClass="text.ecore#//Value">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Value/Negation"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//Value/Value"/>
+    <genClasses ecoreClass="text.ecore#//BasicAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//BasicAction/Action"/>
+    </genClasses>
+    <genClasses ecoreClass="text.ecore#//CollisionTrigger">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//CollisionTrigger/Object1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//CollisionTrigger/Object2"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
