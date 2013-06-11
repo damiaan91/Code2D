@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ALIA4J_NOIRIn_boot_libraries
+Bundle-SymbolicName: ALIA4J_NOIRIn_boot_libraries
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: lib/alia4j-noirin-boot.jar
+Export-Package: org.alia4j.noirin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

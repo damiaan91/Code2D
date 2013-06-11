@@ -2,6 +2,10 @@ SYNTAXDEF Code2D
 FOR <http://www.utwente.nl/apc/Code2D>
 START Game
 
+OPTIONS {
+	overrideBuilder = "false";
+}
+
 TOKENS {
 	DEFINE COMMENT $'//'(~('\n'|'\r'|'\uffff'))*$;
 	DEFINE INTEGER $('-')?('1'..'9')('0'..'9')*|'0'$;

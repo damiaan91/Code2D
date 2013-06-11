@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry exported="true" kind="lib" path="lib/alia4j-commons.jar" sourcepath="lib/alia4j-commons-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/alia4j-fial.jar" sourcepath="lib/alia4j-fial-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/alia4j-liam-core.jar" sourcepath="lib/alia4j-liam-core-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/alia4j-liam-hierarchy.jar" sourcepath="lib/alia4j-liam-hierarchy-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/alia4j-liam-patterns.jar" sourcepath="lib/alia4j-liam-patterns-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-collections.jar" sourcepath="lib/commons-collections-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
