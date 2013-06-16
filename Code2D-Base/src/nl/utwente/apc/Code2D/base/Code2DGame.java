@@ -1,6 +1,7 @@
 package nl.utwente.apc.Code2D.base;
 
 import java.util.Iterator;
+import java.util.Random;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -36,12 +37,11 @@ public class Code2DGame implements ApplicationListener {
 
 	private Array<Rectangle> raindrops;
 	private long lastDropTime;
+	
+	private Random rng = new Random();
 
 	@Override
 	public void create() {
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, 800, 480);
 
@@ -111,21 +111,38 @@ public class Code2DGame implements ApplicationListener {
 			bucket.x -= 200 * Gdx.graphics.getDeltaTime();
 		if (Gdx.input.isKeyPressed(Keys.RIGHT))
 			bucket.x += 200 * Gdx.graphics.getDeltaTime();
+		if (Gdx.input.isKeyPressed(Keys.UP))
+			bucket.y += 200 * Gdx.graphics.getDeltaTime();
+		if (Gdx.input.isKeyPressed(Keys.DOWN))
+			bucket.y -= 200 * Gdx.graphics.getDeltaTime();
 
 		if (bucket.x < 0)
 			bucket.x = 0;
-		if (bucket.x > 800 - 64)
-			bucket.x = 800 - 64;
+		if (bucket.x > Gdx.graphics.getWidth() - 64)
+			bucket.x = Gdx.graphics.getWidth() - 64;
+		if (bucket.y < 0)
+			bucket.y = 0;
+		if (bucket.y > Gdx.graphics.getHeight() - 64)
+			bucket.y = Gdx.graphics.getHeight() - 64;
+		
 
-		if (TimeUtils.nanoTime() - lastDropTime > 1000000000)
+		if ((TimeUtils.nanoTime() - lastDropTime > 1000000000) && raindrops.size < 5)
 			spawnRaindrop();
 
 		Iterator<Rectangle> iter = raindrops.iterator();
 		while (iter.hasNext()) {
 			Rectangle raindrop = iter.next();
-			raindrop.y -= 200 * Gdx.graphics.getDeltaTime();
-			if (raindrop.y + 64 < 0)
-				iter.remove();
+			raindrop.x += MathUtils.random(-200, 200) * Gdx.graphics.getDeltaTime();
+			raindrop.y += MathUtils.random(-200, 200) * Gdx.graphics.getDeltaTime();
+			if (raindrop.x + 64 < 0)
+				raindrop.x = 0;
+			if (raindrop.y + 64< 0)
+				raindrop.y = 0;
+			if (raindrop.x > Gdx.graphics.getWidth())
+				raindrop.x = Gdx.graphics.getWidth() - 64;
+			if (raindrop.y > Gdx.graphics.getHeight())
+				raindrop.y = Gdx.graphics.getHeight() - 64;
+			
 			if (raindrop.overlaps(bucket)) {
 				dropSound.play();
 				iter.remove();
@@ -148,8 +165,8 @@ public class Code2DGame implements ApplicationListener {
 
 	private void spawnRaindrop() {
 		Rectangle raindrop = new Rectangle();
-		raindrop.x = MathUtils.random(0, 800 - 64);
-		raindrop.y = 480;
+		raindrop.x = MathUtils.random(0, Gdx.graphics.getWidth() - 64);
+		raindrop.y = MathUtils.random(0, Gdx.graphics.getHeight() - 64);
 		raindrop.width = 64;
 		raindrop.height = 64;
 		raindrops.add(raindrop);

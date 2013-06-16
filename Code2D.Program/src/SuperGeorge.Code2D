@@ -1,0 +1,39 @@
+Game SuperGeorge {
+ 	World World1 {
+     	AddInstance: George 12 x 12;
+        AddInstance: Tree 0 x 0 <> 12 x 11;
+        	
+        Event GameOver on GeorgeHitsATree {
+           	ENDGAME;
+       	}
+        	
+        CollisionTrigger GeorgeHitsATree {
+           	Collide: George Tree;
+       	}
+  	}
+  	
+  	Player George {
+        	Texture: georgeTexture;
+  	}
+  	
+	NPC BlueMonster {
+        	Behaviour: Hostile;
+        	Texture: blueMobTexture;
+  	}
+  	
+  	NPC RedMonster : BlueMonster {
+        	Texture: redMobTexture;
+  	}
+  	
+  	Terrain Grass {
+        	CanStandOn: True;
+        	CanHaveItems: True;
+        	Texture: grassTexture;
+  	}
+  	
+  	Scenery Tree {
+        	Texture: treeTexture;
+  	}
+}
+
+  	
