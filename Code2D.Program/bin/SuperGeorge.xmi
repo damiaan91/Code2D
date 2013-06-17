@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Code2D:Game
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:Code2D="http://www.utwente.nl/apc/Code2D"
+    xsi:schemaLocation="http://www.utwente.nl/apc/Code2D text.ecore">
+  <GameObjects
+      xsi:type="Code2D:Player"
+      Name="George"
+      Texture="georgeTexture"/>
+  <GameObjects
+      xsi:type="Code2D:NPC"
+      Name="RedMonster"
+      Texture="redMobTexture"
+      Behaviour="HOSTILE"
+      Extends="//@GameObjects.3"/>
+  <GameObjects
+      xsi:type="Code2D:Scenery"
+      Name="Tree"
+      Texture="treeTexture"/>
+  <GameObjects
+      xsi:type="Code2D:NPC"
+      Name="BlueMonster"
+      Texture="blueMobTexture"
+      Behaviour="HOSTILE"/>
+  <GameObjects
+      xsi:type="Code2D:Terrain"
+      Name="Grass"
+      Texture="grassTexture"
+      CanStand="true"
+      CanHaveItem="true"/>
+  <GameWorld
+      Name="World1">
+    <WorldInstances
+        X1="12"
+        Y1="12"
+        Object="//@GameObjects.0"/>
+    <WorldInstances
+        X2="12"
+        Y2="11"
+        Object="//@GameObjects.2"/>
+    <WorldTriggers
+        xsi:type="Code2D:CollisionTrigger"
+        Name="GeorgeHitsATree"
+        Object1="//@GameObjects.0"
+        Object2="//@GameObjects.2"/>
+    <WorldEvents
+        Name="GameOver"
+        CollisionTrigger="//@GameWorld/@WorldTriggers.0"/>
+  </GameWorld>
+</Code2D:Game>
