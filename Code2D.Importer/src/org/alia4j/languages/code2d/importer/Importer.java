@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import nl.utwente.apc.Code2D.Code2DPackage;
 import nl.utwente.apc.Code2D.Game;
 import nl.utwente.apc.Code2D.base.Code2DGame;
+import nl.utwente.apc.Code2D.base.Main;
+import nl.utwente.apc.Code2D.base.core.Player;
 import nl.utwente.apc.Code2D.impl.Code2DPackageImpl;
 
 public class Importer implements org.alia4j.fial.Importer {
@@ -54,7 +56,16 @@ public class Importer implements org.alia4j.fial.Importer {
 		// example everything is hierarchical included in this first node
 		Game gameDefinition = (Game) resource.getContents().get(0);
 
-		Code2DGame game = new Code2DGame();
+		Code2DGame game = Main.getGameInstance();
+		
+		Player player = new Player();
+		player.x = 480 / 2 -64 /2;
+		player.y = 20;
+		player.width = 64;
+		player.height = 64;
+		player.setTexturePath("bucket.png");
+		
+		game.add(player);
 	}
 
 }

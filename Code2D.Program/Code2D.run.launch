@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/Code2D.Program"/>
+<listEntry value="/Code2D-Base"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="4"/>
@@ -50,6 +50,6 @@
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="nl.utwente.apc.Code2D.base.Main"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Code2D.Program"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Code2D-Base"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-javaagent:&quot;${workspace_loc:/ALIA4J NOIRIn libraries/lib/alia4j-noirin-core.jar}&quot;&#13;&#10;-Dcode2.main=SuperGeorge&#13;&#10;-Dorg.alia4j.importer=org.alia4j.languages.code2d.importer.Importer&#13;&#10;-Dorg.alia4j.exclude=com.badlogic.,org.lwjgl.,javazoom.jl."/>
 </launchConfiguration>

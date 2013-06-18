@@ -1,8 +1,11 @@
 package nl.utwente.apc.Code2D.base;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import nl.utwente.apc.Code2D.base.core.GameObject;
+import nl.utwente.apc.Code2D.base.core.MoveableObject;
 import nl.utwente.apc.Code2D.base.core.NPC;
 import nl.utwente.apc.Code2D.base.core.Player;
 import nl.utwente.apc.Code2D.base.core.TextureFactory;
@@ -19,12 +22,20 @@ import com.badlogic.gdx.utils.TimeUtils;
 public class Code2DGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-
-	private Player player;
-
-	private Array<NPC> NPCs;
 	
-	private long lastDropTime;
+	private List<GameObject> objects;
+
+	/**
+	 * 
+	 */
+	public Code2DGame() {
+		super();
+		this.objects = new ArrayList<GameObject>();
+	}
+	
+	public void add(GameObject object) {
+		this.objects.add(object);
+	}
 
 	@Override
 	public void create() {
@@ -32,12 +43,10 @@ public class Code2DGame implements ApplicationListener {
 		this.camera.setToOrtho(false, 800, 480);
 
 		this.batch = new SpriteBatch();
-
-		this.player = new Player(480 / 2 - 64 / 2, 20, 64, 64);
-		this.player.setTexturePath("bucket.png");
-
-		NPCs = new Array<NPC>();
-		spawnNPC();
+		
+		for(GameObject object : this.objects) {
+			object.init();
+		}
 	}
 
 	@Override
@@ -55,9 +64,11 @@ public class Code2DGame implements ApplicationListener {
 
 		this.batch.setProjectionMatrix(camera.combined);
 		this.batch.begin();
-		this.player.draw(this.batch);
-		for (GameObject npc : NPCs) {
-			npc.draw(this.batch);
+		for(GameObject object : this.objects) {
+			object.draw(batch);
+			if(object instanceof MoveableObject) {
+				((MoveableObject) object).updatePos();
+			}
 		}
 		this.batch.end();
 
@@ -67,23 +78,6 @@ public class Code2DGame implements ApplicationListener {
 			camera.unproject(touchPos);
 			player.x = touchPos.x - 64 / 2;
 		}*/
-
-		this.player.updatePos();
-		
-
-		if ((TimeUtils.nanoTime() - lastDropTime > 1000000000) && NPCs.size < 5)
-			spawnNPC();
-
-		Iterator<NPC> iter = NPCs.iterator();
-		while (iter.hasNext()) {
-			NPC npc = iter.next();
-			npc.updatePos();
-			
-			if (npc.overlaps(player)) {
-				iter.remove();
-			}
-		}
-
 	}
 
 	@Override
@@ -96,16 +90,5 @@ public class Code2DGame implements ApplicationListener {
 
 	@Override
 	public void resume() {
-	}
-
-	private void spawnNPC() {
-		NPC npc = new NPC();
-		npc.x = MathUtils.random(0, Gdx.graphics.getWidth() - 64);
-		npc.y = MathUtils.random(0, Gdx.graphics.getHeight() - 64);
-		npc.width = 64;
-		npc.height = 64;
-		npc.setTexturePath("droplet.png");
-		NPCs.add(npc);
-		lastDropTime = TimeUtils.nanoTime();
 	}
 }

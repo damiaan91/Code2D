@@ -77,6 +77,9 @@ public abstract class GameObject extends Rectangle {
 
 	public void setTexturePath(String texturePath) {
 		this.texturePath = texturePath;
+	}
+	
+	public void init() {
 		this.texture = TextureFactory.getInstance().getTexture(texturePath);
 	}
 
