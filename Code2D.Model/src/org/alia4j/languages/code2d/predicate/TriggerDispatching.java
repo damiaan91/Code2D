@@ -16,8 +16,7 @@ public class TriggerDispatching extends AtomicPredicate {
 	}
 	
 	public boolean collision(GameObjectContext one, GameObjectContext two) {
-	//	return one.x == two.x && one.y == two.y;
-		return true;
+		return one.getGO().x == two.getGO().x && one.getGO().y == two.getGO().y;
 	}
 
 	@Override

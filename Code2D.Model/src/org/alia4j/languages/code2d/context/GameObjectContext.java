@@ -3,6 +3,8 @@ package org.alia4j.languages.code2d.context;
 import java.util.Collections;
 import java.util.List;
 
+import nl.utwente.apc.Code2D.base.core.GameObject;
+
 import org.alia4j.liam.Context;
 import org.alia4j.liam.SimpleType;
 import org.alia4j.liam.signature.Signed;
@@ -12,13 +14,15 @@ import org.alia4j.util.Maybe;
 
 public class GameObjectContext extends Context{
 	
-	private String objectName;
-	private int id;
-	
-	public GameObjectContext(String objectName, int id) {
+	private GameObject objectName;
+
+	public GameObjectContext(GameObject objectName) {
 		super(Collections.<Context> emptyList());
 		this.objectName = objectName;
-		this.id = id;
+	}
+	
+	public GameObject getGO() {
+		return objectName;
 	}
 	
 	@Override
@@ -31,13 +35,17 @@ public class GameObjectContext extends Context{
 		return SimpleType.REFERENCE;
 	}
 	
-	public Object getObjectValue() {
+	/**
+	 * may be useless.
+	 * @return a GameObject.
+	 */
+	public GameObject getObjectValue() {
 		final CallContext callContext = SystemImpl.getSingletonSystemImpl()
 				.getCallStackTop();
-		for (int i = 0; i < callContext.callerLocalsNames.length; i++) {
-			if (callContext.callerLocalsNames[i].equals(objectName))
-				return callContext.callerLocals[i];
+		for (int i = 0; i < callContext.callerArgumentTypes.length; i++) {
+			if (callContext.callerArgumentTypes[i].equals(objectName))
+				return (GameObject) callContext.calleeArguments[i];
 		}
-		return "Object Not Found";
+		return null;
 	}
 }
