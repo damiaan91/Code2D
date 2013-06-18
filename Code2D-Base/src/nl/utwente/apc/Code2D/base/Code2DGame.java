@@ -1,44 +1,37 @@
 package nl.utwente.apc.Code2D.base;
 
 import java.util.Iterator;
-import java.util.Random;
+
+import nl.utwente.apc.Code2D.base.core.NPC;
+import nl.utwente.apc.Code2D.base.core.Player;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.Texture.TextureFilter;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class Code2DGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Texture texture;
-	private Sprite sprite;
-
+	
 	private Texture dropImage;
 	private Texture bucketImage;
 
 	private Sound dropSound;
 	private Music rainMusic;
 
-	private Rectangle bucket;
+	private Player player;
 
-	private Array<Rectangle> raindrops;
+	private Array<NPC> NPCs;
 	private long lastDropTime;
-	
-	private Random rng = new Random();
 
 	@Override
 	public void create() {
@@ -59,14 +52,10 @@ public class Code2DGame implements ApplicationListener {
 		this.rainMusic.setLooping(true);
 		this.rainMusic.play();
 
-		this.bucket = new Rectangle();
-		this.bucket.x = 480 / 2 - 64 / 2;
-		this.bucket.y = 20;
-		this.bucket.width = 64;
-		this.bucket.height = 64;
+		this.player = new Player(480 / 2 - 64 / 2, 20, 64, 64);
 
-		raindrops = new Array<Rectangle>();
-		spawnRaindrop();
+		NPCs = new Array<NPC>();
+		spawnNPC();
 
 		// TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
 
@@ -94,56 +83,31 @@ public class Code2DGame implements ApplicationListener {
 
 		this.batch.setProjectionMatrix(camera.combined);
 		this.batch.begin();
-		this.batch.draw(bucketImage, bucket.x, bucket.y);
-		for (Rectangle raindrop : raindrops) {
-			batch.draw(dropImage, raindrop.x, raindrop.y);
+		this.batch.draw(bucketImage, player.x, player.y);
+		for (Rectangle npc : NPCs) {
+			batch.draw(dropImage, npc.x, npc.y);
 		}
 		this.batch.end();
 
-		if (Gdx.input.isTouched()) {
+		/*if (Gdx.input.isTouched()) {
 			Vector3 touchPos = new Vector3();
 			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
 			camera.unproject(touchPos);
-			bucket.x = touchPos.x - 64 / 2;
-		}
+			player.x = touchPos.x - 64 / 2;
+		}*/
 
-		if (Gdx.input.isKeyPressed(Keys.LEFT))
-			bucket.x -= 200 * Gdx.graphics.getDeltaTime();
-		if (Gdx.input.isKeyPressed(Keys.RIGHT))
-			bucket.x += 200 * Gdx.graphics.getDeltaTime();
-		if (Gdx.input.isKeyPressed(Keys.UP))
-			bucket.y += 200 * Gdx.graphics.getDeltaTime();
-		if (Gdx.input.isKeyPressed(Keys.DOWN))
-			bucket.y -= 200 * Gdx.graphics.getDeltaTime();
-
-		if (bucket.x < 0)
-			bucket.x = 0;
-		if (bucket.x > Gdx.graphics.getWidth() - 64)
-			bucket.x = Gdx.graphics.getWidth() - 64;
-		if (bucket.y < 0)
-			bucket.y = 0;
-		if (bucket.y > Gdx.graphics.getHeight() - 64)
-			bucket.y = Gdx.graphics.getHeight() - 64;
+		this.player.updatePos();
 		
 
-		if ((TimeUtils.nanoTime() - lastDropTime > 1000000000) && raindrops.size < 5)
-			spawnRaindrop();
+		if ((TimeUtils.nanoTime() - lastDropTime > 1000000000) && NPCs.size < 5)
+			spawnNPC();
 
-		Iterator<Rectangle> iter = raindrops.iterator();
+		Iterator<NPC> iter = NPCs.iterator();
 		while (iter.hasNext()) {
-			Rectangle raindrop = iter.next();
-			raindrop.x += MathUtils.random(-200, 200) * Gdx.graphics.getDeltaTime();
-			raindrop.y += MathUtils.random(-200, 200) * Gdx.graphics.getDeltaTime();
-			if (raindrop.x + 64 < 0)
-				raindrop.x = 0;
-			if (raindrop.y + 64< 0)
-				raindrop.y = 0;
-			if (raindrop.x > Gdx.graphics.getWidth())
-				raindrop.x = Gdx.graphics.getWidth() - 64;
-			if (raindrop.y > Gdx.graphics.getHeight())
-				raindrop.y = Gdx.graphics.getHeight() - 64;
+			NPC npc = iter.next();
+			npc.updatePos();
 			
-			if (raindrop.overlaps(bucket)) {
+			if (npc.overlaps(player)) {
 				dropSound.play();
 				iter.remove();
 			}
@@ -163,13 +127,13 @@ public class Code2DGame implements ApplicationListener {
 	public void resume() {
 	}
 
-	private void spawnRaindrop() {
-		Rectangle raindrop = new Rectangle();
-		raindrop.x = MathUtils.random(0, Gdx.graphics.getWidth() - 64);
-		raindrop.y = MathUtils.random(0, Gdx.graphics.getHeight() - 64);
-		raindrop.width = 64;
-		raindrop.height = 64;
-		raindrops.add(raindrop);
+	private void spawnNPC() {
+		NPC npc = new NPC();
+		npc.x = MathUtils.random(0, Gdx.graphics.getWidth() - 64);
+		npc.y = MathUtils.random(0, Gdx.graphics.getHeight() - 64);
+		npc.width = 64;
+		npc.height = 64;
+		NPCs.add(npc);
 		lastDropTime = TimeUtils.nanoTime();
 	}
 }
