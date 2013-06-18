@@ -3,6 +3,8 @@ package org.alia4j.languages.code2d.context;
 import java.util.Map;
 import java.util.HashMap;
 
+import nl.utwente.apc.Code2D.base.core.GameObject;
+
 import org.alia4j.liam.Context;
 
 public class C2DContextFactory {
@@ -18,27 +20,15 @@ public class C2DContextFactory {
     }
     
     private static C2DContextFactory singleton;
-    private static Map<TupleHash, Context> canonicalArgumentContexts = new HashMap<TupleHash, Context>();
+    private static Map<GameObject, Context> canonicalArgumentContexts = new HashMap<GameObject, Context>();
 	
-    public static final Context findOrCreateArgumentContext(GameObject objName, int id) {
-    	TupleHash th = C2DContextFactory.singleton.new TupleHash(objName, id);
-        if (!canonicalArgumentContexts.containsKey(th))
-           canonicalArgumentContexts.put(th, getInstance().createArgumentContext(th));
-        return canonicalArgumentContexts.get(th);
+    public static final Context findOrCreateArgumentContext(GameObject go) {
+        if (!canonicalArgumentContexts.containsKey(go))
+           canonicalArgumentContexts.put(go, getInstance().createArgumentContext(go));
+        return canonicalArgumentContexts.get(go);
     }
     
-    protected Context createArgumentContext(TupleHash th) {
-		return new GameObjectContext(th.fst, th.snd);
+    protected Context createArgumentContext(GameObject go) {
+		return new GameObjectContext(go);
 	}
-    
-    private class TupleHash {
-    	
-    	private GameObject fst;
-    	private int snd;
-    	
-    	TupleHash(GameObject fst, int snd) {
-    		this.fst = fst;
-    		this.snd = snd;
-    	}
-    }
 }

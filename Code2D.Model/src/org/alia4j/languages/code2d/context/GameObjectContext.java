@@ -3,6 +3,8 @@ package org.alia4j.languages.code2d.context;
 import java.util.Collections;
 import java.util.List;
 
+import nl.utwente.apc.Code2D.base.core.GameObject;
+
 import org.alia4j.liam.Context;
 import org.alia4j.liam.SimpleType;
 import org.alia4j.liam.signature.Signed;
@@ -42,7 +44,7 @@ public class GameObjectContext extends Context{
 				.getCallStackTop();
 		for (int i = 0; i < callContext.callerArgumentTypes.length; i++) {
 			if (callContext.callerArgumentTypes[i].equals(objectName))
-				return callContext.calleeArguments[i];
+				return (GameObject) callContext.calleeArguments[i];
 		}
 		return null;
 	}
