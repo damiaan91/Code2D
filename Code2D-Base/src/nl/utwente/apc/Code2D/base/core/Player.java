@@ -5,6 +5,7 @@ package nl.utwente.apc.Code2D.base.core;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 /**
@@ -66,6 +67,14 @@ public class Player extends ControllableObject {
 			this.y = 0;
 		if (this.y > Gdx.graphics.getHeight() - 64)
 			this.y = Gdx.graphics.getHeight() - 64;
+	}
+
+	/* (non-Javadoc)
+	 * @see nl.utwente.apc.Code2D.base.core.GameObject#updateRender(com.badlogic.gdx.graphics.g2d.SpriteBatch)
+	 */
+	@Override
+	public void draw(SpriteBatch batch) {
+		batch.draw(this.texture, this.x, this.y);
 	}
 
 }

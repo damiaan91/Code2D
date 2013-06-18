@@ -4,6 +4,7 @@
 package nl.utwente.apc.Code2D.base.core;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -69,6 +70,14 @@ public class NPC extends MoveableObject {
 
 	public void setBehaviour(NPCBehaviour behaviour) {
 		this.behaviour = behaviour;
+	}
+
+	/* (non-Javadoc)
+	 * @see nl.utwente.apc.Code2D.base.core.GameObject#updateRender(com.badlogic.gdx.graphics.g2d.SpriteBatch)
+	 */
+	@Override
+	public void draw(SpriteBatch batch) {
+		batch.draw(this.texture, this.x, this.y);
 	}
 
 }

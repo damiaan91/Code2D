@@ -2,35 +2,28 @@ package nl.utwente.apc.Code2D.base;
 
 import java.util.Iterator;
 
+import nl.utwente.apc.Code2D.base.core.GameObject;
 import nl.utwente.apc.Code2D.base.core.NPC;
 import nl.utwente.apc.Code2D.base.core.Player;
+import nl.utwente.apc.Code2D.base.core.TextureFactory;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class Code2DGame implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	
-	private Texture dropImage;
-	private Texture bucketImage;
-
-	private Sound dropSound;
-	private Music rainMusic;
 
 	private Player player;
 
 	private Array<NPC> NPCs;
+	
 	private long lastDropTime;
 
 	@Override
@@ -40,38 +33,17 @@ public class Code2DGame implements ApplicationListener {
 
 		this.batch = new SpriteBatch();
 
-		// texture = new Texture(Gdx.files.internal("data/libgdx.png"));
-		// texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-
-		this.dropImage = new Texture(Gdx.files.internal("droplet.png"));
-		this.bucketImage = new Texture(Gdx.files.internal("bucket.png"));
-
-		this.dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
-		this.rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
-
-		this.rainMusic.setLooping(true);
-		this.rainMusic.play();
-
 		this.player = new Player(480 / 2 - 64 / 2, 20, 64, 64);
+		this.player.setTexturePath("bucket.png");
 
 		NPCs = new Array<NPC>();
 		spawnNPC();
-
-		// TextureRegion region = new TextureRegion(texture, 0, 0, 512, 275);
-
-		// sprite = new Sprite(region);
-		// sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
-		// sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-		// sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
 	}
 
 	@Override
 	public void dispose() {
-		dropImage.dispose();
-		bucketImage.dispose();
-		dropSound.dispose();
-		rainMusic.dispose();
 		batch.dispose();
+		TextureFactory.getInstance().dispose();
 	}
 
 	@Override
@@ -83,9 +55,9 @@ public class Code2DGame implements ApplicationListener {
 
 		this.batch.setProjectionMatrix(camera.combined);
 		this.batch.begin();
-		this.batch.draw(bucketImage, player.x, player.y);
-		for (Rectangle npc : NPCs) {
-			batch.draw(dropImage, npc.x, npc.y);
+		this.player.draw(this.batch);
+		for (GameObject npc : NPCs) {
+			npc.draw(this.batch);
 		}
 		this.batch.end();
 
@@ -108,7 +80,6 @@ public class Code2DGame implements ApplicationListener {
 			npc.updatePos();
 			
 			if (npc.overlaps(player)) {
-				dropSound.play();
 				iter.remove();
 			}
 		}
@@ -133,6 +104,7 @@ public class Code2DGame implements ApplicationListener {
 		npc.y = MathUtils.random(0, Gdx.graphics.getHeight() - 64);
 		npc.width = 64;
 		npc.height = 64;
+		npc.setTexturePath("droplet.png");
 		NPCs.add(npc);
 		lastDropTime = TimeUtils.nanoTime();
 	}

@@ -3,6 +3,8 @@
  */
 package nl.utwente.apc.Code2D.base.core;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
 /**
@@ -20,7 +22,9 @@ public abstract class GameObject extends Rectangle {
 
 	protected String name;
 	
-	protected String texture;
+	protected String texturePath;
+	
+	protected Texture texture;
 
 	/**
 	 * 
@@ -34,6 +38,7 @@ public abstract class GameObject extends Rectangle {
 	 */
 	public GameObject(Rectangle rect) {
 		super(rect);
+
 		// TODO Auto-generated constructor stub
 	}
 
@@ -47,6 +52,8 @@ public abstract class GameObject extends Rectangle {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public abstract void draw(SpriteBatch batch);
 
 	public String getName() {
 		return name;
@@ -64,12 +71,13 @@ public abstract class GameObject extends Rectangle {
 		this.id = id;
 	}
 
-	public String getTexture() {
-		return texture;
+	public String getTexturePath() {
+		return texturePath;
 	}
 
-	public void setTexture(String texture) {
-		this.texture = texture;
+	public void setTexturePath(String texturePath) {
+		this.texturePath = texturePath;
+		this.texture = TextureFactory.getInstance().getTexture(texturePath);
 	}
 
 }
