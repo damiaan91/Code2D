@@ -26,6 +26,7 @@ public class Importer implements org.alia4j.fial.Importer {
 			System.out.println("No text adventure file specified (use VM argument -Dcode2.main=<class-path-relative-file-name>");
 		}
 		
+		Code2DPackage.eINSTANCE.eClass();
 		//Code2DPackage.eINSTANCE.eClass();
 	}
 
