@@ -58,9 +58,9 @@ public class NPC extends MoveableObject {
 			this.x = 0;
 		if (this.y + 64< 0)
 			this.y = 0;
-		if (this.x > Gdx.graphics.getWidth())
+		if (this.x > Gdx.graphics.getWidth() - 64)
 			this.x = Gdx.graphics.getWidth() - 64;
-		if (this.y > Gdx.graphics.getHeight())
+		if (this.y > Gdx.graphics.getHeight() - 64)
 			this.y = Gdx.graphics.getHeight() - 64;
 	}
 

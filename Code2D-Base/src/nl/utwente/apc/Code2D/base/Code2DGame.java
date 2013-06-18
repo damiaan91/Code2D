@@ -61,7 +61,7 @@ public class Code2DGame implements ApplicationListener {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		this.camera.update();
-
+		
 		this.batch.setProjectionMatrix(camera.combined);
 		this.batch.begin();
 		for(GameObject object : this.objects) {
