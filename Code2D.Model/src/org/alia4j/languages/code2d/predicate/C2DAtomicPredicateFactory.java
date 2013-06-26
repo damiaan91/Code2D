@@ -6,22 +6,21 @@ import org.alia4j.util.PairHashMap;
 
 public class C2DAtomicPredicateFactory {
     
-	public C2DAtomicPredicateFactory() {
-        if (C2DAtomicPredicateFactory.singleton != null)
-            throw new IllegalStateException();
-        C2DAtomicPredicateFactory.singleton = this;
+	private C2DAtomicPredicateFactory() {
     }
     
-    private static C2DAtomicPredicateFactory getInstance() {
-        return C2DAtomicPredicateFactory.singleton;
+    public static C2DAtomicPredicateFactory getInstance() {
+    	if (singleton == null)
+    		singleton = new C2DAtomicPredicateFactory();
+        return singleton;
     }
     
     private static C2DAtomicPredicateFactory singleton;
     private static PairHashMap<Context, Context, AtomicPredicate> canonicalContextValuePredicates = new PairHashMap<Context, Context, AtomicPredicate>();
 
-    public static final AtomicPredicate findOrCreateContextValuesPredicate(Context fst, Context snd) {
+    public AtomicPredicate findOrCreateContextValuesPredicate(Context fst, Context snd) {
         if (!canonicalContextValuePredicates.containsKeys(fst, snd))
-            canonicalContextValuePredicates.put(fst, snd, getInstance().createContextValuesPredicate(fst, snd));
+            canonicalContextValuePredicates.put(fst, snd, createContextValuesPredicate(fst, snd));
         return canonicalContextValuePredicates.get(fst, snd);
     }
 	

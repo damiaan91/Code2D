@@ -1,8 +1,31 @@
 package org.alia4j.languages.code2d.importer;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 
+import org.alia4j.hierarchy.TypeDescriptor;
+import org.alia4j.hierarchy.TypeDescriptorConstants;
+import org.alia4j.hierarchy.TypeHierarchyProvider;
+import org.alia4j.languages.code2d.actions.BasicAction;
+import org.alia4j.languages.code2d.context.C2DContextFactory;
+import org.alia4j.languages.code2d.predicate.C2DAtomicPredicateFactory;
+import org.alia4j.liam.ActionFactory;
+import org.alia4j.liam.AtomicPredicate;
+import org.alia4j.liam.Attachment;
+import org.alia4j.liam.BasicPredicate;
+import org.alia4j.liam.Context;
+import org.alia4j.liam.ScheduleInfo;
+import org.alia4j.liam.Specialization;
+import org.alia4j.liam.pattern.MethodPattern;
+import org.alia4j.liam.signature.ResolutionStrategy;
+import org.alia4j.patterns.ClassTypePattern;
+import org.alia4j.patterns.ExceptionsPattern;
+import org.alia4j.patterns.ModifiersPattern;
+import org.alia4j.patterns.ParametersPattern;
+import org.alia4j.patterns.TypePattern;
+import org.alia4j.patterns.names.ExactNamePattern;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -10,6 +33,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
 
 import nl.utwente.apc.Code2D.Code2DPackage;
 import nl.utwente.apc.Code2D.Game;
@@ -23,6 +47,8 @@ public class Importer implements org.alia4j.fial.Importer {
 
 	private final ClassLoader systemClassLoader;
 	private boolean initialized = false;
+	
+	private ArrayList<Attachment> initialAttachments = new ArrayList<Attachment>();
 
 	public Importer(ClassLoader systemClassLoader) {
 		this.systemClassLoader = systemClassLoader;
@@ -60,7 +86,7 @@ public class Importer implements org.alia4j.fial.Importer {
 		Game gameDefinition = (Game) resource.getContents().get(0);
 
 		Code2DGame game = Main.getGameInstance();
-		
+			
 		Player player = new Player();
 		player.x = 480 / 2 - 64 /2;
 		player.y = 20;
@@ -77,6 +103,35 @@ public class Importer implements org.alia4j.fial.Importer {
 		
 		game.add(player);
 		game.add(npc);
+		
+		setupCollisionTrigger(player, npc);
+		
+		Attachment[] toDeploy = new Attachment[initialAttachments.size()];
+		org.alia4j.fial.System.deploy(initialAttachments.toArray(toDeploy));
 	}
+		
+	private void setupCollisionTrigger(Player player, NPC npc) {
+		MethodPattern pattern = new MethodPattern(ModifiersPattern.ANY,
+				TypePattern.ANY, ClassTypePattern.ANY,
+				new ExactNamePattern("updatePos"), ParametersPattern.ANY,
+				ExceptionsPattern.ANY);
 
+		C2DAtomicPredicateFactory apFactory = C2DAtomicPredicateFactory.getInstance();
+		C2DContextFactory cFactory = C2DContextFactory.getInstance();
+		
+		Specialization specialization = new Specialization(pattern,
+				new BasicPredicate<AtomicPredicate>(
+						apFactory.findOrCreateContextValuesPredicate(
+								cFactory.findOrCreateObjectConstantContext(player),
+								cFactory.findOrCreateObjectConstantContext(npc)),
+								true),
+				Collections.<Context>emptyList());
+
+		Attachment collisionAttachment = new Attachment(
+				Collections.singleton(specialization),
+				ActionFactory.findOrCreateMethodCallAction(TypeHierarchyProvider.findOrCreateFromClass(BasicAction.class),
+				"endGame", new TypeDescriptor[0], TypeDescriptorConstants.VOID_PRIMITIVE, ResolutionStrategy.STATIC), ScheduleInfo.AFTER);
+		initialAttachments.add(collisionAttachment);
+		
+	}
 }

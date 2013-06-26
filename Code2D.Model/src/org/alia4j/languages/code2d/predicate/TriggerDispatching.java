@@ -15,8 +15,15 @@ public class TriggerDispatching extends AtomicPredicate {
 		super(Arrays.asList(firstObjectContext, secondObjectContext));
 	}
 	
-	public boolean collision(GameObjectContext one, GameObjectContext two) {
-		return one.getGO().x == two.getGO().x && one.getGO().y == two.getGO().y;
+	public boolean isSatisfied(Object one, Object two) {
+		if (one instanceof GameObjectContext && two instanceof GameObjectContext){
+			return coliding((GameObjectContext) one, (GameObjectContext) two);
+		}
+		return false;
+	}
+	
+	public boolean coliding(GameObjectContext one, GameObjectContext two) {
+		return one.getGO().overlaps(two.getGO());
 	}
 
 	@Override

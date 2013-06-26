@@ -8,27 +8,26 @@ import nl.utwente.apc.Code2D.base.core.GameObject;
 import org.alia4j.liam.Context;
 
 public class C2DContextFactory {
-    
-	public C2DContextFactory() {
-        if (C2DContextFactory.singleton != null)
-            throw new IllegalStateException();
-        C2DContextFactory.singleton = this;
-    }
-    
-    private static C2DContextFactory getInstance() {
-        return C2DContextFactory.singleton;
-    }
-    
-    private static C2DContextFactory singleton;
-    private static Map<GameObject, Context> canonicalArgumentContexts = new HashMap<GameObject, Context>();
 	
-    public static final Context findOrCreateArgumentContext(GameObject go) {
-        if (!canonicalArgumentContexts.containsKey(go))
-           canonicalArgumentContexts.put(go, getInstance().createArgumentContext(go));
-        return canonicalArgumentContexts.get(go);
+	private static C2DContextFactory singleton;
+	private static HashMap<Object, Context> canonicalObjectConstantContexts = new HashMap<Object, Context>();
+    
+	private C2DContextFactory() {
     }
     
-    protected Context createArgumentContext(GameObject go) {
-		return new GameObjectContext(go);
+    public static C2DContextFactory getInstance() {
+    	if (singleton == null)
+    		singleton = new C2DContextFactory();
+        return singleton;
+    }
+    
+    public Context findOrCreateObjectConstantContext(final Object go) {
+        if (!canonicalObjectConstantContexts.containsKey(go))
+        	canonicalObjectConstantContexts.put(go, createObjectConstantContext(go));
+        return canonicalObjectConstantContexts.get(go);
+    }
+    
+    protected Context createObjectConstantContext(final Object go) {
+		return new GameObjectContext((GameObject) go);
 	}
 }
