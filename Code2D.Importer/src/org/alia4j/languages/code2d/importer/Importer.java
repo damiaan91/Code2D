@@ -16,6 +16,7 @@ import org.alia4j.liam.AtomicPredicate;
 import org.alia4j.liam.Attachment;
 import org.alia4j.liam.BasicPredicate;
 import org.alia4j.liam.Context;
+import org.alia4j.liam.ContextFactory;
 import org.alia4j.liam.ScheduleInfo;
 import org.alia4j.liam.Specialization;
 import org.alia4j.liam.pattern.MethodPattern;
@@ -122,8 +123,8 @@ public class Importer implements org.alia4j.fial.Importer {
 		Specialization specialization = new Specialization(pattern,
 				new BasicPredicate<AtomicPredicate>(
 						apFactory.findOrCreateContextValuesPredicate(
-								cFactory.findOrCreateObjectConstantContext(player),
-								cFactory.findOrCreateObjectConstantContext(npc)),
+								ContextFactory.findOrCreateCalleeContext(),
+								cFactory.findOrCreateWrappedFieldValueContext("objects", ContextFactory.findOrCreateCallerContext())),
 								true),
 				Collections.<Context>emptyList());
 

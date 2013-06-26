@@ -3,6 +3,8 @@ package org.alia4j.languages.code2d.predicate;
 import java.util.Arrays;
 import java.util.List;
 
+import nl.utwente.apc.Code2D.base.core.GameObject;
+
 import org.alia4j.languages.code2d.context.GameObjectContext;
 import org.alia4j.liam.AtomicPredicate;
 import org.alia4j.liam.Context;
@@ -16,14 +18,15 @@ public class TriggerDispatching extends AtomicPredicate {
 	}
 	
 	public boolean isSatisfied(Object one, Object two) {
-		if (one instanceof GameObjectContext && two instanceof GameObjectContext){
-			return coliding((GameObjectContext) one, (GameObjectContext) two);
+		if (one instanceof GameObject && two instanceof List){
+			return coliding((GameObject) one, (List<GameObject>) two);
 		}
 		return false;
 	}
 	
-	public boolean coliding(GameObjectContext one, GameObjectContext two) {
-		return one.getGO().overlaps(two.getGO());
+	public boolean coliding(GameObject one, List<GameObject> two) {
+//		return one.getGO().overlaps(two.getGO());
+		return false;
 	}
 
 	@Override

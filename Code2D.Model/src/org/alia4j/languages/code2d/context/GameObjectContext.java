@@ -42,8 +42,8 @@ public class GameObjectContext extends Context{
 	public GameObject getObjectValue() {
 		final CallContext callContext = SystemImpl.getSingletonSystemImpl()
 				.getCallStackTop();
-		for (int i = 0; i < callContext.callerArgumentTypes.length; i++) {
-			if (callContext.callerArgumentTypes[i].equals(objectName))
+		for (int i = 0; i < callContext.calleeArgumentTypes.length; i++) {
+			if (callContext.calleeArgumentTypes[i].equals(objectName))
 				return (GameObject) callContext.calleeArguments[i];
 		}
 		return null;

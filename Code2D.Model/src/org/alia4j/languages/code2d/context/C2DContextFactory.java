@@ -6,12 +6,14 @@ import java.util.HashMap;
 import nl.utwente.apc.Code2D.base.core.GameObject;
 
 import org.alia4j.liam.Context;
+import org.alia4j.util.PairHashMap;
 
 public class C2DContextFactory {
 	
 	private static C2DContextFactory singleton;
 	private static HashMap<Object, Context> canonicalObjectConstantContexts = new HashMap<Object, Context>();
-    
+    private static PairHashMap<String, Context, Context> canonicalFieldContexts = new PairHashMap<String, Context, Context>();
+	
 	private C2DContextFactory() {
     }
     
@@ -29,5 +31,16 @@ public class C2DContextFactory {
     
     protected Context createObjectConstantContext(final Object go) {
 		return new GameObjectContext((GameObject) go);
+	}
+
+	public Context findOrCreateWrappedFieldValueContext(String fieldName,
+			Context owner) {
+		if (!canonicalFieldContexts.containsKeys(fieldName, owner))
+			canonicalFieldContexts.put(fieldName, owner, createWrappedFieldValueContext(fieldName, owner));
+		return canonicalFieldContexts.get(fieldName, owner);
+	}
+
+	private Context createWrappedFieldValueContext(String fieldName, Context owner) {
+		return new WrappedFieldValueContext(fieldName, owner);
 	}
 }
