@@ -9,10 +9,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import com.badlogic.gdx.math.MathUtils;
+
 import nl.utwente.apc.Code2D.Code2DPackage;
 import nl.utwente.apc.Code2D.Game;
 import nl.utwente.apc.Code2D.base.Code2DGame;
 import nl.utwente.apc.Code2D.base.Main;
+import nl.utwente.apc.Code2D.base.core.NPC;
 import nl.utwente.apc.Code2D.base.core.Player;
 import nl.utwente.apc.Code2D.impl.Code2DPackageImpl;
 
@@ -59,13 +62,21 @@ public class Importer implements org.alia4j.fial.Importer {
 		Code2DGame game = Main.getGameInstance();
 		
 		Player player = new Player();
-		player.x = 480 / 2 -64 /2;
+		player.x = 480 / 2 - 64 /2;
 		player.y = 20;
 		player.width = 64;
 		player.height = 64;
 		player.setTexturePath("bucket.png");
 		
+		NPC npc = new NPC();
+		npc.x = MathUtils.random(0, 800 - 64);
+		npc.y = MathUtils.random(0, 480 - 64);
+		npc.width = 64;
+		npc.height = 64;
+		npc.setTexturePath("droplet.png");
+		
 		game.add(player);
+		game.add(npc);
 	}
 
 }
