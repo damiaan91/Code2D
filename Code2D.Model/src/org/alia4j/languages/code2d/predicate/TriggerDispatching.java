@@ -5,7 +5,6 @@ import java.util.List;
 
 import nl.utwente.apc.Code2D.base.core.GameObject;
 
-import org.alia4j.languages.code2d.context.GameObjectContext;
 import org.alia4j.liam.AtomicPredicate;
 import org.alia4j.liam.Context;
 import org.alia4j.liam.signature.Signed;
@@ -25,7 +24,10 @@ public class TriggerDispatching extends AtomicPredicate {
 	}
 	
 	public boolean coliding(GameObject one, List<GameObject> two) {
-//		return one.getGO().overlaps(two.getGO());
+		for(GameObject go : two) {
+			if(one != go && one.overlaps(go))
+					return true;
+		}
 		return false;
 	}
 
