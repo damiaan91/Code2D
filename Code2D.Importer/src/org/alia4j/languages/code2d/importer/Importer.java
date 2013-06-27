@@ -27,6 +27,7 @@ import org.alia4j.patterns.ModifiersPattern;
 import org.alia4j.patterns.ParametersPattern;
 import org.alia4j.patterns.TypePattern;
 import org.alia4j.patterns.names.ExactNamePattern;
+import org.alia4j.patterns.types.ExactClassTypePattern;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -93,6 +94,7 @@ public class Importer implements org.alia4j.fial.Importer {
 		player.y = 20;
 		player.width = 64;
 		player.height = 64;
+		player.setId(1);
 		player.setTexturePath("bucket.png");
 		
 		NPC npc = new NPC();
@@ -100,6 +102,7 @@ public class Importer implements org.alia4j.fial.Importer {
 		npc.y = MathUtils.random(0, 480 - 64);
 		npc.width = 64;
 		npc.height = 64;
+		npc.setId(2);
 		npc.setTexturePath("droplet.png");
 		
 		game.add(player);
@@ -112,19 +115,20 @@ public class Importer implements org.alia4j.fial.Importer {
 	}
 		
 	private void setupCollisionTrigger(Player player, NPC npc) {
-		MethodPattern pattern = new MethodPattern(ModifiersPattern.ANY,
-				TypePattern.ANY, ClassTypePattern.ANY,
-				new ExactNamePattern("updatePos"), ParametersPattern.ANY,
+		MethodPattern pattern = new MethodPattern(
+				ModifiersPattern.ANY,
+				TypePattern.ANY, 
+				new ExactClassTypePattern(TypeHierarchyProvider.findOrCreateFromClass(Code2DGame.class)),
+				new ExactNamePattern("drawUpdateGame"), 
+				ParametersPattern.ANY,
 				ExceptionsPattern.ANY);
-
-		C2DAtomicPredicateFactory apFactory = C2DAtomicPredicateFactory.getInstance();
-		C2DContextFactory cFactory = C2DContextFactory.getInstance();
 		
-		Specialization specialization = new Specialization(pattern,
+		Specialization specialization = new Specialization(
+				pattern,
 				new BasicPredicate<AtomicPredicate>(
-						apFactory.findOrCreateContextValuesPredicate(
-								ContextFactory.findOrCreateCalleeContext(),
-								cFactory.findOrCreateWrappedFieldValueContext("objects", ContextFactory.findOrCreateCallerContext())),
+						C2DAtomicPredicateFactory.findOrCreateCollisionContextPredicate(
+								C2DContextFactory.findOrCreateCollisionListContext(C2DContextFactory.findOrCreateWrappedFieldValueContext("objects", ContextFactory.findOrCreateCallerContext()), Player.class, 1),
+								C2DContextFactory.findOrCreateCollisionListContext(C2DContextFactory.findOrCreateWrappedFieldValueContext("objects", ContextFactory.findOrCreateCallerContext()), NPC.class, 2)),
 								true),
 				Collections.<Context>emptyList());
 

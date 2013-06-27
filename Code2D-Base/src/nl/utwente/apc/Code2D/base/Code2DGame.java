@@ -63,6 +63,10 @@ public class Code2DGame implements ApplicationListener {
 		this.camera.update();
 		
 		this.batch.setProjectionMatrix(camera.combined);
+		drawUpdateGame();
+	}
+
+	private void drawUpdateGame() {
 		this.batch.begin();
 		for(GameObject object : this.objects) {
 			object.draw(batch);
@@ -71,13 +75,6 @@ public class Code2DGame implements ApplicationListener {
 			}
 		}
 		this.batch.end();
-
-		/*if (Gdx.input.isTouched()) {
-			Vector3 touchPos = new Vector3();
-			touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-			camera.unproject(touchPos);
-			player.x = touchPos.x - 64 / 2;
-		}*/
 	}
 
 	@Override
