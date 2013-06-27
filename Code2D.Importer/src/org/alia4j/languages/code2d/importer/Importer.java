@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 
+import nl.utwente.apc.Code2D.Code2DPackage;
+import nl.utwente.apc.Code2D.Game;
+import nl.utwente.apc.Code2D.Instance;
+import nl.utwente.apc.Code2D.base.Code2DGame;
+import nl.utwente.apc.Code2D.base.Main;
+import nl.utwente.apc.Code2D.base.core.NPC;
+import nl.utwente.apc.Code2D.base.core.Player;
+
 import org.alia4j.hierarchy.TypeDescriptor;
 import org.alia4j.hierarchy.TypeDescriptorConstants;
 import org.alia4j.hierarchy.TypeHierarchyProvider;
@@ -21,13 +29,13 @@ import org.alia4j.liam.ScheduleInfo;
 import org.alia4j.liam.Specialization;
 import org.alia4j.liam.pattern.MethodPattern;
 import org.alia4j.liam.signature.ResolutionStrategy;
-import org.alia4j.patterns.ClassTypePattern;
 import org.alia4j.patterns.ExceptionsPattern;
 import org.alia4j.patterns.ModifiersPattern;
 import org.alia4j.patterns.ParametersPattern;
 import org.alia4j.patterns.TypePattern;
 import org.alia4j.patterns.names.ExactNamePattern;
 import org.alia4j.patterns.types.ExactClassTypePattern;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -35,15 +43,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
-
-import nl.utwente.apc.Code2D.Code2DPackage;
-import nl.utwente.apc.Code2D.Game;
-import nl.utwente.apc.Code2D.base.Code2DGame;
-import nl.utwente.apc.Code2D.base.Main;
-import nl.utwente.apc.Code2D.base.core.NPC;
-import nl.utwente.apc.Code2D.base.core.Player;
-import nl.utwente.apc.Code2D.impl.Code2DPackageImpl;
 
 public class Importer implements org.alia4j.fial.Importer {
 
@@ -86,17 +85,9 @@ public class Importer implements org.alia4j.fial.Importer {
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
 		Game gameDefinition = (Game) resource.getContents().get(0);
-
-		Code2DGame game = Main.getGameInstance();
-			
-		Player player = new Player();
-		player.x = 480 / 2 - 64 /2;
-		player.y = 20;
-		player.width = 64;
-		player.height = 64;
-		player.setId(1);
-		player.setTexturePath("bucket.png");
 		
+		processInstances(gameDefinition.getGameWorld().getWorldInstances(), Main.getGameInstance());
+			
 		NPC npc = new NPC();
 		npc.x = MathUtils.random(0, 800 - 64);
 		npc.y = MathUtils.random(0, 480 - 64);
@@ -105,16 +96,36 @@ public class Importer implements org.alia4j.fial.Importer {
 		npc.setId(2);
 		npc.setTexturePath("droplet.png");
 		
-		game.add(player);
-		game.add(npc);
+		Main.getGameInstance().add(npc);
 		
-		setupCollisionTrigger(player, npc);
+		setupCollisionTrigger();
 		
 		Attachment[] toDeploy = new Attachment[initialAttachments.size()];
 		org.alia4j.fial.System.deploy(initialAttachments.toArray(toDeploy));
 	}
 		
-	private void setupCollisionTrigger(Player player, NPC npc) {
+	private void processInstances(EList<Instance> worldInstances, Code2DGame game) {
+		for(Instance instance : worldInstances) {
+			if(instance.getObject() instanceof nl.utwente.apc.Code2D.Player) {
+				game.add(getPlayer(instance));
+			}
+		}
+		
+	}
+
+	private Player getPlayer(Instance playerInstance) {
+		nl.utwente.apc.Code2D.Player ePlayer = (nl.utwente.apc.Code2D.Player) playerInstance.getObject();
+		Player player = new Player();
+		player.x = playerInstance.getX1() * 32;
+		player.y = playerInstance.getY1() * 32;
+		player.width = 32;
+		player.height = 32;
+		player.setId(1);
+		player.setTexturePath(ePlayer.getTexture());
+		return player;
+	}
+
+	private void setupCollisionTrigger() {
 		MethodPattern pattern = new MethodPattern(
 				ModifiersPattern.ANY,
 				TypePattern.ANY, 

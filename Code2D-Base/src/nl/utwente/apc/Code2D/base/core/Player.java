@@ -51,22 +51,22 @@ public class Player extends ControllableObject {
 	@Override
 	public void updatePos() {
 		if (Gdx.input.isKeyPressed(Keys.LEFT))
-			this.x -= 200 * Gdx.graphics.getDeltaTime();
+			this.x -= 64 * Gdx.graphics.getDeltaTime();
 		if (Gdx.input.isKeyPressed(Keys.RIGHT))
-			this.x += 200 * Gdx.graphics.getDeltaTime();
+			this.x += 64 * Gdx.graphics.getDeltaTime();
 		if (Gdx.input.isKeyPressed(Keys.UP))
-			this.y += 200 * Gdx.graphics.getDeltaTime();
+			this.y += 64 * Gdx.graphics.getDeltaTime();
 		if (Gdx.input.isKeyPressed(Keys.DOWN))
-			this.y -= 200 * Gdx.graphics.getDeltaTime();
+			this.y -= 64 * Gdx.graphics.getDeltaTime();
 		
 		if (this.x < 0)
 			this.x = 0;
-		if (this.x > Gdx.graphics.getWidth() - 64)
-			this.x = Gdx.graphics.getWidth() - 64;
+		if (this.x > Gdx.graphics.getWidth() - 32)
+			this.x = Gdx.graphics.getWidth() - 32;
 		if (this.y < 0)
 			this.y = 0;
-		if (this.y > Gdx.graphics.getHeight() - 64)
-			this.y = Gdx.graphics.getHeight() - 64;
+		if (this.y > Gdx.graphics.getHeight() - 32)
+			this.y = Gdx.graphics.getHeight() - 32;
 	}
 
 	/* (non-Javadoc)
@@ -74,7 +74,7 @@ public class Player extends ControllableObject {
 	 */
 	@Override
 	public void draw(SpriteBatch batch) {
-		batch.draw(this.texture, this.x, this.y);
+		batch.draw(this.texture, this.x, this.y, this.width, this.height);
 	}
 
 }

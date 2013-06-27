@@ -1,13 +1,10 @@
 package nl.utwente.apc.Code2D.base;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import nl.utwente.apc.Code2D.base.core.GameObject;
 import nl.utwente.apc.Code2D.base.core.MoveableObject;
-import nl.utwente.apc.Code2D.base.core.NPC;
-import nl.utwente.apc.Code2D.base.core.Player;
 import nl.utwente.apc.Code2D.base.core.TextureFactory;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -15,9 +12,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.TimeUtils;
 
 public class Code2DGame implements ApplicationListener {
 	private OrthographicCamera camera;

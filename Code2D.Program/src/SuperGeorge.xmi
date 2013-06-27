@@ -4,49 +4,46 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:Code2D="http://www.utwente.nl/apc/Code2D"
-    xsi:schemaLocation="http://www.utwente.nl/apc/Code2D text.ecore">
-  <GameObjects
-      xsi:type="Code2D:Player"
-      Name="George"
-      Texture="georgeTexture"/>
+    xsi:schemaLocation="http://www.utwente.nl/apc/Code2D ../../nl.utwente.apc.Code2D/metamodel/text.ecore"
+    Name="SuperGeorge">
   <GameObjects
       xsi:type="Code2D:NPC"
       Name="RedMonster"
-      Texture="redMobTexture"
       Behaviour="HOSTILE"
-      Extends="//@GameObjects.3"/>
+      Extends="//@GameObjects.2"/>
   <GameObjects
       xsi:type="Code2D:Scenery"
-      Name="Tree"
-      Texture="treeTexture"/>
+      Name="Tree"/>
   <GameObjects
       xsi:type="Code2D:NPC"
       Name="BlueMonster"
-      Texture="blueMobTexture"
       Behaviour="HOSTILE"/>
   <GameObjects
       xsi:type="Code2D:Terrain"
       Name="Grass"
-      Texture="grassTexture"
-      CanStand="true"
-      CanHaveItem="true"/>
+      CanStand="true"/>
   <GameWorld
-      Name="World1">
+      Name="Level1">
     <WorldInstances
         X1="12"
         Y1="12"
-        Object="//@GameObjects.0"/>
+        Object="//@Player"/>
     <WorldInstances
         X2="12"
         Y2="11"
-        Object="//@GameObjects.2"/>
+        Object="//@GameObjects.1"/>
     <WorldTriggers
         xsi:type="Code2D:CollisionTrigger"
         Name="GeorgeHitsATree"
-        Object1="//@GameObjects.0"
-        Object2="//@GameObjects.2"/>
+        Object1="//@Player"
+        Object2="//@GameObjects.1"/>
     <WorldEvents
         Name="GameOver"
-        CollisionTrigger="//@GameWorld/@WorldTriggers.0"/>
+        CollisionTrigger="//@GameWorld/@WorldTriggers.0">
+      <EventActions
+          xsi:type="Code2D:BasicAction"/>
+    </WorldEvents>
   </GameWorld>
+  <Player Name="Super George"
+      Texture="supergeorge.png"/>
 </Code2D:Game>

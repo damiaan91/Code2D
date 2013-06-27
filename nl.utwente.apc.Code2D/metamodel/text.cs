@@ -7,10 +7,10 @@ OPTIONS {
 }
 
 TOKENS {
+	DEFINE UPPER $('A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9'|'.')*$;
 	DEFINE COMMENT $'//'(~('\n'|'\r'|'\uffff'))*$;
 	DEFINE INTEGER $('-')?('1'..'9')('0'..'9')*|'0'$;
 	DEFINE FLOAT $('-')?(('1'..'9') ('0'..'9')* | '0') '.' ('0'..'9')+ $;
-	DEFINE UPPER $('A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9'|'.')*$;
 }
 
 TOKENSTYLES {
@@ -51,6 +51,8 @@ TOKENSTYLES {
 	"Action" COLOR #7F0055, BOLD;
 	"Object1" COLOR #7F0055, BOLD;
 	"Object2" COLOR #7F0055, BOLD;
+	"on" COLOR #7F0055, BOLD;
+	"Collide" COLOR #7F0055, BOLD;
 }
 
 RULES {

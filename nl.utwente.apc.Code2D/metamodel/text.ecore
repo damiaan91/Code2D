@@ -4,22 +4,23 @@
   <eClassifiers xsi:type="ecore:EClass" name="Game">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="GameObjects" upperBound="-1"
-        eType="#//GameObject" containment="true"/>
+        eType="#//NonControllableObject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="GameWorld" lowerBound="1"
         eType="#//World" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Player" lowerBound="1"
+        eType="#//Player" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameObject" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Texture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MoveableObject" abstract="true" eSuperTypes="#//GameObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ControllableObject" abstract="true"
-      eSuperTypes="#//MoveableObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Player" eSuperTypes="#//ControllableObject">
+  <eClassifiers xsi:type="ecore:EClass" name="NonControllableObject" abstract="true"
+      eSuperTypes="#//GameObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Player" eSuperTypes="#//GameObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="InventoryItems" upperBound="-1"
         eType="#//Item"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NPC" eSuperTypes="#//MoveableObject">
+  <eClassifiers xsi:type="ecore:EClass" name="NPC" eSuperTypes="#//NonControllableObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Behaviour" eType="#//NPCBehaviour"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Extends" eType="#//NPC"/>
   </eClassifiers>
@@ -28,7 +29,7 @@
     <eLiterals name="NEUTRAL" value="1"/>
     <eLiterals name="HOSTILE" value="2"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Item" eSuperTypes="#//GameObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Item" eSuperTypes="#//NonControllableObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="World">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="WorldInstances" upperBound="-1"
@@ -38,17 +39,19 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="WorldEvents" upperBound="-1"
         eType="#//Event" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Terrain" eSuperTypes="#//GameObject">
+  <eClassifiers xsi:type="ecore:EClass" name="Terrain" eSuperTypes="#//NonControllableObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="CanStand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="CanHaveItem" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Trap" eSuperTypes="#//GameObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Scenery" eSuperTypes="#//GameObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Trap" eSuperTypes="#//NonControllableObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Scenery" eSuperTypes="#//NonControllableObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="Instance">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="X1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="X2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="X2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Y1" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Y2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Y2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="-1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Object" lowerBound="1"
         eType="#//GameObject"/>
   </eClassifiers>

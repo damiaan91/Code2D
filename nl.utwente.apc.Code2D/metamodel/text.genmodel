@@ -18,13 +18,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//Game/Name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Game/GameObjects"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Game/GameWorld"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text.ecore#//Game/Player"/>
     </genClasses>
     <genClasses image="false" ecoreClass="text.ecore#//GameObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//GameObject/Name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text.ecore#//GameObject/Texture"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="text.ecore#//MoveableObject"/>
-    <genClasses image="false" ecoreClass="text.ecore#//ControllableObject"/>
+    <genClasses image="false" ecoreClass="text.ecore#//NonControllableObject"/>
     <genClasses ecoreClass="text.ecore#//Player">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text.ecore#//Player/InventoryItems"/>
     </genClasses>
