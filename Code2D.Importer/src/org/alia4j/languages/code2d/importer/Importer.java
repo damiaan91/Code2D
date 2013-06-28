@@ -8,6 +8,8 @@ import java.util.Map;
 import nl.utwente.apc.Code2D.Code2DPackage;
 import nl.utwente.apc.Code2D.Game;
 import nl.utwente.apc.Code2D.Instance;
+import nl.utwente.apc.Code2D.ObjectInstance;
+import nl.utwente.apc.Code2D.PlayerInstance;
 import nl.utwente.apc.Code2D.base.Code2DGame;
 import nl.utwente.apc.Code2D.base.Main;
 import nl.utwente.apc.Code2D.base.core.NPC;
@@ -86,8 +88,9 @@ public class Importer implements org.alia4j.fial.Importer {
 		// example everything is hierarchical included in this first node
 		Game gameDefinition = (Game) resource.getContents().get(0);
 		
-		processInstances(gameDefinition.getGameWorld().getWorldInstances(), Main.getGameInstance());
-			
+		processPlayerInstance(gameDefinition.getGameWorld().getPlayerInstance(), Main.getGameInstance());	
+		processObjectInstances(gameDefinition.getGameWorld().getWorldInstances(), Main.getGameInstance());
+		
 		NPC npc = new NPC();
 		npc.x = MathUtils.random(0, 800 - 64);
 		npc.y = MathUtils.random(0, 480 - 64);
@@ -104,17 +107,17 @@ public class Importer implements org.alia4j.fial.Importer {
 		org.alia4j.fial.System.deploy(initialAttachments.toArray(toDeploy));
 	}
 		
-	private void processInstances(EList<Instance> worldInstances, Code2DGame game) {
-		for(Instance instance : worldInstances) {
-			if(instance.getObject() instanceof nl.utwente.apc.Code2D.Player) {
-				game.add(getPlayer(instance));
-			}
+	private void processObjectInstances(EList<ObjectInstance> worldInstances, Code2DGame game) {
+		for(ObjectInstance instance : worldInstances) {
+			//TODO: add the right instances
 		}
-		
+	}
+	private void processPlayerInstance(PlayerInstance pInstance, Code2DGame game) {
+		game.add(getPlayer(pInstance));
 	}
 
-	private Player getPlayer(Instance playerInstance) {
-		nl.utwente.apc.Code2D.Player ePlayer = (nl.utwente.apc.Code2D.Player) playerInstance.getObject();
+	private Player getPlayer(PlayerInstance playerInstance) {
+		nl.utwente.apc.Code2D.Player ePlayer = (nl.utwente.apc.Code2D.Player) playerInstance.getPlayer();
 		Player player = new Player();
 		player.x = playerInstance.getX1() * 32;
 		player.y = playerInstance.getY1() * 32;

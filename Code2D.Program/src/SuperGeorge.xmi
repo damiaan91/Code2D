@@ -20,18 +20,9 @@
       Behaviour="HOSTILE"/>
   <GameObjects
       xsi:type="Code2D:Terrain"
-      Name="Grass"
-      CanStand="true"/>
+      Name="Grass"/>
   <GameWorld
       Name="Level1">
-    <WorldInstances
-        X1="12"
-        Y1="12"
-        Object="//@Player"/>
-    <WorldInstances
-        X2="12"
-        Y2="11"
-        Object="//@GameObjects.1"/>
     <WorldTriggers
         xsi:type="Code2D:CollisionTrigger"
         Name="GeorgeHitsATree"
@@ -43,6 +34,14 @@
       <EventActions
           xsi:type="Code2D:BasicAction"/>
     </WorldEvents>
+    <PlayerInstance
+        X1="12"
+        Y1="12"
+        Player="//@Player"/>
+    <WorldInstances
+        X2="12"
+        Y2="11"
+        Object="//@GameObjects.1"/>
   </GameWorld>
   <Player Name="Super George"
       Texture="supergeorge.png"/>
