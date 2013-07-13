@@ -6,10 +6,12 @@ import java.util.Collections;
 import java.util.Map;
 
 import nl.utwente.apc.Code2D.Code2DPackage;
+import nl.utwente.apc.Code2D.Event;
 import nl.utwente.apc.Code2D.Game;
-import nl.utwente.apc.Code2D.Instance;
 import nl.utwente.apc.Code2D.ObjectInstance;
 import nl.utwente.apc.Code2D.PlayerInstance;
+import nl.utwente.apc.Code2D.Trigger;
+import nl.utwente.apc.Code2D.World;
 import nl.utwente.apc.Code2D.base.Code2DGame;
 import nl.utwente.apc.Code2D.base.Main;
 import nl.utwente.apc.Code2D.base.core.NPC;
@@ -90,6 +92,7 @@ public class Importer implements org.alia4j.fial.Importer {
 		
 		processPlayerInstance(gameDefinition.getGameWorld().getPlayerInstance(), Main.getGameInstance());	
 		processObjectInstances(gameDefinition.getGameWorld().getWorldInstances(), Main.getGameInstance());
+		processEvents(gameDefinition.getGameWorld(), Main.getGameInstance());
 		
 		NPC npc = new NPC();
 		npc.x = MathUtils.random(0, 800 - 64);
@@ -107,6 +110,27 @@ public class Importer implements org.alia4j.fial.Importer {
 		org.alia4j.fial.System.deploy(initialAttachments.toArray(toDeploy));
 	}
 		
+	private ArrayList<Trigger> processTriggers(EList<Trigger> worldTriggers, Code2DGame game) {
+		ArrayList<Trigger> trList = new ArrayList<Trigger>();
+		for(Trigger tr : worldTriggers) {
+			trList.add(tr);
+		}
+		return trList;
+	}
+
+	private void processEvents(World world, Code2DGame game) {
+		EList<Event> evList = world.getWorldEvents();
+		ArrayList<Trigger> trList = processTriggers(world.getWorldTriggers(), Main.getGameInstance());
+		for(Event ev : evList) {
+			if(ev.getName() == "GameOver") {
+				for(Trigger tr : trList) {
+					if(ev.getCollisionTrigger() == tr)
+						setupCollisionTrigger(tr);
+				}
+			}
+		}
+	}
+
 	private void processObjectInstances(EList<ObjectInstance> worldInstances, Code2DGame game) {
 		for(ObjectInstance instance : worldInstances) {
 			//TODO: add the right instances
@@ -128,7 +152,7 @@ public class Importer implements org.alia4j.fial.Importer {
 		return player;
 	}
 
-	private void setupCollisionTrigger() {
+	private void setupCollisionTrigger(Trigger tr) {
 		MethodPattern pattern = new MethodPattern(
 				ModifiersPattern.ANY,
 				TypePattern.ANY, 
