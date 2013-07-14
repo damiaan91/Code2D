@@ -8,7 +8,7 @@ package nl.utwente.apc.Code2D.base.core;
  *
  */
 public enum NPCBehaviour {
-	Friendly,
-	Neutral,
-	Hostile,
+	FRIENDLY,
+	NEUTRAL,
+	HOSTILE,
 }

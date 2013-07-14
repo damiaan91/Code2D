@@ -18,7 +18,9 @@ public class Code2DGame implements ApplicationListener {
 	private SpriteBatch batch;
 	
 	private List<GameObject> objects;
-
+	
+	private int[] worldBlockDemisions = {32, 32};
+	
 	/**
 	 * 
 	 */
@@ -81,5 +83,9 @@ public class Code2DGame implements ApplicationListener {
 
 	@Override
 	public void resume() {
+	}
+
+	public int[] getWorldBlockDemisions() {
+		return worldBlockDemisions;
 	}
 }

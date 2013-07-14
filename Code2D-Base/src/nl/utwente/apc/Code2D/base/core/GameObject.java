@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Rectangle;
  * @author Damiaan
  *
  */
-public abstract class GameObject extends Rectangle {
+public abstract class GameObject extends Rectangle implements Cloneable {
 	
 	/**
 	 * 
@@ -81,6 +81,12 @@ public abstract class GameObject extends Rectangle {
 	
 	public void init() {
 		this.texture = TextureFactory.getInstance().getTexture(texturePath);
+	}
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
 	}
 
 }

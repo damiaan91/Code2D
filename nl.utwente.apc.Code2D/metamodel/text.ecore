@@ -2,7 +2,8 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Code2D" nsURI="http://www.utwente.nl/apc/Code2D" nsPrefix="Code2D">
   <eClassifiers xsi:type="ecore:EClass" name="Game">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="NewGame"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="GameObjects" upperBound="-1"
         eType="#//NonControllableObject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="GameWorld" lowerBound="1"
@@ -12,11 +13,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameObject" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Texture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Texture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="default.png"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="-1"/>
+        defaultValueLiteral="32"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="-1"/>
+        defaultValueLiteral="32"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NonControllableObject" abstract="true"
       eSuperTypes="#//GameObject"/>

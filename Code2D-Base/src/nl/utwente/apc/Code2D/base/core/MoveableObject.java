@@ -14,6 +14,11 @@ public abstract class MoveableObject extends GameObject {
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = -7825267015403450575L;
+
+	/**
+	 * 
+	 */
 	public MoveableObject() {
 		// TODO Auto-generated constructor stub
 	}

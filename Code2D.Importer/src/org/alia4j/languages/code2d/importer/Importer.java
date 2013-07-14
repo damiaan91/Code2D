@@ -12,9 +12,9 @@ import nl.utwente.apc.Code2D.ObjectInstance;
 import nl.utwente.apc.Code2D.PlayerInstance;
 import nl.utwente.apc.Code2D.base.Code2DGame;
 import nl.utwente.apc.Code2D.base.Main;
+import nl.utwente.apc.Code2D.base.core.GameObject;
 import nl.utwente.apc.Code2D.base.core.NPC;
 import nl.utwente.apc.Code2D.base.core.Player;
-
 import org.alia4j.hierarchy.TypeDescriptor;
 import org.alia4j.hierarchy.TypeDescriptorConstants;
 import org.alia4j.hierarchy.TypeHierarchyProvider;
@@ -50,7 +50,7 @@ public class Importer implements org.alia4j.fial.Importer {
 
 	private final ClassLoader systemClassLoader;
 	private boolean initialized = false;
-	
+
 	private ArrayList<Attachment> initialAttachments = new ArrayList<Attachment>();
 
 	public Importer(ClassLoader systemClassLoader) {
@@ -63,8 +63,7 @@ public class Importer implements org.alia4j.fial.Importer {
 			throw new Error("Importer has already been executed.");
 		initialized = true;
 
-		URL mainFile = systemClassLoader.getResource(System
-				.getProperty("code2.main") + ".xmi");
+		URL mainFile = systemClassLoader.getResource(System.getProperty("code2.main") + ".xmi");
 
 		if (mainFile == null) {
 			System.out
@@ -82,15 +81,14 @@ public class Importer implements org.alia4j.fial.Importer {
 		ResourceSet resSet = new ResourceSetImpl();
 
 		// Get the resource
-		Resource resource = resSet.getResource(
-				URI.createURI(mainFile.toExternalForm()), true);
+		Resource resource = resSet.getResource(URI.createURI(mainFile.toExternalForm()), true);
 		// Get the first model element and cast it to the right type, in my
 		// example everything is hierarchical included in this first node
 		Game gameDefinition = (Game) resource.getContents().get(0);
-		
-		processPlayerInstance(gameDefinition.getGameWorld().getPlayerInstance(), Main.getGameInstance());	
+
+		processPlayerInstance(gameDefinition.getGameWorld().getPlayerInstance(), Main.getGameInstance());
 		processObjectInstances(gameDefinition.getGameWorld().getWorldInstances(), Main.getGameInstance());
-		
+
 		NPC npc = new NPC();
 		npc.x = MathUtils.random(0, 800 - 64);
 		npc.y = MathUtils.random(0, 480 - 64);
@@ -98,59 +96,84 @@ public class Importer implements org.alia4j.fial.Importer {
 		npc.height = 64;
 		npc.setId(2);
 		npc.setTexturePath("droplet.png");
-		
+
 		Main.getGameInstance().add(npc);
-		
+
 		setupCollisionTrigger();
-		
+
 		Attachment[] toDeploy = new Attachment[initialAttachments.size()];
 		org.alia4j.fial.System.deploy(initialAttachments.toArray(toDeploy));
 	}
-		
+
 	private void processObjectInstances(EList<ObjectInstance> worldInstances, Code2DGame game) {
-		for(ObjectInstance instance : worldInstances) {
-			//TODO: add the right instances
+
+		GameObject gameObject;
+		for (ObjectInstance instance : worldInstances) {
+			gameObject = Code2DImporterUtils.getGameObject(instance.getObject());
+			addInstance(gameObject, instance, game);
 		}
 	}
-	private void processPlayerInstance(PlayerInstance pInstance, Code2DGame game) {
-		game.add(getPlayer(pInstance));
+
+	private void addInstance(GameObject gameObject, Instance instance, Code2DGame game) {
+		if (instance instanceof ObjectInstance) {
+			ObjectInstance oInstance = (ObjectInstance) instance;
+			if (oInstance.getX2() > 0 || oInstance.getY2() > 0) {
+				addMultipleInstances(gameObject, oInstance, game);
+				return;
+			}
+		}
+		addInstance(gameObject, instance.getX1(), instance.getY1(), game);
 	}
 
-	private Player getPlayer(PlayerInstance playerInstance) {
-		nl.utwente.apc.Code2D.Player ePlayer = (nl.utwente.apc.Code2D.Player) playerInstance.getPlayer();
-		Player player = new Player();
-		player.x = playerInstance.getX1() * 32;
-		player.y = playerInstance.getY1() * 32;
-		player.width = 32;
-		player.height = 32;
-		player.setId(1);
-		player.setTexturePath(ePlayer.getTexture());
-		return player;
+	private void addInstance(GameObject gameObject, int x1, int y1, Code2DGame game) {
+		gameObject.x = x1 * game.getWorldBlockDemisions()[0];
+		gameObject.y = y1 * game.getWorldBlockDemisions()[1];
+		game.add(gameObject);
+	}
+
+	private void addMultipleInstances(final GameObject gameObject, final ObjectInstance oInstance, final Code2DGame game) {
+		GameObject objectToAdd = gameObject;
+		for (int x = oInstance.getX1(); x < oInstance.getX2(); x++) {
+			for (int y = oInstance.getY1(); y < oInstance.getY2(); y++) {
+				addInstance(objectToAdd, x, y, game);
+				try {
+					objectToAdd = (GameObject) objectToAdd.clone();
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+
+	private void processPlayerInstance(PlayerInstance pInstance, Code2DGame game) {
+		nl.utwente.apc.Code2D.Player ePlayer = (nl.utwente.apc.Code2D.Player) pInstance.getPlayer();
+		Player player = (Player) Code2DImporterUtils.getGameObject(ePlayer);
+		addInstance(player, pInstance, game);
 	}
 
 	private void setupCollisionTrigger() {
-		MethodPattern pattern = new MethodPattern(
-				ModifiersPattern.ANY,
-				TypePattern.ANY, 
-				new ExactClassTypePattern(TypeHierarchyProvider.findOrCreateFromClass(Code2DGame.class)),
-				new ExactNamePattern("drawUpdateGame"), 
-				ParametersPattern.ANY,
-				ExceptionsPattern.ANY);
-		
-		Specialization specialization = new Specialization(
-				pattern,
-				new BasicPredicate<AtomicPredicate>(
-						C2DAtomicPredicateFactory.findOrCreateCollisionContextPredicate(
-								C2DContextFactory.findOrCreateCollisionListContext(C2DContextFactory.findOrCreateWrappedFieldValueContext("objects", ContextFactory.findOrCreateCallerContext()), Player.class, 1),
-								C2DContextFactory.findOrCreateCollisionListContext(C2DContextFactory.findOrCreateWrappedFieldValueContext("objects", ContextFactory.findOrCreateCallerContext()), NPC.class, 2)),
-								true),
-				Collections.<Context>emptyList());
+		MethodPattern pattern = new MethodPattern(ModifiersPattern.ANY, TypePattern.ANY, new ExactClassTypePattern(
+				TypeHierarchyProvider.findOrCreateFromClass(Code2DGame.class)), new ExactNamePattern("drawUpdateGame"),
+				ParametersPattern.ANY, ExceptionsPattern.ANY);
 
-		Attachment collisionAttachment = new Attachment(
-				Collections.singleton(specialization),
-				ActionFactory.findOrCreateMethodCallAction(TypeHierarchyProvider.findOrCreateFromClass(BasicAction.class),
-				"endGame", new TypeDescriptor[0], TypeDescriptorConstants.VOID_PRIMITIVE, ResolutionStrategy.STATIC), ScheduleInfo.AFTER);
+		Specialization specialization = new Specialization(pattern, new BasicPredicate<AtomicPredicate>(
+				C2DAtomicPredicateFactory.findOrCreateCollisionContextPredicate(
+						C2DContextFactory.findOrCreateCollisionListContext(
+								C2DContextFactory.findOrCreateWrappedFieldValueContext("objects",
+										ContextFactory.findOrCreateCallerContext()), Player.class, 0),
+						C2DContextFactory.findOrCreateCollisionListContext(
+								C2DContextFactory.findOrCreateWrappedFieldValueContext("objects",
+										ContextFactory.findOrCreateCallerContext()), NPC.class, 2)), true),
+				Collections.<Context> emptyList());
+
+		Attachment collisionAttachment = new Attachment(Collections.singleton(specialization),
+				ActionFactory.findOrCreateMethodCallAction(
+						TypeHierarchyProvider.findOrCreateFromClass(BasicAction.class), "endGame",
+						new TypeDescriptor[0], TypeDescriptorConstants.VOID_PRIMITIVE, ResolutionStrategy.STATIC),
+				ScheduleInfo.AFTER);
 		initialAttachments.add(collisionAttachment);
-		
+
 	}
 }
