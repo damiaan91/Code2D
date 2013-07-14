@@ -52,6 +52,8 @@ public class Code2DImporterUtils {
 			gameObject = createPlayer((nl.utwente.apc.Code2D.Player) gameObjectDef);
 		} else if (gameObjectDef instanceof nl.utwente.apc.Code2D.NPC) {
 			gameObject = createNPC((nl.utwente.apc.Code2D.NPC) gameObjectDef);
+		} else if (gameObjectDef instanceof nl.utwente.apc.Code2D.Terrain) {
+			gameObject = createTerrain((nl.utwente.apc.Code2D.Terrain) gameObjectDef);
 		} else {
 			throw new UnsupportedOperationException(String.format("Object %s is not supported.",
 					gameObjectDef.getName()));
@@ -59,6 +61,10 @@ public class Code2DImporterUtils {
 		setGameObjectProps(gameObject, gameObjectDef);
 		gameObjectMap.put(gameObjectDef, gameObject);
 		return gameObject;
+	}
+
+	private static GameObject createTerrain(nl.utwente.apc.Code2D.Terrain gameObjectDef) {
+		return new Terrain();
 	}
 
 	private static GameObject createNPC(nl.utwente.apc.Code2D.NPC gameObjectDef) {

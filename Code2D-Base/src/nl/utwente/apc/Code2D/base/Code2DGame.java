@@ -36,7 +36,7 @@ public class Code2DGame implements ApplicationListener {
 		this.camera = new OrthographicCamera();
 		this.camera.setToOrtho(false, 800, 480);
 
-		this.batch = new SpriteBatch();
+		this.batch = new SpriteBatch(300);
 		
 		for(GameObject object : this.objects) {
 			object.init();

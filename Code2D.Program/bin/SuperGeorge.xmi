@@ -21,7 +21,8 @@
       Behaviour="HOSTILE"/>
   <GameObjects
       xsi:type="Code2D:Terrain"
-      Name="Grass"/>
+      Name="Grass"
+      Texture="grass.png"/>
   <GameWorld
       Name="Level1">
     <WorldTriggers
@@ -53,6 +54,10 @@
         X2="24"
         Y2="14"
         Object="//@GameObjects.1"/>
+    <WorldInstances
+        X2="3"
+        Y2="3"
+        Object="//@GameObjects.3"/>
   </GameWorld>
   <Player Name="Super George"
       Texture="supergeorge.png"/>

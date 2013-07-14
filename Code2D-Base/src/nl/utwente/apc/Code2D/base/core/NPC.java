@@ -30,6 +30,7 @@ public class NPC extends MoveableObject {
 	 */
 	@Override
 	public void updatePos() {
+		
 		this.x += MathUtils.random(-200, 200) * Gdx.graphics.getDeltaTime();
 		this.y += MathUtils.random(-200, 200) * Gdx.graphics.getDeltaTime();
 		if (this.x + 64 < 0)

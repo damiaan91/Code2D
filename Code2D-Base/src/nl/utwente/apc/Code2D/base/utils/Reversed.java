@@ -1,6 +1,3 @@
-/**
- * 
- */
 package nl.utwente.apc.Code2D.base.utils;
 
 import java.util.Iterator;

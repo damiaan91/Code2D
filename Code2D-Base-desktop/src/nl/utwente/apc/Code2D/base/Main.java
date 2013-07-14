@@ -7,6 +7,8 @@ public class Main {
 	
 	private static Code2DGame game;
 	
+	private static LwjglApplication app;
+	
 	public static Code2DGame getGameInstance() {
 		if(game == null) {
 			game = new Code2DGame();
@@ -21,6 +23,10 @@ public class Main {
 		cfg.width = 800;
 		cfg.height = 480;
 		
-		new LwjglApplication(game, cfg);
+		app = new LwjglApplication(game, cfg);
+	}
+	
+	public static void exit() {
+		app.exit();
 	}
 }
