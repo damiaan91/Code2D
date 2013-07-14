@@ -17,7 +17,6 @@ import nl.utwente.apc.Code2D.World;
 import nl.utwente.apc.Code2D.base.Code2DGame;
 import nl.utwente.apc.Code2D.base.Main;
 import nl.utwente.apc.Code2D.base.core.GameObject;
-import nl.utwente.apc.Code2D.base.core.NPC;
 import nl.utwente.apc.Code2D.base.core.Player;
 import org.alia4j.hierarchy.TypeDescriptor;
 import org.alia4j.hierarchy.TypeDescriptorConstants;
@@ -47,8 +46,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-
-import com.badlogic.gdx.math.MathUtils;
 
 public class Importer implements org.alia4j.fial.Importer {
 
@@ -93,16 +90,7 @@ public class Importer implements org.alia4j.fial.Importer {
 		processPlayerInstance(gameDefinition.getGameWorld().getPlayerInstance(), Main.getGameInstance());
 		processObjectInstances(gameDefinition.getGameWorld().getWorldInstances(), Main.getGameInstance());
 		processEvents(gameDefinition.getGameWorld(), Main.getGameInstance());
-		
-		NPC npc = new NPC();
-		npc.x = MathUtils.random(0, 800 - 64);
-		npc.y = MathUtils.random(0, 480 - 64);
-		npc.width = 64;
-		npc.height = 64;
-		npc.setId(2);
-		npc.setTexturePath("droplet.png");
-
-		Main.getGameInstance().add(npc);
+	
 
 		Attachment[] toDeploy = new Attachment[initialAttachments.size()];
 		org.alia4j.fial.System.deploy(initialAttachments.toArray(toDeploy));
@@ -120,12 +108,10 @@ public class Importer implements org.alia4j.fial.Importer {
 		EList<Event> evList = world.getWorldEvents();
 		ArrayList<Trigger> trList = processTriggers(world.getWorldTriggers(), Main.getGameInstance());
 		for(Event ev : evList) {
-			if(ev.getName() == "GameOver") {
-				for(Trigger tr : trList) {
-					if(ev.getCollisionTrigger() == tr) {
-						CollisionTrigger ctr = (CollisionTrigger) tr;
-						setupCollisionTrigger(ctr.getObject1(), ctr.getObject2());
-					}
+			for(Trigger tr : trList) {
+				if(ev.getCollisionTrigger() == tr) {
+					CollisionTrigger ctr = (CollisionTrigger) tr;
+					setupCollisionTrigger(ctr.getObject1(), ctr.getObject2());
 				}
 			}
 		}
