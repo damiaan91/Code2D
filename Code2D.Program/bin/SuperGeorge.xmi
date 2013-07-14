@@ -13,7 +13,8 @@
       Extends="//@GameObjects.2"/>
   <GameObjects
       xsi:type="Code2D:Scenery"
-      Name="Tree"/>
+      Name="Tree"
+      Texture="tree1.png"/>
   <GameObjects
       xsi:type="Code2D:NPC"
       Name="BlueMonster"
