@@ -8,6 +8,7 @@ import java.util.Map;
 import nl.utwente.apc.Code2D.Code2DPackage;
 import nl.utwente.apc.Code2D.Event;
 import nl.utwente.apc.Code2D.Game;
+import nl.utwente.apc.Code2D.Instance;
 import nl.utwente.apc.Code2D.ObjectInstance;
 import nl.utwente.apc.Code2D.PlayerInstance;
 import nl.utwente.apc.Code2D.Trigger;
@@ -102,7 +103,7 @@ public class Importer implements org.alia4j.fial.Importer {
 
 		Main.getGameInstance().add(npc);
 
-		setupCollisionTrigger();
+		setupCollisionTrigger(null);
 
 		Attachment[] toDeploy = new Attachment[initialAttachments.size()];
 		org.alia4j.fial.System.deploy(initialAttachments.toArray(toDeploy));
@@ -141,7 +142,7 @@ public class Importer implements org.alia4j.fial.Importer {
 	private void addInstance(GameObject gameObject, Instance instance, Code2DGame game) {
 		if (instance instanceof ObjectInstance) {
 			ObjectInstance oInstance = (ObjectInstance) instance;
-			if (oInstance.getX2() > 0 || oInstance.getY2() > 0) {
+			if (oInstance.getX2() > -1 || oInstance.getY2() > -1) {
 				addMultipleInstances(gameObject, oInstance, game);
 				return;
 			}
@@ -157,8 +158,8 @@ public class Importer implements org.alia4j.fial.Importer {
 
 	private void addMultipleInstances(final GameObject gameObject, final ObjectInstance oInstance, final Code2DGame game) {
 		GameObject objectToAdd = gameObject;
-		for (int x = oInstance.getX1(); x < oInstance.getX2(); x++) {
-			for (int y = oInstance.getY1(); y < oInstance.getY2(); y++) {
+		for (int x = oInstance.getX1(); x <= oInstance.getX2(); x++) {
+			for (int y = oInstance.getY1(); y <= oInstance.getY2(); y++) {
 				addInstance(objectToAdd, x, y, game);
 				try {
 					objectToAdd = (GameObject) objectToAdd.clone();
@@ -177,7 +178,7 @@ public class Importer implements org.alia4j.fial.Importer {
 		addInstance(player, pInstance, game);
 	}
 
-	private void setupCollisionTrigger() {
+	private void setupCollisionTrigger(Trigger tr) {
 		MethodPattern pattern = new MethodPattern(ModifiersPattern.ANY, TypePattern.ANY, new ExactClassTypePattern(
 				TypeHierarchyProvider.findOrCreateFromClass(Code2DGame.class)), new ExactNamePattern("drawUpdateGame"),
 				ParametersPattern.ANY, ExceptionsPattern.ANY);

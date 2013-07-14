@@ -48,7 +48,7 @@ public class Scenery extends GameObject {
 	 */
 	@Override
 	public void draw(SpriteBatch batch) {
-		batch.draw(this.texture, this.x, this.y);
+		batch.draw(this.texture, this.x, this.y, this.width, this.height);
 	}
 
 }
