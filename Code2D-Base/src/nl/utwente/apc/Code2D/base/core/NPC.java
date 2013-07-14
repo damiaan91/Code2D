@@ -1,10 +1,6 @@
-/**
- * 
- */
 package nl.utwente.apc.Code2D.base.core;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -14,37 +10,19 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public class NPC extends MoveableObject {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2547115459843233657L;
 	
 	protected NPCBehaviour behaviour;
 
-	/**
-	 * 
-	 */
 	public NPC() {
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param rect
-	 */
 	public NPC(Rectangle rect) {
 		super(rect);
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 */
 	public NPC(float x, float y, float width, float height) {
 		super(x, y, width, height);
-		// TODO Auto-generated constructor stub
 	}
 
 	/* (non-Javadoc)
@@ -71,13 +49,4 @@ public class NPC extends MoveableObject {
 	public void setBehaviour(NPCBehaviour behaviour) {
 		this.behaviour = behaviour;
 	}
-
-	/* (non-Javadoc)
-	 * @see nl.utwente.apc.Code2D.base.core.GameObject#updateRender(com.badlogic.gdx.graphics.g2d.SpriteBatch)
-	 */
-	@Override
-	public void draw(SpriteBatch batch) {
-		batch.draw(this.texture, this.x, this.y);
-	}
-
 }

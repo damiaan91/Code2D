@@ -6,6 +6,7 @@ import java.util.List;
 import nl.utwente.apc.Code2D.base.core.GameObject;
 import nl.utwente.apc.Code2D.base.core.MoveableObject;
 import nl.utwente.apc.Code2D.base.core.TextureFactory;
+import static nl.utwente.apc.Code2D.base.utils.Reversed.reversed;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -21,9 +22,6 @@ public class Code2DGame implements ApplicationListener {
 	
 	private int[] worldBlockDemisions = {32, 32};
 	
-	/**
-	 * 
-	 */
 	public Code2DGame() {
 		super();
 		this.objects = new ArrayList<GameObject>();
@@ -64,7 +62,7 @@ public class Code2DGame implements ApplicationListener {
 
 	private void drawUpdateGame() {
 		this.batch.begin();
-		for(GameObject object : this.objects) {
+		for(GameObject object : reversed(this.objects)) {
 			object.draw(batch);
 			if(object instanceof MoveableObject) {
 				((MoveableObject) object).updatePos();
@@ -88,4 +86,5 @@ public class Code2DGame implements ApplicationListener {
 	public int[] getWorldBlockDemisions() {
 		return worldBlockDemisions;
 	}
+	
 }

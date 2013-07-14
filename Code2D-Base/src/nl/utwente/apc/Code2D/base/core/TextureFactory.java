@@ -24,9 +24,6 @@ public class TextureFactory {
 		return instance;
 	}
 
-	/**
-	 * 
-	 */
 	private TextureFactory() {
 		this.textures = new HashMap<String, Texture>();
 	}

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package nl.utwente.apc.Code2D.base.core;
 
 import com.badlogic.gdx.graphics.Texture;
@@ -13,9 +10,6 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public abstract class GameObject extends Rectangle implements Cloneable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8035120117717494896L;
 
 	protected int id;
@@ -26,34 +20,20 @@ public abstract class GameObject extends Rectangle implements Cloneable {
 	
 	protected Texture texture;
 
-	/**
-	 * 
-	 */
 	public GameObject() {
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param rect
-	 */
 	public GameObject(Rectangle rect) {
 		super(rect);
-
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 */
 	public GameObject(float x, float y, float width, float height) {
 		super(x, y, width, height);
-		// TODO Auto-generated constructor stub
 	}
 	
-	public abstract void draw(SpriteBatch batch);
+	public void draw(SpriteBatch batch) {
+		batch.draw(this.texture, this.x, this.y, this.width, this.height);
+	}
 
 	public String getName() {
 		return name;
@@ -85,7 +65,6 @@ public abstract class GameObject extends Rectangle implements Cloneable {
 
 	@Override
 	public Object clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
 		return super.clone();
 	}
 

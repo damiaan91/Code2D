@@ -40,8 +40,18 @@
         Y1="12"
         Player="//@Player"/>
     <WorldInstances
-        X2="20"
+        X2="24"
         Y2="0"
+        Object="//@GameObjects.1"/>
+    <WorldInstances
+        X2="0"
+        Y2="15"
+        Object="//@GameObjects.1"/>
+    <WorldInstances
+        X1="1"
+        Y1="14"
+        X2="24"
+        Y2="14"
         Object="//@GameObjects.1"/>
   </GameWorld>
   <Player Name="Super George"

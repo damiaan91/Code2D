@@ -120,12 +120,10 @@ public class Importer implements org.alia4j.fial.Importer {
 		EList<Event> evList = world.getWorldEvents();
 		ArrayList<Trigger> trList = processTriggers(world.getWorldTriggers(), Main.getGameInstance());
 		for(Event ev : evList) {
-			if(ev.getName() == "GameOver") {
-				for(Trigger tr : trList) {
-					if(ev.getCollisionTrigger() == tr) {
-						CollisionTrigger ctr = (CollisionTrigger) tr;
-						setupCollisionTrigger(ctr.getObject1(), ctr.getObject2());
-					}
+			for(Trigger tr : trList) {
+				if(ev.getCollisionTrigger() == tr) {
+					CollisionTrigger ctr = (CollisionTrigger) tr;
+					setupCollisionTrigger(ctr.getObject1(), ctr.getObject2());
 				}
 			}
 		}
