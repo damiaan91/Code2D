@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Map;
 
 import nl.utwente.apc.Code2D.Code2DPackage;
+import nl.utwente.apc.Code2D.CollisionTrigger;
 import nl.utwente.apc.Code2D.Event;
 import nl.utwente.apc.Code2D.Game;
 import nl.utwente.apc.Code2D.Instance;
@@ -103,8 +104,6 @@ public class Importer implements org.alia4j.fial.Importer {
 
 		Main.getGameInstance().add(npc);
 
-		setupCollisionTrigger(null);
-
 		Attachment[] toDeploy = new Attachment[initialAttachments.size()];
 		org.alia4j.fial.System.deploy(initialAttachments.toArray(toDeploy));
 	}
@@ -123,8 +122,10 @@ public class Importer implements org.alia4j.fial.Importer {
 		for(Event ev : evList) {
 			if(ev.getName() == "GameOver") {
 				for(Trigger tr : trList) {
-					if(ev.getCollisionTrigger() == tr)
-						setupCollisionTrigger(tr);
+					if(ev.getCollisionTrigger() == tr) {
+						CollisionTrigger ctr = (CollisionTrigger) tr;
+						setupCollisionTrigger(ctr.getObject1(), ctr.getObject2());
+					}
 				}
 			}
 		}
@@ -178,7 +179,7 @@ public class Importer implements org.alia4j.fial.Importer {
 		addInstance(player, pInstance, game);
 	}
 
-	private void setupCollisionTrigger(Trigger tr) {
+	private void setupCollisionTrigger(nl.utwente.apc.Code2D.GameObject one, nl.utwente.apc.Code2D.GameObject two) {
 		MethodPattern pattern = new MethodPattern(ModifiersPattern.ANY, TypePattern.ANY, new ExactClassTypePattern(
 				TypeHierarchyProvider.findOrCreateFromClass(Code2DGame.class)), new ExactNamePattern("drawUpdateGame"),
 				ParametersPattern.ANY, ExceptionsPattern.ANY);
@@ -187,10 +188,10 @@ public class Importer implements org.alia4j.fial.Importer {
 				C2DAtomicPredicateFactory.findOrCreateCollisionContextPredicate(
 						C2DContextFactory.findOrCreateCollisionListContext(
 								C2DContextFactory.findOrCreateWrappedFieldValueContext("objects",
-										ContextFactory.findOrCreateCallerContext()), Player.class, 0),
+										ContextFactory.findOrCreateCallerContext()), Code2DImporterUtils.getObjectClass(one), Code2DImporterUtils.getObjectId(one)),
 						C2DContextFactory.findOrCreateCollisionListContext(
 								C2DContextFactory.findOrCreateWrappedFieldValueContext("objects",
-										ContextFactory.findOrCreateCallerContext()), NPC.class, 2)), true),
+										ContextFactory.findOrCreateCallerContext()), Code2DImporterUtils.getObjectClass(two), Code2DImporterUtils.getObjectId(two))), true),
 				Collections.<Context> emptyList());
 
 		Attachment collisionAttachment = new Attachment(Collections.singleton(specialization),
